@@ -6,7 +6,7 @@
 
 A local-first desktop prototype for bilingual captions over video on Windows and macOS. It captures system output audio, transcribes speech locally, translates locally, and renders an independent always-on-top caption window.
 
-![Desktop workbench](docs/images/workbench.png)
+![Desktop workbench](docs/images/desktop-v0.2.0-windows.png)
 
 ## Current status
 

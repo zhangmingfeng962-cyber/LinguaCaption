@@ -6,7 +6,7 @@ Windows / macOS 桌面双语字幕软件。系统声音 → 本地识别 → 本
 
 [English](README.en.md) · [下载安装包](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases/tag/v0.2.0) · [问题反馈](https://github.com/zhangmingfeng962-cyber/LinguaCaption/issues)
 
-![工作台](docs/images/workbench.png)
+![工作台](docs/images/desktop-v0.2.0-windows.png)
 
 v0.2.0 提供独立桌面程序，内置多语言 Whisper tiny 和 M2M100 418M INT8 离线模型，无需安装 Python 或单独下载模型。源码、构建脚本和模型来源也公开。**500 ms 延迟、95% 识别准确率尚未完成验收，不能作为本版承诺。** 当前使用窗口式 Whisper 增量推理，并非原生流式 ASR。
 

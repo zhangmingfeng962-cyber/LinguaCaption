@@ -2,6 +2,25 @@
 
 v0.2.0 是功能预览版。Windows 提供每用户安装程序和完整免安装包；Mac 提供 Apple 芯片与 Intel 两种磁盘映像，最低 macOS 14。所有完整软件包自带 Python 运行时、Qt、语音识别模型和翻译模型，使用者无需配置开发环境。
 
+## 本版验证结果
+
+详细机器可读记录见 [desktop-verification.json](desktop-verification.json)。程序代码构建自 commit `bb67bda90e48a5f8f3dee5766b307d4b7c636e6a`，后续提交补充发行验证文档与截图。
+
+| 检查 | 结果 |
+|---|---|
+| Windows 实际 `.exe`，原生界面和无界面模式 | 识别 11 秒英文测试片段、执行本地翻译、绘制双语字形，均通过 |
+| Windows 安装程序 | 静默安装成功；从 System32 工作目录启动安装后的程序，仍能找到内置模型并完成同一推理检查 |
+| Windows 卸载程序 | 测试安装完整卸载，无需重启 |
+| Windows 免安装 ZIP | 1077 个文件通过 CRC；模型逐文件 SHA-256 与上游准备清单匹配 |
+| Mac Apple 芯片与 Intel | 两个真实 Mac CI 环境均构建 `.app`，加载离线 ASR 模型、执行翻译和绘制字幕，再生成 DMG |
+| 源码 | 本地 33 项测试通过，ruff 通过；Windows / Mac GitHub CI 通过 |
+
+Mac 检查没有采集真实设备的系统音频；也没有用文件音频执行 Mac ASR 解码。这些打包检查不能替代多语言质量、跨应用叠加、系统权限与长期性能验收。
+
+![Windows 安装版实际窗口](images/desktop-v0.2.0-windows.png)
+
+![Mac Apple 芯片打包程序检查窗口](images/desktop-v0.2.0-mac.png)
+
 ## 使用与卸载
 
 安装或完整解压后打开 LinguaCaption，播放视频，选择语言并点击开始捕获。模型首次加载需要等待数秒；无需登录或 API 密钥。未点击开始前不会采集系统音频。原文、译文和双语显示都在工作台切换。

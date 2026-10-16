@@ -1,0 +1,151 @@
+{
+  "version": "0.2.0",
+  "generated_at": "2026-10-16T09:20:47.487554+00:00",
+  "application_source_commit": "bb67bda90e48a5f8f3dee5766b307d4b7c636e6a",
+  "windows": {
+    "native": {
+      "version": "0.2.0",
+      "platform": "Windows-11-10.0.28000-SP0",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "soundcard_imported": true,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "transcript": "And so my fellow Americans ask not what your country can do for you ask what you can do for your country",
+      "language": "en",
+      "subtitle_rows": 2
+    },
+    "offscreen": {
+      "version": "0.2.0",
+      "platform": "Windows-11-10.0.28000-SP0",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "soundcard_imported": true,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "transcript": "And so my fellow Americans ask not what your country can do for you ask what you can do for your country",
+      "language": "en",
+      "subtitle_rows": 2
+    },
+    "installed_from_different_working_directory": {
+      "version": "0.2.0",
+      "platform": "Windows-11-10.0.28000-SP0",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "soundcard_imported": true,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "transcript": "And so my fellow Americans ask not what your country can do for you, ask what you can do for your country.",
+      "language": "en",
+      "subtitle_rows": 2
+    }
+  },
+  "installer_exit": 0,
+  "uninstaller_exit": 0,
+  "portable_integrity": {
+    "zip_crc": "passed",
+    "model_file_hashes": "passed",
+    "license_notices_present": true,
+    "checksums": {
+      "LinguaCaption-0.2.0-windows-x64-portable.zip": "e7f7cdf5117eb1bcf4b9d404ae9f3958b38db965df98a96f19d6da21210686a3",
+      "LinguaCaption-0.2.0-windows-x64-setup.exe": "54fc446553946244dada338f83bac0f1cbfebe50b77819663de4bbb4c60e48ee"
+    },
+    "portable_files": 1077,
+    "downloads": {
+      "LinguaCaption-0.2.0-windows-x64-portable.zip": 685018929,
+      "LinguaCaption-0.2.0-windows-x64-setup.exe": 658644819
+    }
+  },
+  "mac_frozen_checks": {
+    "arm64": {
+      "version": "0.2.0",
+      "platform": "macOS-14.8.9-arm64-arm-64bit",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "subtitle_rows": 2
+    },
+    "x64": {
+      "version": "0.2.0",
+      "platform": "macOS-15.7.9-x86_64-i386-64bit",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "subtitle_rows": 2
+    }
+  },
+  "source_ci": "https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/runs/38878811484",
+  "mac_build_ci": "https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/runs/38878828938",
+  "local_unit_tests": {
+    "passed": 33,
+    "failed": 0
+  },
+  "ruff": "passed",
+  "model_pack_sha256": "0f6e8825f51ee400a8f7bf7940cdc3fba01cd7a3f46734b1eaa6ad177ab3e714",
+  "downloads": {
+    "LinguaCaption-0.2.0-windows-x64-portable.zip": {
+      "bytes": 685018929,
+      "sha256": "e7f7cdf5117eb1bcf4b9d404ae9f3958b38db965df98a96f19d6da21210686a3"
+    },
+    "LinguaCaption-0.2.0-windows-x64-setup.exe": {
+      "bytes": 658644819,
+      "sha256": "54fc446553946244dada338f83bac0f1cbfebe50b77819663de4bbb4c60e48ee"
+    },
+    "LinguaCaption-0.2.0-macos-arm64.dmg": {
+      "bytes": 655754934,
+      "sha256": "b51b989910f0852afbbeaaf671315ec13cb1f63e49d0e5870d820c20cfeba2c5"
+    },
+    "LinguaCaption-0.2.0-macos-x64.dmg": {
+      "bytes": 686507863,
+      "sha256": "01902edfc5d61e3c5c8b76330853fb2f5fb17acd8f7e842bf006ea9c20d38776"
+    }
+  },
+  "limits": [
+    "Mac checks load ASR and execute MT; no physical system-audio permission test",
+    "Windows ASR fixture is one 11-second English clip; not a multilingual quality benchmark",
+    "No certification of 500 ms latency or 95 percent multilingual accuracy",
+    "Commercial Windows signing and Mac notarization are not included"
+  ]
+}
