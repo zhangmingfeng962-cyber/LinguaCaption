@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "linguacaption"
-version = "0.1.0"
+version = "0.2.0"
 description = "Local-first bilingual captions over desktop video"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
@@ -20,6 +20,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8,<10", "ruff>=0.11", "pyinstaller>=6.12,<7"]
 prepare = ["transformers>=4.48,<5", "torch>=2.6", "huggingface-hub>=0.27"]
+build = ["pyinstaller>=6.12,<7", "pillow>=11,<13"]
 
 [project.scripts]
 linguacaption = "linguacaption.app:main"
@@ -32,7 +33,7 @@ Issues = "https://github.com/zhangmingfeng962-cyber/LinguaCaption/issues"
 where = ["src"]
 
 [tool.setuptools.package-data]
-linguacaption = ["native/macos/*.swift", "native/macos/*.plist", "native/macos/AudioCapture.app/Contents/**/*"]
+linguacaption = ["assets/*", "native/macos/*.swift", "native/macos/*.plist", "native/macos/AudioCapture.app/Contents/**/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

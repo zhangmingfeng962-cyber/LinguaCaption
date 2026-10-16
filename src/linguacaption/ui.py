@@ -37,11 +37,13 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from . import __version__
 from .config import LANGUAGES, Settings, save_settings
 from .domain import Caption
 from .engine import Engine
 from .native.hotkeys import Hotkeys
 from .overlay import SafetyPicker, SubtitleOverlay, build_rows, paint_rows, screen_key, selected_screen
+from .runtime import is_bundled, models_ready
 
 SAMPLE_ORIGINAL = "There is a whole world waiting to be understood."
 SAMPLE_TRANSLATION = "让每一种语言，都触手可及。"
@@ -233,7 +235,7 @@ class MainWindow(QMainWindow):
         side.addWidget(label("●  本地离线处理", "eyebrow"))
         side.addWidget(label("音频保留在内存中\n不使用麦克风", "muted", True))
         side.addSpacing(14)
-        side.addWidget(label("v0.1.0  /  Desktop", "muted"))
+        side.addWidget(label(f"v{__version__}  /  Desktop", "muted"))
         layout.addWidget(sidebar)
         body = QVBoxLayout()
         body.setContentsMargins(30, 28, 30, 20)
@@ -284,7 +286,9 @@ class MainWindow(QMainWindow):
         copy = QVBoxLayout()
         self.state_label = label("●  准备就绪", "section")
         copy.addWidget(self.state_label)
-        self.status_message = label("首次使用请先在「模型与性能」配置本地模型，也可勾选演示模式体验字幕。", "muted", True)
+        message = ("离线模型已就绪。播放视频后点击「开始捕获」，即可显示双语字幕。"
+                   if models_ready(self.settings) else "首次使用请先在「模型与性能」配置本地模型，也可勾选演示模式体验字幕。")
+        self.status_message = label(message, "muted", True)
         copy.addWidget(self.status_message)
         top.addLayout(copy, 1)
         self.start_button = QPushButton("开始捕获")
@@ -517,11 +521,14 @@ class MainWindow(QMainWindow):
             row.addWidget(choose)
             form.addRow(title, row)
         content.addLayout(form)
-        content.addWidget(label("准备命令（在项目根目录运行）", "eyebrow"))
-        commands = QPlainTextEdit("python -m pip install -e '.[prepare]'\npython scripts/prepare_models.py asr --size base\npython scripts/prepare_models.py translation")
-        commands.setReadOnly(True)
-        commands.setFixedHeight(95)
-        content.addWidget(commands)
+        if is_bundled():
+            content.addWidget(label("完整软件内置离线识别和翻译模型，无需安装 Python。可直接开始捕获，也可以在上方选择其他已准备的模型。", "muted", True))
+        else:
+            content.addWidget(label("准备命令（在项目根目录运行）", "eyebrow"))
+            commands = QPlainTextEdit("python -m pip install -e '.[prepare]'\npython scripts/prepare_models.py asr --size base\npython scripts/prepare_models.py translation")
+            commands.setReadOnly(True)
+            commands.setFixedHeight(95)
+            content.addWidget(commands)
         diagnose = QPushButton("检查模型文件与平台能力")
         diagnose.clicked.connect(self.diagnose)
         content.addWidget(diagnose)

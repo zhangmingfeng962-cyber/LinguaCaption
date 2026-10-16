@@ -63,7 +63,9 @@ def build_rows(settings: Settings, original: str, translation: str, max_width: i
     if settings.mode in {"translation", "bilingual"} and translation:
         texts.append((translation, settings.translation_color, 1))
     for text, color, size_ratio in texts:
-        font = QFont(settings.font_family)
+        # QFont("") may select the bitmap MS Sans Serif font on native Windows,
+        # whose Latin glyphs have no vector outlines. Inherit the app font instead.
+        font = QFont(settings.font_family) if settings.font_family else QFont(QGuiApplication.font())
         font.setPixelSize(max(12, round(settings.font_size * scale * size_ratio)))
         font.setWeight(QFont.Weight(settings.font_weight))
         metrics = QFontMetricsF(font)

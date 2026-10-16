@@ -2,15 +2,32 @@
 
 [![Desktop checks](https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/workflows/ci.yml/badge.svg)](https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/workflows/ci.yml)
 
-Windows / macOS 桌面双语字幕开发版。系统声音 → 本地识别 → 本地翻译 → 独立置顶字幕窗。
+Windows / macOS 桌面双语字幕软件。系统声音 → 本地识别 → 本地翻译 → 独立置顶字幕窗。
 
-[English](README.en.md) · [下载开发预览版](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases) · [问题反馈](https://github.com/zhangmingfeng962-cyber/LinguaCaption/issues)
+[English](README.en.md) · [下载安装包](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases/tag/v0.2.0) · [问题反馈](https://github.com/zhangmingfeng962-cyber/LinguaCaption/issues)
 
 ![工作台](docs/images/workbench.png)
 
-这是一套可运行的源码工程，含真实音频采集和模型推理适配器、无模型演示、测试、性能复测及打包脚本。模型权重需要另行准备。**500 ms 延迟、95% 识别准确率尚未完成验收，不能作为本版承诺。** 当前使用窗口式 Whisper 增量推理，并非原生流式 ASR。
+v0.2.0 提供独立桌面程序，内置多语言 Whisper tiny 和 M2M100 418M INT8 离线模型，无需安装 Python 或单独下载模型。源码、构建脚本和模型来源也公开。**500 ms 延迟、95% 识别准确率尚未完成验收，不能作为本版承诺。** 当前使用窗口式 Whisper 增量推理，并非原生流式 ASR。
 
-## 启动
+## 下载安装使用
+
+在 [v0.2.0 下载页](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases/tag/v0.2.0) 选择对应系统：
+
+| 系统 | 下载文件 | 使用方法 |
+|---|---|---|
+| Windows 10/11，64 位 Intel / AMD | `LinguaCaption-0.2.0-windows-x64-setup.exe` | 双击安装，在开始菜单打开；无需管理员权限 |
+| Windows 免安装 | `LinguaCaption-0.2.0-windows-x64-portable.zip` | 完整解压后打开文件夹内的 `LinguaCaption.exe`，保留 `_internal` 文件夹 |
+| macOS 14+，Apple 芯片 | `LinguaCaption-0.2.0-macos-arm64.dmg` | 打开磁盘映像，把程序拖入「应用程序」 |
+| macOS 14+，Intel 芯片 | `LinguaCaption-0.2.0-macos-x64.dmg` | 打开磁盘映像，把程序拖入「应用程序」 |
+
+打开软件 → 在播放器或浏览器播放视频 → 选择识别语言和目标语言 → 点击「开始捕获」。默认英语识别、中文翻译。可先用「演示」调整样式，实际使用时关闭演示。拖拽字幕到合适位置，或在「样式与位置」设置保护区。
+
+软件包包含模型，下载体积较大；首次启动识别需要加载模型，运行期可断网。Mac 首次捕获需在系统设置允许屏幕与系统音频录制，快捷键另需辅助功能 / 输入监控权限。Mac 捕获与全屏覆盖仍需在真实设备验收。
+
+本预览版 Windows 安装程序未使用商业代码签名；Mac 使用临时签名，未公证。系统可能提示未知开发者，请核对本仓库来源和发布页 SHA-256；Mac 可在「系统设置 → 隐私与安全性」按系统提示允许打开。安装与卸载说明见 [桌面发行指南](docs/DESKTOP.md)。
+
+## 从源码启动（开发者）
 
 项目采用 MIT 许可证，任何人都可以下载、使用和修改源码。可以从 Releases 下载源码包，也可以克隆公开仓库：
 
@@ -55,7 +72,7 @@ python -m linguacaption
 
 识别可选 `tiny / base / small / medium / large-v3` 多语言模型，`.en` 英语专用模型会被拒绝。翻译使用 M2M100 418M，经 CTranslate2 INT8 转换；工程界面开放 **中文、英语、日语、韩语、西班牙语、法语、德语、俄语、葡萄牙语、意大利语、阿拉伯语、印地语** 12 种语言及互译。支持范围不等于各语言质量均已达标。
 
-准备工具记录源仓库 commit、处理器 commit 及文件 SHA-256。若需要完全离线部署，在联网机器准备好目录后复制整个目录。输出目录已存在时准备工具会拒绝覆盖，可用 `--output 新目录`。默认配置保存在 `local/settings.json`，也可通过 `--config 路径` 指定。
+准备工具记录源仓库 commit、处理器 commit 及文件 SHA-256。若需要完全离线部署，在联网机器准备好目录后复制整个目录。输出目录已存在时准备工具会拒绝覆盖，可用 `--output 新目录`。默认配置保存在当前用户的系统配置目录中，也可通过 `--config 路径` 指定。
 
 ## 使用与功能
 
@@ -131,7 +148,7 @@ python scripts/benchmark.py --audio sample.wav --asr-model models/asr \
 python scripts/package.py
 ```
 
-PowerShell 中请将基准命令写为一行，或使用 PowerShell 的续行方式。打包必须分别在 Windows/Mac 上进行，产物在 `dist/`，模型放在应用外部，通过界面选择。Mac 打包脚本使用本地临时签名供开发测试，正式分发仍需正式签名和公证。本次未生成预编译安装包；Windows/Mac 的 GitHub CI 均已通过，Mac 原生采集辅助程序已在 CI 编译成功。
+PowerShell 中请将基准命令写为一行，或使用 PowerShell 的续行方式。安装 `.[build]` 后在目标 Windows/Mac 平台打包，模型默认随程序一起放入 `dist/`。使用 `scripts/distribute.py` 生成安装程序、免安装 ZIP 或 DMG；具体命令见 [桌面发行指南](docs/DESKTOP.md)。
 
 请阅读 [架构说明](docs/ARCHITECTURE.md)、[验收方案](docs/ACCEPTANCE.md) 和 [本次验证结果](docs/VALIDATION.md)。截至本次验证，Windows 环境完成控件渲染与自动化测试、真实模型音频重放；系统内录、Mac 权限及全屏跨应用叠加需要目标设备联调。
 

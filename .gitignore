@@ -16,3 +16,5 @@ src/linguacaption/native/macos/AudioCapture.app/
 Thumbs.db
 # Generated checksum inventory belongs to the downloadable release archive.
 SOURCE-SHA256.json
+src/linguacaption/assets/app.iconset/
+src/linguacaption/assets/app.icns

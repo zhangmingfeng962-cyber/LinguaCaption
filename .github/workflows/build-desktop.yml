@@ -1,0 +1,64 @@
+name: Build desktop downloads
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Reviewed source commit to package
+        required: true
+        type: string
+      release_tag:
+        description: Existing draft release containing the offline model pack
+        default: v0.2.0
+        required: true
+        type: string
+      model_sha256:
+        description: SHA-256 of LinguaCaption-models-v1.zip
+        required: true
+        type: string
+permissions:
+  contents: write
+jobs:
+  mac:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-14, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RELEASE_TAG: ${{ inputs.release_tag }}
+      MODEL_SHA256: ${{ inputs.model_sha256 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -e '.[build]'
+      - name: Download and verify offline models
+        run: |
+          gh release download "$RELEASE_TAG" --pattern LinguaCaption-models-v1.zip --dir build/input
+          python scripts/models_archive.py extract build/input/LinguaCaption-models-v1.zip build/models --sha256 "$MODEL_SHA256"
+      - name: Build standalone application
+        run: python scripts/package.py --asr-model build/models/asr --translation-model build/models/translation
+      - name: Test frozen application with real models
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          dist/LinguaCaption.app/Contents/MacOS/LinguaCaption --self-test --self-test-report build/packaged-smoke.json --config build/smoke-settings.json
+          cat build/packaged-smoke.json
+      - name: Make disk image
+        run: python scripts/distribute.py --dist-dir dist --output build/downloads
+      - name: Upload downloads to the draft release
+        run: gh release upload "$RELEASE_TAG" build/downloads/*
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: packaged-smoke-${{ matrix.os }}
+          path: |
+            build/packaged-smoke.*
+            build/pyinstaller/analysis/LinguaCaption/warn-LinguaCaption.txt

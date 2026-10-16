@@ -10,7 +10,7 @@ A local-first desktop prototype for bilingual captions over video on Windows and
 
 ## Current status
 
-This is a **development preview**, distributed as source code under the MIT license. Model weights are downloaded separately. There are no prebuilt installers in the initial release.
+This is a **desktop software preview**, with public source code under the MIT license. The v0.2.0 desktop downloads bundle multilingual Whisper tiny and M2M100 418M INT8 models and do not require Python or a separate model download.
 
 - Windows: WASAPI loopback capture through SoundCard.
 - macOS 13+: a native Swift ScreenCaptureKit helper that builds in macOS CI; recording permissions and runtime capture require validation on a target Mac.
@@ -21,7 +21,20 @@ This is a **development preview**, distributed as source code under the MIT lice
 
 **The 500 ms latency and 95% accuracy targets have not been accepted.** One 11-second English fixture produced about 426 ms median bilingual software lag and 1,012 ms P95; this excludes actual system capture and GUI paint latency. The normalized final transcript had zero WER on that single fixture. These results do not establish multilingual quality or long-run performance. See [validation](docs/VALIDATION.md) and [acceptance criteria](docs/ACCEPTANCE.md).
 
-## Quick start
+## Install and use
+
+Download from [v0.2.0](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases/tag/v0.2.0):
+
+- Windows 10/11 x64: run `LinguaCaption-0.2.0-windows-x64-setup.exe`. Installation is per user and does not require administrator privileges.
+- Windows portable: extract the complete `LinguaCaption-0.2.0-windows-x64-portable.zip`, then open `LinguaCaption.exe`. Keep its `_internal` directory.
+- macOS 14+, Apple Silicon: open `LinguaCaption-0.2.0-macos-arm64.dmg` and drag the application into Applications.
+- macOS 14+, Intel: use `LinguaCaption-0.2.0-macos-x64.dmg`.
+
+Play a video, choose the spoken and target languages, turn off demo mode, and start capture. The default is English to Chinese. Models load locally; the application can run offline. Settings are written to the current user's configuration directory.
+
+This preview has no commercial Windows code signature, and the Mac build is ad hoc signed without notarization. Verify the repository and published checksums when opening an unknown-publisher download. On macOS, follow the system's Privacy & Security prompt to allow opening and grant Screen & System Audio Recording permission. Native capture and fullscreen behavior on physical Mac hardware still require acceptance testing. See [desktop distribution details](docs/DESKTOP.md).
+
+## Run from source
 
 Python 3.11–3.13 is required; 3.12 is recommended. Clone or download the source archive:
 
@@ -74,6 +87,6 @@ python -m ruff check .
 python scripts/package.py
 ```
 
-Build desktop packages on their target OS. Model weights are external. macOS packaging currently uses an ad hoc development signature; distribution signing and notarization are separate work.
+Build desktop packages on their target OS. Install `.[build]` and prepare complete `models/asr` and `models/translation` directories first; `scripts/package.py` bundles both by default. `scripts/distribute.py` creates a Windows installer and portable ZIP, or a Mac DMG. See [build instructions](docs/DESKTOP.md).
 
-See the [project tree and full usage guide](README.md), [architecture](docs/ARCHITECTURE.md), and [contributing guide](CONTRIBUTING.md). Upstream dependencies and models retain their own licenses; the source release does not redistribute their weights or application binaries.
+See the [project tree and full usage guide](README.md), [architecture](docs/ARCHITECTURE.md), and [contributing guide](CONTRIBUTING.md). Upstream dependencies and models retain their own licenses; desktop downloads contain their notices and model provenance.
