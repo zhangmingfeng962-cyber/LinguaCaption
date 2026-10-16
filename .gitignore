@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+models/
+local/
+build/
+dist/
+*.spec
+src/linguacaption/native/macos/AudioCapture.app/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+# Generated checksum inventory belongs to the downloadable release archive.
+SOURCE-SHA256.json

@@ -1,0 +1,482 @@
+{
+  "platform": "Windows-11-10.0.28000-SP0",
+  "python": "3.12.14",
+  "audio_seconds": 11.0,
+  "settings": {
+    "source": "en",
+    "target": "zh",
+    "update_ms": 400,
+    "min_audio_ms": 640,
+    "endpoint_ms": 400,
+    "asr_threads": 4,
+    "translation_threads": 2,
+    "mode": "bilingual",
+    "asr_model": "Whisper tiny multilingual, local CTranslate2 model"
+  },
+  "transcript": "And so my fellow Americans, ask not! What your country can do for you? Ask what you can do for your country.",
+  "translated_captions": [
+    {
+      "original": "And so my fellow Americans, ask not!",
+      "translation": "好吧,美国人,不要问。"
+    },
+    {
+      "original": "What your country can do for you?",
+      "translation": "你的国家能为你做什么?"
+    },
+    {
+      "original": "Ask what you can do for your country.",
+      "translation": "问你能为自己的国家做什么。"
+    }
+  ],
+  "first_caption": {
+    "p50_ms": 906.0,
+    "p95_ms": 1207.5,
+    "n": 3
+  },
+  "original_lag": {
+    "p50_ms": 288.0,
+    "p95_ms": 732.6,
+    "n": 27
+  },
+  "bilingual_lag": {
+    "p50_ms": 425.5,
+    "p95_ms": 1012.0,
+    "n": 20
+  },
+  "peak_rss_mb": 914.7,
+  "average_cpu_percent_total_capacity": 23.49,
+  "cpu_window_note": "Includes model load, fixture playback, and drain time",
+  "latency_note": "Software replay timestamps only; no WASAPI/ScreenCaptureKit or GUI paint timing",
+  "events": [
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 265.99999999871216,
+      "first_caption_ms": 905.9999999999491
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": 94.00000000005093,
+      "lag_ms": 359.9999999987631
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 234.99999999967258,
+      "translation_ms": null,
+      "lag_ms": 256.9999999986976
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 234.99999999967258,
+      "translation_ms": 94.00000000005093,
+      "lag_ms": 350.99999999874854
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 234.00000000037835,
+      "translation_ms": null,
+      "lag_ms": 246.99999999938882
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 234.00000000037835,
+      "translation_ms": 140.99999999962165,
+      "lag_ms": 387.99999999901047
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 268.99999999841384
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": 141.00000000053114,
+      "lag_ms": 409.999999998945
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 233.99999999946886,
+      "translation_ms": null,
+      "lag_ms": 243.99999999877764
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 233.99999999946886,
+      "translation_ms": 141.00000000053114,
+      "lag_ms": 384.9999999993088
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 265.99999999962165,
+      "translation_ms": null,
+      "lag_ms": 281.9999999983338
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 265.99999999962165,
+      "translation_ms": 155.99999999994907,
+      "lag_ms": 437.9999999982829
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 234.99999999967258,
+      "translation_ms": null,
+      "lag_ms": 256.9999999986976
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 234.99999999967258,
+      "translation_ms": 155.99999999994907,
+      "lag_ms": 412.9999999986467
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 262.99999999901047
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": 141.00000000053114,
+      "lag_ms": 403.9999999995416
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 268.99999999841384
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": 172.0000000004802,
+      "lag_ms": 440.99999999889405
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 265.0000000003274,
+      "translation_ms": null,
+      "lag_ms": 290.99999999925785
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 265.0000000003274,
+      "translation_ms": 250.0,
+      "lag_ms": 540.9999999992579
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 265.99999999962165,
+      "translation_ms": null,
+      "lag_ms": 361.99999999826105
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 265.99999999962165,
+      "translation_ms": 186.99999999989814,
+      "lag_ms": 548.9999999981592
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 12,
+      "final": true,
+      "asr_ms": 265.99999999962165,
+      "translation_ms": null,
+      "lag_ms": 705.999999998312
+    },
+    {
+      "kind": "translation",
+      "utterance": 1,
+      "revision": 12,
+      "final": true,
+      "asr_ms": 265.99999999962165,
+      "translation_ms": 217.9999999998472,
+      "lag_ms": 923.9999999981592
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 235.00000000058208,
+      "translation_ms": null,
+      "lag_ms": 253.99999999899592,
+      "first_caption_ms": 894.0000000002328
+    },
+    {
+      "kind": "translation",
+      "utterance": 2,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 235.00000000058208,
+      "translation_ms": 108.99999999946886,
+      "lag_ms": 362.9999999984648
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 234.00000000037835,
+      "translation_ms": null,
+      "lag_ms": 259.9999999993088
+    },
+    {
+      "kind": "translation",
+      "utterance": 2,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 234.00000000037835,
+      "translation_ms": 140.99999999962165,
+      "lag_ms": 400.99999999893043
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 265.99999999871216
+    },
+    {
+      "kind": "translation",
+      "utterance": 2,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": 140.99999999962165,
+      "lag_ms": 406.9999999983338
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 265.99999999962165,
+      "translation_ms": null,
+      "lag_ms": 287.9999999986467
+    },
+    {
+      "kind": "translation",
+      "utterance": 2,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 265.99999999962165,
+      "translation_ms": 172.0000000004802,
+      "lag_ms": 459.9999999991269
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 262.99999999901047
+    },
+    {
+      "kind": "translation",
+      "utterance": 2,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": 219.00000000005093,
+      "lag_ms": 481.9999999990614
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 266.00000000053114,
+      "translation_ms": null,
+      "lag_ms": 484.9999999987631
+    },
+    {
+      "kind": "translation",
+      "utterance": 2,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 266.00000000053114,
+      "translation_ms": 280.99999999994907,
+      "lag_ms": 765.9999999987122
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 7,
+      "final": true,
+      "asr_ms": 311.99999999989814,
+      "translation_ms": null,
+      "lag_ms": 796.9999999986612
+    },
+    {
+      "kind": "translation",
+      "utterance": 2,
+      "revision": 7,
+      "final": true,
+      "asr_ms": 311.99999999989814,
+      "translation_ms": 188.00000000010186,
+      "lag_ms": 984.9999999987631
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 578.0000000004293,
+      "translation_ms": null,
+      "lag_ms": 600.999999997839,
+      "first_caption_ms": 1240.999999999076
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 265.99999999962165,
+      "translation_ms": null,
+      "lag_ms": 466.9999999978245
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 297.0000000004802,
+      "translation_ms": null,
+      "lag_ms": 363.9999999986685
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 313.00000000010186,
+      "translation_ms": null,
+      "lag_ms": 338.9999999981228
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 313.00000000010186,
+      "translation_ms": null,
+      "lag_ms": 344.99999999843567
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 313.00000000010186,
+      "translation_ms": null,
+      "lag_ms": 355.9999999979482
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 313.00000000010186,
+      "translation_ms": null,
+      "lag_ms": 341.9999999978245
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 9,
+      "final": true,
+      "asr_ms": 328.0000000004293,
+      "translation_ms": null,
+      "lag_ms": 743.9999999978681
+    },
+    {
+      "kind": "translation",
+      "utterance": 3,
+      "revision": 9,
+      "final": true,
+      "asr_ms": 328.0000000004293,
+      "translation_ms": 188.00000000010186,
+      "lag_ms": 1524.9999999978172
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "wer": 0.0,
+  "one_minus_error_rate": 1.0
+}

@@ -1,0 +1,282 @@
+{
+  "platform": "Windows-11-10.0.28000-SP0",
+  "python": "3.12.14",
+  "audio_seconds": 11.0,
+  "settings": {
+    "source": "en",
+    "target": "zh",
+    "update_ms": 400,
+    "min_audio_ms": 640,
+    "endpoint_ms": 400,
+    "asr_threads": 4,
+    "translation_threads": 2,
+    "mode": "original",
+    "asr_model": "Whisper tiny multilingual, local CTranslate2 model"
+  },
+  "transcript": "And so my fellow Americans, ask not! What your country can do for you? Ask what you can do for your country.",
+  "first_caption": {
+    "p50_ms": 910.0,
+    "p95_ms": 1264.6,
+    "n": 3
+  },
+  "original_lag": {
+    "p50_ms": 280.0,
+    "p95_ms": 705.2,
+    "n": 27
+  },
+  "bilingual_lag": {},
+  "peak_rss_mb": 237.8,
+  "average_cpu_percent_total_capacity": 17.67,
+  "cpu_window_note": "Includes model load, fixture playback, and drain time",
+  "latency_note": "Software replay timestamps only; no WASAPI/ScreenCaptureKit or GUI paint timing",
+  "events": [
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 267.0000000002801,
+      "first_caption_ms": 907.0000000001528
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 264.99999999987267,
+      "translation_ms": null,
+      "lag_ms": 288.0000000000109
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 235.00000000012733,
+      "translation_ms": null,
+      "lag_ms": 248.0000000000473
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 233.9999999999236,
+      "translation_ms": null,
+      "lag_ms": 253.9999999999054
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 276.0000000002947
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 233.9999999999236,
+      "translation_ms": null,
+      "lag_ms": 251.00000000020373
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 273.00000000013824
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 262.99999999991996
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 280.99999999994907,
+      "translation_ms": null,
+      "lag_ms": 300.9999999999309
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 266.0000000000764,
+      "translation_ms": null,
+      "lag_ms": 276.0000000002947
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 347.00000000020736
+    },
+    {
+      "kind": "caption",
+      "utterance": 1,
+      "revision": 12,
+      "final": true,
+      "asr_ms": 266.0000000000764,
+      "translation_ms": null,
+      "lag_ms": 722.0000000002074
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 269.9999999999818,
+      "first_caption_ms": 910.0000000003092
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 233.9999999999236,
+      "translation_ms": null,
+      "lag_ms": 260.0000000002183
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 233.9999999999236,
+      "translation_ms": null,
+      "lag_ms": 267.0000000002801
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 235.00000000012733,
+      "translation_ms": null,
+      "lag_ms": 273.00000000013824
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 262.99999999991996
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 264.99999999987267,
+      "translation_ms": null,
+      "lag_ms": 485.00000000012733
+    },
+    {
+      "kind": "caption",
+      "utterance": 2,
+      "revision": 7,
+      "final": true,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 735.0000000001273
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 641.0000000000764,
+      "translation_ms": null,
+      "lag_ms": 664.0000000002146,
+      "first_caption_ms": 1304.0000000000873
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 233.9999999999236,
+      "translation_ms": null,
+      "lag_ms": 498.0000000000473
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 266.0000000000764,
+      "translation_ms": null,
+      "lag_ms": 364.00000000003274
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 264.99999999987267,
+      "translation_ms": null,
+      "lag_ms": 291.9999999999163
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 283.0000000003565
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 266.0000000000764,
+      "translation_ms": null,
+      "lag_ms": 309.00000000019645
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 280.0000000002001
+    },
+    {
+      "kind": "caption",
+      "utterance": 3,
+      "revision": 9,
+      "final": true,
+      "asr_ms": 250.0,
+      "translation_ms": null,
+      "lag_ms": 666.0000000001673
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

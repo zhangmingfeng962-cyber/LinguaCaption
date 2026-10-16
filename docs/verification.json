@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-16",
+  "timezone": "Asia/Shanghai",
+  "automated_tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "30",
+    "time": "0.866",
+    "timestamp": "2026-10-16T12:12:37.028817+08:00",
+    "hostname": "development-host"
+  },
+  "lint": "ruff check passed",
+  "compileall": "passed",
+  "real_model_smoke": {
+    "whisper_tiny": "passed",
+    "m2m100_int8": "passed",
+    "translation_directions": [
+      "en->zh",
+      "zh->en",
+      "ja->zh"
+    ],
+    "tokenizer_parity_with_transformers": true
+  },
+  "windows_output_enumeration": "1 endpoint on each of 2 different threads",
+  "windows_wasapi_smoke": {
+    "chunks": 3,
+    "samples_16000_hz": 2384,
+    "audio_saved": false
+  },
+  "windows_native_smoke": {
+    "hidden_compositor_api_accepted": true,
+    "registered_global_hotkeys": 5,
+    "font_hotkeys_used_fallback": true,
+    "physical_key_dispatch_tested": false
+  },
+  "versions": {
+    "PySide6": "6.12.0",
+    "numpy": "2.5.4",
+    "faster-whisper": "1.2.1",
+    "ctranslate2": "4.8.3",
+    "sentencepiece": "0.2.2",
+    "av": "17.1.0",
+    "soundcard": "0.4.6",
+    "webrtcvad-wheels": "2.0.14.post1",
+    "regex": "2026.9.29",
+    "psutil": "7.2.2",
+    "pytest": "9.1.1",
+    "ruff": "0.17.1",
+    "transformers": "4.57.6",
+    "torch": "2.14.1"
+  },
+  "not_run": [
+    "macOS compilation/hardware tests",
+    "native glass/fullscreen/shortcut dispatch",
+    "12-language quality acceptance",
+    "long-duration load tests",
+    "installer packaging"
+  ]
+}

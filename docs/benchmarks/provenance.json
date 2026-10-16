@@ -1,0 +1,36 @@
+{
+  "asr": {
+    "format": "whisper-ct2-v1",
+    "repo": "Systran/faster-whisper-tiny",
+    "revision": "d90ca5fe260221311c53c58e660288d3deb8d356",
+    "processor_repo": "openai/whisper-tiny",
+    "processor_revision": "169d4a4341b33bc18d8881c4b69c2e104e1cc0af",
+    "sha256": {
+      "config.json": "a73a28cdfe1c43ccc7202fa333d1f89c202477271407ae9a7f19afa52039cac8",
+      "model.bin": "dcb76c6586fc06cbdac6dd21f14cfd129cc4cdd9dce19bf4ffa62e59cbe6e6d1",
+      "preprocessor_config.json": "9b5cd03a36fbb8a627c64d98a5b5b126ead95a77720723944487311f0110b666",
+      "tokenizer.json": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab",
+      "vocabulary.txt": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913"
+    }
+  },
+  "translation": {
+    "format": "m2m100-transformers-v1",
+    "repo": "facebook/m2m100_418M",
+    "revision": "55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636",
+    "quantization": "int8",
+    "license": "MIT",
+    "sha256": {
+      "config.json": "72901fbd8abd89fb5cf4a388f26fc681f5c4c58a1e1a88b30b879f107270e7ee",
+      "model.bin": "590e9c7e229e84de8affe7b15487660a286d3d76e44a4ca10e33099b198d9a76",
+      "sentencepiece.bpe.model": "d8f7c76ed2a5e0822be39f0a4f95a55eb19c78f4593ce609e2edbc2aea4d380a",
+      "shared_vocabulary.json": "18916ac68f9ac8fbd5250ca603dcb3861aac8672924d93a8dadc82eb3147f941",
+      "special_tokens_map.json": "c1a4f86c3874d279ae1b2a05162858db5dd6c61665d84223ed886cbcff08fda6",
+      "tokenizer_config.json": "a53e6aa83da0b82565ed90c3849056307a9453843322ac5b8439ec4b9497fe48",
+      "vocab.json": "b6e77e474aeea8f441363aca7614317c06381f3eacfe10fb9856d5081d1074cc"
+    }
+  },
+  "fixture": {
+    "url": "https://github.com/SYSTRAN/faster-whisper/blob/master/tests/data/jfk.flac",
+    "sha256": "63a4b1e4c1dc655ac70961ffbf518acd249df237e5a0152faae9a4a836949715"
+  }
+}
