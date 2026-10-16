@@ -1,5 +1,7 @@
 # LinguaCaption
 
+[![Desktop checks](https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/workflows/ci.yml/badge.svg)](https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/workflows/ci.yml)
+
 [中文说明](README.md) · [Releases](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases)
 
 A local-first desktop prototype for bilingual captions over video on Windows and macOS. It captures system output audio, transcribes speech locally, translates locally, and renders an independent always-on-top caption window.
@@ -11,7 +13,7 @@ A local-first desktop prototype for bilingual captions over video on Windows and
 This is a **development preview**, distributed as source code under the MIT license. Model weights are downloaded separately. There are no prebuilt installers in the initial release.
 
 - Windows: WASAPI loopback capture through SoundCard.
-- macOS 13+: a native Swift ScreenCaptureKit helper; macOS compilation and permissions require validation on a target Mac.
+- macOS 13+: a native Swift ScreenCaptureKit helper that builds in macOS CI; recording permissions and runtime capture require validation on a target Mac.
 - Offline multilingual Whisper recognition and M2M100 translation through CTranslate2.
 - Twelve exposed languages: Chinese, English, Japanese, Korean, Spanish, French, German, Russian, Portuguese, Italian, Arabic, and Hindi.
 - Original, translated, and bilingual modes; fonts, colors, outline, shadow, line limits, per-line adaptive backgrounds, draggable placement, and mouse passthrough.

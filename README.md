@@ -1,5 +1,7 @@
 # LinguaCaption · 随声字幕
 
+[![Desktop checks](https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/workflows/ci.yml/badge.svg)](https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/workflows/ci.yml)
+
 Windows / macOS 桌面双语字幕开发版。系统声音 → 本地识别 → 本地翻译 → 独立置顶字幕窗。
 
 [English](README.en.md) · [下载开发预览版](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases) · [问题反馈](https://github.com/zhangmingfeng962-cyber/LinguaCaption/issues)
@@ -129,7 +131,7 @@ python scripts/benchmark.py --audio sample.wav --asr-model models/asr \
 python scripts/package.py
 ```
 
-PowerShell 中请将基准命令写为一行，或使用 PowerShell 的续行方式。打包必须分别在 Windows/Mac 上进行，产物在 `dist/`，模型放在应用外部，通过界面选择。Mac 打包脚本使用本地临时签名供开发测试，正式分发仍需正式签名和公证。本次没有生成安装包、没有在 Mac 运行 CI。
+PowerShell 中请将基准命令写为一行，或使用 PowerShell 的续行方式。打包必须分别在 Windows/Mac 上进行，产物在 `dist/`，模型放在应用外部，通过界面选择。Mac 打包脚本使用本地临时签名供开发测试，正式分发仍需正式签名和公证。本次未生成预编译安装包；Windows/Mac 的 GitHub CI 均已通过，Mac 原生采集辅助程序已在 CI 编译成功。
 
 请阅读 [架构说明](docs/ARCHITECTURE.md)、[验收方案](docs/ACCEPTANCE.md) 和 [本次验证结果](docs/VALIDATION.md)。截至本次验证，Windows 环境完成控件渲染与自动化测试、真实模型音频重放；系统内录、Mac 权限及全屏跨应用叠加需要目标设备联调。
 

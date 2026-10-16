@@ -52,10 +52,17 @@
     "torch": "2.14.1"
   },
   "not_run": [
-    "macOS compilation/hardware tests",
+    "macOS hardware capture/permission tests",
     "native glass/fullscreen/shortcut dispatch",
     "12-language quality acceptance",
     "long-duration load tests",
     "installer packaging"
-  ]
+  ],
+  "publication_ci": {
+    "url": "https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/runs/38862662601",
+    "commit": "c9b3ffac4566b99e37674523a1cac8bbe50a0478",
+    "windows-latest": "success",
+    "macos-14": "success",
+    "macos_swift_helper_build": "success"
+  }
 }

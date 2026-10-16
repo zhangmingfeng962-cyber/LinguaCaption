@@ -13,7 +13,16 @@
 - 真实 M2M100 418M 从官方权重转换 INT8，本地执行英→中、中→英、日→中；手写轻量 tokenizer 的 source tokens 与官方 Transformers `M2M100Tokenizer` 逐项相等。
 - 完整 ASR / 英中 ASR+MT 管线使用同一音频按实际播放速度重放，保留原始事件及统计 JSON。
 
-最后一次检查的测试总数和版本快照见本目录的 `verification.json`。CI 配置已提供，但未推送仓库运行远端 Actions。
+本地检查的测试总数和版本快照见本目录的 `verification.json`。公开仓库的 CI 结果见下方。
+
+## 公开仓库的自动检查
+
+2026-10-16，公开仓库提交 `c9b3ffac4566b99e37674523a1cac8bbe50a0478` 的 [GitHub Actions 检查](https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/runs/38862662601) 已通过：
+
+- `windows-latest`：依赖安装、ruff、pytest、Qt 控件预览渲染通过。
+- `macos-14`：依赖安装、ruff、pytest、Qt 控件预览渲染通过，ScreenCaptureKit Swift 辅助程序编译和本地临时签名通过。
+
+CI 只运行无模型测试和编译检查；没有获得用户录制权限、播放真实视频或验证系统合成效果，因此不能代替目标设备采集/显示与性能验收。后续文档更新不改变此次通过检查的运行时代码。
 
 ## 真实模型重放结果
 
@@ -39,6 +48,6 @@ CPU 包含模型加载、播放及收尾等待，未扣除空闲，不代表长�
 
 ## 尚未验证
 
-Windows 真实视频声音的完整内录识别、Mac Swift 本机编译/采集授权、原生磨砂视觉效果、多屏 DPI、跨应用全屏/Spaces、快捷键的真实按键派发、DRM/独占音频、60 分钟稳定性、12 种语言各自 WER/CER、译文质量、正式打包/签名均待目标设备实测。
+Windows 真实视频声音的完整内录识别、Mac 真机采集与授权、原生磨砂视觉效果、多屏 DPI、跨应用全屏/Spaces、快捷键的真实按键派发、DRM/独占音频、60 分钟稳定性、12 种语言各自 WER/CER、译文质量、正式打包/签名均待目标设备实测。
 
 当前结果不满足 500 ms 的首字或 P95 全链路目标；下一步应针对硬性实时目标增加经目标语言验证的原生 streaming ASR 后端，并单独验收翻译耗时。现有引擎工厂接口、版本事件和悬浮 UI 可以沿用。

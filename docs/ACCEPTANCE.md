@@ -44,6 +44,6 @@ python scripts/benchmark.py --audio fixture.wav --asr-model models/asr \
 
 ## 本版未完成项
 
-目标设备上的全套音频内录与屏幕叠加联调、Mac 原生编译/权限实测、长时间压力测试、12 语言准确率、译文人工评分、500 ms 全链路目标、正式签名/公证和安装包发布均未验收。没有集成人脸检测或移动人物跟踪。
+目标设备上的全套音频内录与屏幕叠加联调、Mac 权限与真机实测、长时间压力测试、12 语言准确率、译文人工评分、500 ms 全链路目标、正式签名/公证和安装包发布均未验收。Mac 辅助程序已通过 GitHub CI 编译，但没有集成人脸检测或移动人物跟踪。
 
 接口选择依据：[Microsoft WASAPI loopback](https://learn.microsoft.com/en-us/windows/win32/coreaudio/loopback-recording)、[Apple ScreenCaptureKit](https://developer.apple.com/documentation/screencapturekit/capturing-screen-content-in-macos)、[faster-whisper](https://github.com/SYSTRAN/faster-whisper)、[CTranslate2 Transformers 转换说明](https://opennmt.net/CTranslate2/guides/transformers.html)。
