@@ -1,0 +1,214 @@
+{
+  "version": "0.3.0",
+  "generated_at": "2026-10-21T03:19:14.091363+00:00",
+  "application_source_commit": "1ec83bada71a66baee34b120e4640e2ca9175c2c",
+  "local_unit_tests": {
+    "passed": 45,
+    "failed": 0
+  },
+  "ruff": "passed",
+  "source_ci": "https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/runs/39536405436",
+  "mac_build_ci": "https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/runs/39536444730",
+  "windows_frozen": {
+    "native": {
+      "version": "0.3.0",
+      "platform": "Windows-11-10.0.28000-SP0",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "soundcard_imported": true,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "transcript": "And so my fellow Americans ask not what your country can do for you, ask what you can do for your country.",
+      "language": "en",
+      "subtitle_rows": 2,
+      "readability": {
+        "simplified_chinese": "这是繁体字幕，台湾与世界。",
+        "minimum_hold_ms": 4000,
+        "live_drag": true,
+        "colors": [
+          "#ffffff",
+          "#ffffff"
+        ],
+        "system_font": "Microsoft YaHei UI",
+        "shadow": true
+      }
+    },
+    "offscreen": {
+      "version": "0.3.0",
+      "platform": "Windows-11-10.0.28000-SP0",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "soundcard_imported": true,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "transcript": "And so my fellow Americans ask not what your country can do for you, ask what you can do for your country.",
+      "language": "en",
+      "subtitle_rows": 2,
+      "readability": {
+        "simplified_chinese": "这是繁体字幕，台湾与世界。",
+        "minimum_hold_ms": 4000,
+        "live_drag": true,
+        "colors": [
+          "#ffffff",
+          "#ffffff"
+        ],
+        "system_font": "Sans Serif",
+        "shadow": true
+      }
+    }
+  },
+  "legacy_settings_frozen_check": {
+    "version": "0.3.0",
+    "platform": "Windows-11-10.0.28000-SP0",
+    "bundled": true,
+    "models_present": true,
+    "audio_capture": false,
+    "ok": true,
+    "modules": {
+      "av": "17.1.0",
+      "ctranslate2": "4.8.3",
+      "sentencepiece": "0.2.2",
+      "vad_silence": false
+    },
+    "soundcard_imported": true,
+    "asr_loaded": true,
+    "translation": "世界好!",
+    "subtitle_rows": 2,
+    "readability": {
+      "simplified_chinese": "这是繁体字幕，台湾与世界。",
+      "minimum_hold_ms": 4000,
+      "live_drag": true,
+      "colors": [
+        "#ffffff",
+        "#ffffff"
+      ],
+      "system_font": "Sans Serif",
+      "shadow": true
+    }
+  },
+  "real_clock_ui_check": {
+    "synthetic_caption_input": true,
+    "audio_capture": false,
+    "ok": true,
+    "drag_committed": true,
+    "first_at_3_8s": true,
+    "first_replaced_after_ms": 4078.0,
+    "first_was_visible_at_3_8s": true
+  },
+  "mac_frozen": {
+    "arm64": {
+      "version": "0.3.0",
+      "platform": "macOS-14.8.9-arm64-arm-64bit",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "system_audio_helper_present": true,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "subtitle_rows": 2,
+      "readability": {
+        "simplified_chinese": "这是繁体字幕，台湾与世界。",
+        "minimum_hold_ms": 4000,
+        "live_drag": true,
+        "colors": [
+          "#ffffff",
+          "#ffffff"
+        ],
+        "system_font": "Sans Serif",
+        "shadow": true
+      }
+    },
+    "x64": {
+      "version": "0.3.0",
+      "platform": "macOS-15.7.9-x86_64-i386-64bit",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "system_audio_helper_present": true,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "subtitle_rows": 2,
+      "readability": {
+        "simplified_chinese": "这是繁体字幕，台湾与世界。",
+        "minimum_hold_ms": 4000,
+        "live_drag": true,
+        "colors": [
+          "#ffffff",
+          "#ffffff"
+        ],
+        "system_font": "Sans Serif",
+        "shadow": true
+      }
+    }
+  },
+  "portable_integrity": {
+    "zip_crc": "passed",
+    "model_file_hashes": "passed",
+    "license_notices_present": true,
+    "checksums": {
+      "LinguaCaption-0.3.0-windows-x64-portable.zip": "6fcb57e4e70f44615fac42f39c8fdccc3fc571e109192ce9f7ad9876ccda7aaf",
+      "LinguaCaption-0.3.0-windows-x64-setup.exe": "29c3c3fdb6a703a697cebe3b3a9943fa4e1e1b0620eed08588a787003fd0a907"
+    },
+    "portable_files": 1115,
+    "downloads": {
+      "LinguaCaption-0.3.0-windows-x64-portable.zip": 685552372,
+      "LinguaCaption-0.3.0-windows-x64-setup.exe": 659077851
+    }
+  },
+  "downloads": {
+    "LinguaCaption-0.3.0-macos-arm64.dmg": {
+      "bytes": 655799023,
+      "sha256": "cd6f0ca904ce6a31188b242ca894bf1d538d039fbfa4ee462c3a4d4dbdb99ead"
+    },
+    "LinguaCaption-0.3.0-macos-x64.dmg": {
+      "bytes": 687463310,
+      "sha256": "96efbff4e7524d35da90ff57abd00549133db11f91c9d783848f2ffc92939e66"
+    },
+    "LinguaCaption-0.3.0-windows-x64-portable.zip": {
+      "bytes": 685552372,
+      "sha256": "6fcb57e4e70f44615fac42f39c8fdccc3fc571e109192ce9f7ad9876ccda7aaf"
+    },
+    "LinguaCaption-0.3.0-windows-x64-setup.exe": {
+      "bytes": 659077851,
+      "sha256": "29c3c3fdb6a703a697cebe3b3a9943fa4e1e1b0620eed08588a787003fd0a907"
+    }
+  },
+  "scope": {
+    "system_audio_recorded_during_these_checks": false,
+    "windows_inference": "11-second local English fixture",
+    "mac_inference": "ASR model load and local machine translation",
+    "new_windows_installer": "Inno Setup compiled; frozen payload and migration validated",
+    "mac_physical_capture_fullscreen": "not accepted",
+    "500ms_95percent": "not accepted; reading buffer intentionally adds display delay"
+  }
+}
