@@ -12,6 +12,8 @@ from pathlib import Path
 from collect_licenses import collect_licenses
 from make_icons import make_icons
 
+from linguacaption import __version__
+
 
 def main() -> None:
     root = Path(__file__).resolve().parents[1]
@@ -44,7 +46,7 @@ def main() -> None:
                "--icon", str(icon), "--add-data", f"{assets}:linguacaption/assets",
                "--add-data", f"{notices}:third-party-licenses",
                "--additional-hooks-dir", str(root / "scripts/hooks")]
-    for name in ("faster_whisper", "ctranslate2", "tokenizers", "av", "onnxruntime", "sentencepiece"):
+    for name in ("faster_whisper", "ctranslate2", "tokenizers", "av", "onnxruntime", "sentencepiece", "opencc"):
         command += ["--collect-all", name]
     for name in ("torch", "transformers", "pytest", "IPython", "matplotlib", "scipy", "tkinter"):
         command += ["--exclude-module", name]
@@ -72,7 +74,7 @@ def main() -> None:
         bundle = dist / "LinguaCaption.app"
         info = bundle / "Contents/Info.plist"
         data = plistlib.loads(info.read_bytes())
-        data.update({"CFBundleShortVersionString": "0.2.0", "CFBundleVersion": "2",
+        data.update({"CFBundleShortVersionString": __version__, "CFBundleVersion": "3",
                      "LSMinimumSystemVersion": "14.0",
                      "NSScreenCaptureUsageDescription": "Capture system audio for local subtitles.",
                      "NSAudioCaptureUsageDescription": "Transcribe system audio locally without a microphone."})

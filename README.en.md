@@ -6,11 +6,13 @@
 
 A local-first desktop prototype for bilingual captions over video on Windows and macOS. It captures system output audio, transcribes speech locally, translates locally, and renders an independent always-on-top caption window.
 
-![Desktop workbench](docs/images/desktop-v0.2.0-windows.png)
+![Desktop workbench](docs/images/desktop-v0.3.0-windows.png)
 
 ## Current status
 
-This is a **desktop software preview**, with public source code under the MIT license. The v0.2.0 desktop downloads bundle multilingual Whisper tiny and M2M100 418M INT8 models and do not require Python or a separate model download.
+This is a **desktop software preview**, with public source code under the MIT license. The v0.3.0 desktop downloads bundle multilingual Whisper tiny and M2M100 418M INT8 models and do not require Python or a separate model download.
+
+v0.3.0 defaults to white captions, the system font, and a dark shadow. Chinese captions and exports use Simplified Chinese. Complete captions are held for at least four seconds; twelve seconds without new content hides them. Both durations are configurable. Dragging stays stable during live updates, a hover drag handle is available, and capture starts unlocked. Legacy settings migrate once; later customizations are preserved. See [change and upgrade details](docs/READABILITY.md).
 
 - Windows: WASAPI loopback capture through SoundCard.
 - macOS 13+: a native Swift ScreenCaptureKit helper that builds in macOS CI; recording permissions and runtime capture require validation on a target Mac.
@@ -21,14 +23,16 @@ This is a **desktop software preview**, with public source code under the MIT li
 
 **The 500 ms latency and 95% accuracy targets have not been accepted.** One 11-second English fixture produced about 426 ms median bilingual software lag and 1,012 ms P95; this excludes actual system capture and GUI paint latency. The normalized final transcript had zero WER on that single fixture. These results do not establish multilingual quality or long-run performance. See [validation](docs/VALIDATION.md) and [acceptance criteria](docs/ACCEPTANCE.md).
 
+Those measurements describe the original inference replay. The v0.3.0 reading buffer deliberately adds display delay to keep captions readable; its minimum reading time is independent of recognition speed.
+
 ## Install and use
 
-Download from [v0.2.0](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases/tag/v0.2.0):
+Download from [v0.3.0](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases/tag/v0.3.0):
 
-- Windows 10/11 x64: run `LinguaCaption-0.2.0-windows-x64-setup.exe`. Installation is per user and does not require administrator privileges.
-- Windows portable: extract the complete `LinguaCaption-0.2.0-windows-x64-portable.zip`, then open `LinguaCaption.exe`. Keep its `_internal` directory.
-- macOS 14+, Apple Silicon: open `LinguaCaption-0.2.0-macos-arm64.dmg` and drag the application into Applications.
-- macOS 14+, Intel: use `LinguaCaption-0.2.0-macos-x64.dmg`.
+- Windows 10/11 x64: run `LinguaCaption-0.3.0-windows-x64-setup.exe`. Installation is per user and does not require administrator privileges.
+- Windows portable: extract the complete `LinguaCaption-0.3.0-windows-x64-portable.zip`, then open `LinguaCaption.exe`. Keep its `_internal` directory.
+- macOS 14+, Apple Silicon: open `LinguaCaption-0.3.0-macos-arm64.dmg` and drag the application into Applications.
+- macOS 14+, Intel: use `LinguaCaption-0.3.0-macos-x64.dmg`.
 
 Play a video, choose the spoken and target languages, turn off demo mode, and start capture. The default is English to Chinese. Models load locally; the application can run offline. Settings are written to the current user's configuration directory.
 

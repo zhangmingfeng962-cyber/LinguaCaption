@@ -174,8 +174,7 @@ class Engine(QObject):
                 if request.generation != self._audio_generation:
                     continue
             if not text:
-                if request.final:
-                    self._emit("clear", None)
+                # Silence/empty final decoding must not erase a readable caption.
                 continue
             caption = Caption(request.utterance, request.revision, text, language,
                               request.final, request.speech_end_at, (time.monotonic() - begin) * 1000,

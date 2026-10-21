@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "linguacaption"
-version = "0.2.0"
+version = "0.3.0"
 description = "Local-first bilingual captions over desktop video"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
@@ -12,6 +12,7 @@ dependencies = [
   "PySide6>=6.8,<7", "numpy>=1.26,<3", "faster-whisper>=1.2,<2",
   "ctranslate2>=4.6,<5", "sentencepiece>=0.2,<0.3", "av>=14,<18",
   "webrtcvad-wheels>=2.0.14,<3", "regex>=2024.11",
+  "opencc-python-reimplemented>=0.1.7,<0.2",
   "SoundCard>=0.4.5,<0.5; sys_platform == 'win32'",
   "pynput>=1.8,<2; sys_platform == 'darwin'",
   "pyobjc-framework-Cocoa>=10; sys_platform == 'darwin'", "psutil>=6,<8",

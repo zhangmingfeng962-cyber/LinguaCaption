@@ -4,6 +4,7 @@ import pytest
 import regex
 
 from linguacaption.config import Settings, load_settings, save_settings
+from linguacaption.core.chinese import simplified
 from linguacaption.core.text import visible_lines, wrap_text
 
 
@@ -47,3 +48,25 @@ def test_invalid_safety_regions_are_rejected(regions):
 def test_invalid_config_types_fail_before_ui_creation(field, value):
     with pytest.raises(ValueError):
         Settings(**{field: value}).validate()
+
+
+def test_chinese_is_simplified_without_changing_japanese_or_other_text():
+    assert simplified("這裡顯示繁體字幕，臺灣與世界。", "zh") == "这里显示繁体字幕，台湾与世界。"
+    assert simplified("漢字と日本語", "ja") == "漢字と日本語"
+    assert simplified("English 😀", "en") == "English 😀"
+
+
+def test_legacy_style_migrates_once_and_new_customizations_survive(tmp_path):
+    path = tmp_path / "old-settings.json"
+    path.write_text(json.dumps({"translation_color": "#A5F3D4", "original_color": "#FFFF00",
+                                "font_family": "Old font", "click_through": True,
+                                "shadow": False, "subtitle_timeout_ms": 7000, "source": "ja"}), encoding="utf-8")
+    settings = load_settings(path)
+    assert settings.schema_version == 3 and settings.source == "ja"
+    assert settings.translation_color == settings.original_color == "#FFFFFF"
+    assert settings.font_family == "" and settings.shadow and not settings.click_through
+    assert settings.subtitle_hold_ms == 4000 and settings.subtitle_timeout_ms == 12000
+    settings.translation_color = "#FFCC00"
+    settings.subtitle_hold_ms = 6000
+    save_settings(path, settings)
+    assert load_settings(path) == settings

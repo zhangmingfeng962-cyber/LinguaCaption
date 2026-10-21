@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 from PySide6.QtCore import QTimer
-from PySide6.QtGui import QFont, QIcon
+from PySide6.QtGui import QFontDatabase, QIcon
 from PySide6.QtWidgets import QApplication, QMessageBox
 
 from .config import load_settings
@@ -26,7 +26,7 @@ def main() -> int:
     app.setOrganizationName("LinguaCaption")
     app.setWindowIcon(QIcon(str(Path(__file__).parent / "assets/app.png")))
     app.setQuitOnLastWindowClosed(False)
-    font = QFont("Microsoft YaHei UI" if sys.platform == "win32" else "PingFang SC")
+    font = QFontDatabase.systemFont(QFontDatabase.SystemFont.GeneralFont)
     font.setPixelSize(13)
     app.setFont(font)
     try:

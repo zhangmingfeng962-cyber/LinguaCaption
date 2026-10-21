@@ -8,11 +8,16 @@ on:
         type: string
       release_tag:
         description: Existing draft release containing the offline model pack
-        default: v0.2.0
+        default: v0.3.0
         required: true
         type: string
       model_sha256:
         description: SHA-256 of LinguaCaption-models-v1.zip
+        required: true
+        type: string
+      model_release_tag:
+        description: Published release containing the reusable offline models
+        default: v0.2.0
         required: true
         type: string
 permissions:
@@ -30,6 +35,7 @@ jobs:
       GH_REPO: ${{ github.repository }}
       RELEASE_TAG: ${{ inputs.release_tag }}
       MODEL_SHA256: ${{ inputs.model_sha256 }}
+      MODEL_RELEASE_TAG: ${{ inputs.model_release_tag }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,7 +47,7 @@ jobs:
       - run: python -m pip install -e '.[build]'
       - name: Download and verify offline models
         run: |
-          gh release download "$RELEASE_TAG" --pattern LinguaCaption-models-v1.zip --dir build/input
+          gh release download "$MODEL_RELEASE_TAG" --pattern LinguaCaption-models-v1.zip --dir build/input
           python scripts/models_archive.py extract build/input/LinguaCaption-models-v1.zip build/models --sha256 "$MODEL_SHA256"
       - name: Build standalone application
         run: python scripts/package.py --asr-model build/models/asr --translation-model build/models/translation

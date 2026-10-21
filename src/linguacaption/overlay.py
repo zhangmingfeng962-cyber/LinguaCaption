@@ -14,7 +14,7 @@ from PySide6.QtGui import (
     QPen,
     QTextLayout,
 )
-from PySide6.QtWidgets import QFrame, QHBoxLayout, QPushButton, QWidget
+from PySide6.QtWidgets import QFrame, QHBoxLayout, QLabel, QPushButton, QWidget
 
 from .config import Settings
 from .core.layout import Rect, place_subtitle, preferred_position
@@ -75,7 +75,7 @@ def build_rows(settings: Settings, original: str, translation: str, max_width: i
             raw.append((shaped_path(line, font), QColor(color), metrics.height()))
     if not raw:
         return [], QSize(1, 1)
-    width = min(max_width, max(280 if toolbar else 0,
+    width = min(max_width, max(320 if toolbar else 0,
                                math.ceil(max(path.boundingRect().width() for path, _, _ in raw) + 36 * scale)))
     y = 44.0 if toolbar else 0.0
     rows = []
@@ -105,14 +105,36 @@ def paint_rows(painter: QPainter, rows: list[TextRow], settings: Settings,
                 painter.setBrush(Qt.BrushStyle.NoBrush)
                 painter.drawRoundedRect(row.rect.adjusted(0.5, 0.5, -0.5, -0.5), 7 * scale, 7 * scale)
         if settings.shadow:
+            shadow = row.path.translated(2 * scale, 3 * scale)
+            for radius, alpha in ((4.5, 25), (3, 40), (1.5, 60)):
+                painter.strokePath(shadow, QPen(QColor(0, 0, 0, alpha), radius * scale,
+                                               Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap,
+                                               Qt.PenJoinStyle.RoundJoin))
             painter.setPen(Qt.PenStyle.NoPen)
-            painter.setBrush(QColor(0, 0, 0, 150))
-            painter.drawPath(row.path.translated(1.5 * scale, 2.5 * scale))
+            painter.setBrush(QColor(0, 0, 0, 195))
+            painter.drawPath(shadow)
         if settings.outline_width:
             painter.strokePath(row.path, QPen(QColor(settings.outline_color), settings.outline_width * 2 * scale,
                                               Qt.PenStyle.SolidLine, Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
         # Fill after the stroke so the outline never covers narrow glyph stems.
         painter.fillPath(row.path, row.color)
+
+
+class DragHandle(QLabel):
+    def __init__(self, overlay, parent) -> None:
+        super().__init__("↔ 拖动", parent)
+        self.overlay = overlay
+        self.setCursor(Qt.CursorShape.OpenHandCursor)
+        self.setToolTip("按住拖动字幕；播放和识别期间也可移动")
+
+    def mousePressEvent(self, event) -> None:
+        self.overlay.mousePressEvent(event)
+
+    def mouseMoveEvent(self, event) -> None:
+        self.overlay.mouseMoveEvent(event)
+
+    def mouseReleaseEvent(self, event) -> None:
+        self.overlay.mouseReleaseEvent(event)
 
 
 class SubtitleOverlay(QWidget):
@@ -130,6 +152,7 @@ class SubtitleOverlay(QWidget):
         self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating)
         self.setAttribute(Qt.WidgetAttribute.WA_MacAlwaysShowToolWindow)
         self.setMouseTracking(True)
+        self.setCursor(Qt.CursorShape.OpenHandCursor)
         self.settings = settings
         self.original, self.translation = "", ""
         self.rows: list[TextRow] = []
@@ -145,6 +168,8 @@ class SubtitleOverlay(QWidget):
         row = QHBoxLayout(self.toolbar)
         row.setContentsMargins(6, 2, 6, 2)
         row.setSpacing(0)
+        self.drag_handle = DragHandle(self, self.toolbar)
+        row.addWidget(self.drag_handle)
         for label, callback in (("双语", self.mode_requested.emit), ("A−", lambda: self.font_delta.emit(-2)),
                                 ("A+", lambda: self.font_delta.emit(2)),
                                 ("锁定", self.lock_requested.emit), ("设置", self.settings_requested.emit)):
@@ -164,6 +189,9 @@ class SubtitleOverlay(QWidget):
         self.refresh()
 
     def set_locked(self, locked: bool) -> None:
+        if self._drag_offset is not None:
+            self._drag_offset = None
+            self.releaseMouse()
         self.toolbar.hide()
         self.native.glass(False, [], 0)
         self.setWindowFlag(Qt.WindowType.WindowTransparentForInput, locked)
@@ -177,6 +205,10 @@ class SubtitleOverlay(QWidget):
                 for x, y, w, h in self.settings.safe_regions.get(screen_key(screen), [])]
 
     def refresh(self) -> None:
+        if self._drag_offset is not None:
+            # Inference/style refreshes must not resize or snap the active drag.
+            # The latest text is rendered once the mouse is released.
+            return
         screen = selected_screen(self.settings)
         if screen is None:
             self.hide()
@@ -197,7 +229,7 @@ class SubtitleOverlay(QWidget):
             self.hide()
             return
         self.setGeometry(round(location.x), round(location.y), size.width(), size.height())
-        self.toolbar.setGeometry(max(0, (size.width() - 280) // 2), 2, min(280, size.width()), 34)
+        self.toolbar.setGeometry(max(0, (size.width() - 320) // 2), 2, min(320, size.width()), 34)
         self.show()
         self.native.configure()
         self._glass()
@@ -224,8 +256,11 @@ class SubtitleOverlay(QWidget):
             self._glass()
 
     def mousePressEvent(self, event) -> None:
-        if event.button() == Qt.MouseButton.LeftButton:
+        if event.button() == Qt.MouseButton.LeftButton and not self.settings.click_through:
             self._drag_offset = event.globalPosition().toPoint() - self.pos()
+            self.setCursor(Qt.CursorShape.ClosedHandCursor)
+            if QGuiApplication.platformName() not in {"offscreen", "minimal"}:
+                self.grabMouse()
             event.accept()
 
     def mouseMoveEvent(self, event) -> None:
@@ -240,12 +275,19 @@ class SubtitleOverlay(QWidget):
             self.move(round(location.x), round(location.y))
 
     def mouseReleaseEvent(self, event) -> None:
-        if self._drag_offset is not None:
+        if event.button() == Qt.MouseButton.LeftButton and self._drag_offset is not None:
             self._drag_offset = None
+            self.releaseMouse()
+            self.setCursor(Qt.CursorShape.OpenHandCursor)
             area = selected_screen(self.settings).availableGeometry()
-            center = self.geometry().center()
-            self.dragged.emit(max(0, min(1, (center.x() - area.x()) / area.width())),
-                              max(0, min(1, (center.y() - area.y()) / area.height())))
+            bounds = area.adjusted(12, 12, -12, -12)
+            center = QRectF(self.geometry()).center()
+            self.settings.position = "custom"
+            self.settings.custom_x = max(0, min(1, (center.x() - bounds.x()) / bounds.width()))
+            self.settings.custom_y = max(0, min(1, (center.y() - bounds.y()) / bounds.height()))
+            self.dragged.emit(self.settings.custom_x, self.settings.custom_y)
+            self.refresh()
+            event.accept()
 
 
 class SafetyPicker(QWidget):

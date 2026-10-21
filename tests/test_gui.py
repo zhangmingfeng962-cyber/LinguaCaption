@@ -1,4 +1,5 @@
 import time
+from dataclasses import replace
 
 from linguacaption.config import Settings
 from linguacaption.domain import Caption
@@ -87,4 +88,75 @@ def test_closing_safety_picker_restores_main_window(qtapp, tmp_path):
     qtapp.processEvents()
     assert window._picker is None
     assert window.isVisible()
+    window.close()
+
+
+def test_chinese_history_and_subtitles_use_simplified_text(qtapp, tmp_path):
+    window = MainWindow(Settings(target="zh"), tmp_path / "config.json", register_hotkeys=False)
+    source = Caption(1, 1, "這是原文", "zh", True, time.monotonic(), 20)
+    window._accept_caption(source, False)
+    window._accept_caption(replace(source, translation="這是臺灣的字幕"), True)
+    assert window.overlay.original == "这是原文"
+    assert window.overlay.translation == "这是台湾的字幕"
+    assert "这是台湾的字幕" in window.history_view.toPlainText()
+    assert all(row.color.name() == "#ffffff" for row in window.overlay.rows)
+    window.close()
+
+
+def test_drag_is_stable_while_live_text_changes(qtapp, tmp_path):
+    from PySide6.QtCore import QEvent, QPoint, QPointF, Qt
+    from PySide6.QtGui import QMouseEvent
+    window = MainWindow(Settings(), tmp_path / "config.json", register_hotkeys=False)
+    overlay = window.overlay
+    overlay.set_text("Old caption", "原字幕")
+    qtapp.processEvents()
+
+    def mouse(kind, global_position, button, buttons, target=overlay):
+        event = QMouseEvent(kind, QPointF(target.mapFromGlobal(global_position)), QPointF(global_position),
+                            button, buttons, Qt.KeyboardModifier.NoModifier)
+        qtapp.sendEvent(target, event)
+
+    # The hover handle must forward drag events as well as the subtitle itself.
+    overlay.toolbar.show()
+    start = overlay.drag_handle.mapToGlobal(QPoint(10, 10))
+    mouse(QEvent.Type.MouseButtonPress, start, Qt.MouseButton.LeftButton, Qt.MouseButton.LeftButton,
+          overlay.drag_handle)
+    assert overlay._drag_offset is not None
+    stop = start + QPoint(40, -150)
+    mouse(QEvent.Type.MouseMove, stop, Qt.MouseButton.NoButton, Qt.MouseButton.LeftButton)
+    moved = overlay.geometry()
+    for index in range(8):
+        overlay.set_text(f"Live revision {index}", "更新后的字幕")
+        assert overlay.geometry() == moved
+    mouse(QEvent.Type.MouseButtonRelease, stop, Qt.MouseButton.LeftButton, Qt.MouseButton.NoButton)
+    assert overlay._drag_offset is None
+    assert window.settings.position == "custom"
+    assert overlay.original == "Live revision 7"
+    assert abs(overlay.geometry().center().y() - moved.center().y()) <= 1
+    center = overlay.geometry().center()
+    overlay.set_text("Another caption", "另一个字幕")
+    assert abs(overlay.geometry().center().y() - center.y()) <= 1
+    window.close()
+
+
+def test_live_window_holds_text_and_stop_clears_queued_sentences(qtapp, tmp_path, monkeypatch):
+    now = [100.0]
+    monkeypatch.setattr("linguacaption.ui.time.monotonic", lambda: now[0])
+    window = MainWindow(Settings(), tmp_path / "config.json", register_hotkeys=False)
+    first = Caption(1, 1, "First sentence", "en", True, 100, 20)
+    window._accept_caption(first, False)
+    window._accept_caption(replace(first, translation="第一句话"), True)
+    now[0] = 101
+    second = Caption(2, 1, "Second sentence", "en", True, 101, 20)
+    window._accept_caption(second, False)
+    window._accept_caption(replace(second, translation="第二句话"), True)
+    assert window.overlay.translation == "第一句话"
+    now[0] = 104
+    window._tick()
+    assert window.overlay.translation == "第二句话"
+    window._accept_caption(Caption(3, 1, "Third", "en", True, 104, 20), False)
+    window._clear_subtitles()
+    now[0] = 200
+    window._tick()
+    assert window.overlay.original == "" and not window.overlay.isVisible()
     window.close()

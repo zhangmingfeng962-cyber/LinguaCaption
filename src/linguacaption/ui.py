@@ -5,11 +5,12 @@ import math
 import platform
 import time
 from collections import OrderedDict
+from dataclasses import replace
 from pathlib import Path
 
 import psutil
 from PySide6.QtCore import QPointF, QRectF, Qt, QTimer, Signal
-from PySide6.QtGui import QColor, QFont, QLinearGradient, QPainter, QPainterPath, QPen
+from PySide6.QtGui import QColor, QFont, QFontDatabase, QLinearGradient, QPainter, QPainterPath, QPen
 from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -39,6 +40,8 @@ from PySide6.QtWidgets import (
 
 from . import __version__
 from .config import LANGUAGES, Settings, save_settings
+from .core.chinese import simplified
+from .core.presentation import CaptionPresenter
 from .domain import Caption
 from .engine import Engine
 from .native.hotkeys import Hotkeys
@@ -164,7 +167,8 @@ class MainWindow(QMainWindow):
         self._restart = False
         self._last_error = ""
         self._last_caption: Caption | None = None
-        self._caption_at = 0.0
+        self._presenter = CaptionPresenter(settings)
+        self._metrics_at = 0.0
         self._style_preview = False
         self._picker = None
         self._history: OrderedDict[int, Caption] = OrderedDict()
@@ -187,7 +191,7 @@ class MainWindow(QMainWindow):
         self._build(demo)
         self._timer = QTimer(self)
         self._timer.timeout.connect(self._tick)
-        self._timer.start(1000)
+        self._timer.start(100)
         self.hotkeys = Hotkeys(QApplication.instance())
         self.hotkeys.action.connect(self._hotkey, Qt.ConnectionType.QueuedConnection)
         if register_hotkeys:
@@ -419,10 +423,21 @@ class MainWindow(QMainWindow):
         form = QFormLayout()
         form.setVerticalSpacing(14)
         font = QFontComboBox()
-        if self.settings.font_family:
-            font.setCurrentFont(QFont(self.settings.font_family))
+        font.setFontFilters(QFontComboBox.FontFilter.ScalableFonts)
+        font.setCurrentFont(QFont(self.settings.font_family) if self.settings.font_family
+                            else QFontDatabase.systemFont(QFontDatabase.SystemFont.GeneralFont))
         font.currentFontChanged.connect(lambda value: self._set_style("font_family", value.family()))
-        form.addRow("字体", font)
+        font_row = QHBoxLayout()
+        font_row.addWidget(font)
+        system_font = QPushButton("使用系统字体")
+        def restore_system_font() -> None:
+            font.blockSignals(True)
+            font.setCurrentFont(QFontDatabase.systemFont(QFontDatabase.SystemFont.GeneralFont))
+            font.blockSignals(False)
+            self._set_style("font_family", "")
+        system_font.clicked.connect(restore_system_font)
+        font_row.addWidget(system_font)
+        form.addRow("字体 · 默认跟随系统", font_row)
         self.font_size_spin = self._spin("font_size", 16, 80, 2)
         form.addRow("字号 · 逻辑像素", self.font_size_spin)
         weight = QComboBox()
@@ -460,8 +475,17 @@ class MainWindow(QMainWindow):
         form.addRow("背景不透明度", opacity)
         form.addRow("每行最多字数", self._spin("max_chars", 8, 80))
         form.addRow("每种语言最多行数", self._spin("max_lines", 1, 4))
+        for title, field, low, high in (("每句最短停留", "subtitle_hold_ms", 1, 10),
+                                        ("无新内容后隐藏", "subtitle_timeout_ms", 2, 30)):
+            seconds = QDoubleSpinBox()
+            seconds.setRange(low, high)
+            seconds.setSingleStep(.5)
+            seconds.setSuffix(" 秒")
+            seconds.setValue(getattr(self.settings, field) / 1000)
+            seconds.valueChanged.connect(lambda value, name=field: self._set_style(name, round(value * 1000)))
+            form.addRow(title, seconds)
         content.addLayout(form)
-        content.addWidget(label("背景按每一行文字自适应。超长语句显示最近几行，完整内容保留在会话记录中。\n磨砂不可用时自动使用半透明黑底；面板预览始终显示半透明底。", "muted", True))
+        content.addWidget(label("默认白色字、系统字体和黑色阴影。中文原文与译文统一为简体。\n最短停留默认 4 秒；增大停留会增加观看滞后。字幕过长时完整内容保留在会话记录中。\n磨砂不可用时自动使用半透明黑底。", "muted", True))
         layout.addWidget(appearance)
         position, position_layout = card()
         position_layout.addWidget(label("位置与保护区域", "section"))
@@ -479,7 +503,7 @@ class MainWindow(QMainWindow):
         QApplication.instance().screenAdded.connect(lambda screen: self._screens_changed())
         QApplication.instance().screenRemoved.connect(lambda screen: self._screens_changed())
         form.addRow("显示屏", self.screen_combo)
-        self.lock_check = QCheckBox("锁定位置，鼠标穿透（Ctrl + Alt + K 解锁）")
+        self.lock_check = QCheckBox("锁定位置，鼠标穿透（Ctrl + Alt + K 解锁；开始捕获时自动解锁）")
         self.lock_check.setChecked(self.settings.click_through)
         self.lock_check.toggled.connect(self._lock_changed)
         form.addRow("观看模式", self.lock_check)
@@ -759,6 +783,8 @@ class MainWindow(QMainWindow):
         self._restart = False
         self._history.clear()
         self._last_caption = None
+        self._presenter.reset()
+        self.lock_check.setChecked(False)
         self.history_view.clear()
         self._style_preview = False
         self.overlay.set_text("", "")
@@ -782,7 +808,7 @@ class MainWindow(QMainWindow):
         self.state_label.setText("●  正在停止")
         self.status_message.setText(message)
         self.start_button.setEnabled(False)
-        self.overlay.set_text("", "")
+        self._clear_subtitles()
         self._engine.stop()
 
     def _engine_event(self, run_id: str, kind: str, payload) -> None:
@@ -800,13 +826,13 @@ class MainWindow(QMainWindow):
         elif kind == "level":
             self.level_meter.setValue(min(100, round(float(payload) * 350)))
         elif kind == "clear":
-            self.overlay.set_text("", "")
+            self._clear_subtitles()
         elif kind in {"caption", "translation"}:
             self._accept_caption(payload, kind == "translation")
         elif kind == "stopped":
             self._engine.deleteLater()
             self._engine = None
-            self.overlay.set_text("", "")
+            self._clear_subtitles()
             self.start_button.setEnabled(True)
             self.start_button.setText("开始捕获")
             self.demo_check.setEnabled(True)
@@ -823,6 +849,8 @@ class MainWindow(QMainWindow):
                 self.status_message.setText("会话已结束，系统音频采集已关闭。")
 
     def _accept_caption(self, caption: Caption, translation: bool) -> None:
+        caption = replace(caption, original=simplified(caption.original, caption.language),
+                          translation=simplified(caption.translation, self.settings.target))
         old = self._history.get(caption.utterance)
         if old and old.revision > caption.revision:
             return
@@ -832,12 +860,14 @@ class MainWindow(QMainWindow):
         self._history[caption.utterance] = caption
         while len(self._history) > 60:
             self._history.popitem(last=False)
-        current = self._last_caption
-        if current and caption.key < current.key:
-            self._render_history()
-            return
-        self._last_caption = caption
-        self._caption_at = time.monotonic()
+        if self._last_caption is None or caption.key >= self._last_caption.key:
+            self._last_caption = caption
+        shown = self._presenter.push(caption, time.monotonic())
+        if shown:
+            self._present_caption(shown)
+        self._render_history()
+
+    def _present_caption(self, caption: Caption) -> None:
         if not self._picker:
             self.overlay.set_text(caption.original, caption.translation)
         self.preview.original, self.preview.translation = caption.original, caption.translation
@@ -848,7 +878,10 @@ class MainWindow(QMainWindow):
             self.metric_values["translation"].setText(f"{caption.translation_ms:.0f} ms" if caption.translation_ms is not None else "—")
             lag = max(0, (time.monotonic() - caption.speech_end_at) * 1000)
             self.metric_values["lag"].setText(f"{lag:.0f} ms")
-        self._render_history()
+
+    def _clear_subtitles(self) -> None:
+        self._presenter.reset()
+        self.overlay.set_text("", "")
 
     def _render_history(self) -> None:
         blocks = []
@@ -857,18 +890,24 @@ class MainWindow(QMainWindow):
             target = html.escape(caption.translation)
             status = "" if caption.final else " <span style='color:#879CA8'>· 识别中</span>"
             blocks.append(f"<p style='margin:8px 0;color:#DCE8ED'>{source}{status}"
-                          f"<br><span style='color:#99E7C9'>{target or '…'}</span></p>")
+                          f"<br><span style='color:#FFFFFF'>{target or '…'}</span></p>")
         self.history_view.setHtml("".join(blocks))
         bar = self.history_view.verticalScrollBar()
         bar.setValue(bar.maximum())
 
     def _tick(self) -> None:
-        cpu = self._process.cpu_percent() / (psutil.cpu_count() or 1)
-        memory = self._process.memory_info().rss / 1024 ** 2
-        self.cpu_label.setText(f"本应用 CPU {cpu:.1f}%  ·  内存 {memory:.0f} MB")
-        if self._last_caption and not self._style_preview and not self._picker:
-            if (time.monotonic() - self._caption_at) * 1000 >= self.settings.subtitle_timeout_ms:
-                self.overlay.set_text("", "")
+        now = time.monotonic()
+        if now - self._metrics_at >= 1:
+            self._metrics_at = now
+            cpu = self._process.cpu_percent() / (psutil.cpu_count() or 1)
+            memory = self._process.memory_info().rss / 1024 ** 2
+            self.cpu_label.setText(f"本应用 CPU {cpu:.1f}%  ·  内存 {memory:.0f} MB")
+        if not self._style_preview and not self._picker:
+            shown = self._presenter.advance(now)
+            if shown:
+                self._present_caption(shown)
+            if self._presenter.expired(now):
+                self._clear_subtitles()
 
     def _save(self) -> None:
         try:

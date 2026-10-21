@@ -9,6 +9,8 @@ import subprocess
 import zipfile
 from pathlib import Path
 
+from linguacaption import __version__
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -19,7 +21,7 @@ def main() -> None:
     root = Path(__file__).resolve().parents[1]
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
-    version = "0.2.0"
+    version = __version__
     if platform.system() == "Windows":
         application = args.dist_dir.resolve() / "LinguaCaption"
         if not (application / "LinguaCaption.exe").is_file():

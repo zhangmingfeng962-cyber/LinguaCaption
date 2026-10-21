@@ -15,6 +15,7 @@ LANGUAGES = {
 
 @dataclass
 class Settings:
+    schema_version: int = 3
     source: str = "en"
     target: str = "zh"
     mode: str = "bilingual"
@@ -32,9 +33,9 @@ class Settings:
     vad_aggressiveness: int = 2
     font_family: str = ""
     font_size: int = 30
-    font_weight: int = 600
+    font_weight: int = 400
     original_color: str = "#FFFFFF"
-    translation_color: str = "#A5F3D4"
+    translation_color: str = "#FFFFFF"
     outline_color: str = "#090D13"
     outline_width: float = 1.5
     shadow: bool = True
@@ -48,7 +49,8 @@ class Settings:
     screen_name: str = ""
     click_through: bool = False
     safe_regions: dict[str, list[list[float]]] = field(default_factory=dict)
-    subtitle_timeout_ms: int = 7000
+    subtitle_hold_ms: int = 4000
+    subtitle_timeout_ms: int = 12000
 
     def validate(self) -> None:
         for name in ("source", "target", "mode", "audio_device", "asr_model", "translation_model", "device",
@@ -70,12 +72,14 @@ class Settings:
             if getattr(self, name) not in allowed:
                 raise ValueError(f"无效设置：{name}")
         ranges = {
+            "schema_version": (3, 3),
             "font_size": (16, 80), "font_weight": (100, 900), "outline_width": (0, 6),
             "background_opacity": (0, 95), "max_chars": (8, 80), "max_lines": (1, 4),
             "asr_threads": (1, 16), "translation_threads": (1, 8), "update_ms": (200, 2000),
             "min_audio_ms": (320, 2000), "endpoint_ms": (200, 1200),
             "max_utterance_ms": (2000, 12000), "vad_aggressiveness": (0, 3),
-            "subtitle_timeout_ms": (2000, 30000), "custom_x": (0, 1), "custom_y": (0, 1),
+            "subtitle_hold_ms": (1000, 10000), "subtitle_timeout_ms": (2000, 30000),
+            "custom_x": (0, 1), "custom_y": (0, 1),
         }
         for name, (low, high) in ranges.items():
             value = getattr(self, name)
@@ -110,6 +114,14 @@ def load_settings(path: Path) -> Settings:
     data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, dict):
         raise ValueError("设置 JSON 的顶层应为对象")
+    version = data.get("schema_version", 0)
+    if isinstance(version, bool) or not isinstance(version, int):
+        raise ValueError("设置版本应为整数")
+    if version < 3:
+        # Apply the requested readability defaults once to existing installations.
+        data.update(schema_version=3, original_color="#FFFFFF", translation_color="#FFFFFF",
+                    font_family="", font_weight=400, shadow=True, click_through=False,
+                    subtitle_hold_ms=4000, subtitle_timeout_ms=max(12000, data.get("subtitle_timeout_ms", 7000)))
     allowed = {f.name for f in fields(Settings)}
     settings = Settings(**{k: v for k, v in data.items() if k in allowed})
     settings.validate()

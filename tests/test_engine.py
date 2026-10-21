@@ -82,3 +82,17 @@ def test_bounded_revision_bookkeeping(qtapp):
     engine.stop()
     worker.join(timeout=1)
     assert len(engine._latest) <= 9
+
+
+def test_empty_final_recognition_does_not_clear_previous_subtitle(qtapp):
+    class SilentRecognizer:
+        def transcribe(self, samples):
+            return "", "en"
+
+    engine = Engine(Settings())
+    requests = iter([RecognitionRequest(1, 2, np.zeros(16000, np.float32), 0, 1, True), None])
+    engine._recognition.get = lambda: next(requests)
+    events = []
+    engine.event.connect(lambda run, kind, payload: events.append(kind))
+    engine._recognize_loop(SilentRecognizer(), False)
+    assert "clear" not in events
