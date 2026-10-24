@@ -7,7 +7,7 @@ from linguacaption.ui import MainWindow
 
 
 def test_overlay_preview_hide_lock_and_impossible_safety(qtapp, tmp_path):
-    window = MainWindow(Settings(), tmp_path / "config.json", register_hotkeys=False)
+    window = MainWindow(Settings(source="en", mode="bilingual"), tmp_path / "config.json", register_hotkeys=False)
     window.show()
     qtapp.processEvents()
     window.preview_overlay()
@@ -32,7 +32,7 @@ def test_overlay_preview_hide_lock_and_impossible_safety(qtapp, tmp_path):
 
 
 def test_late_translation_never_replaces_new_caption(qtapp, tmp_path):
-    window = MainWindow(Settings(), tmp_path / "config.json", register_hotkeys=False)
+    window = MainWindow(Settings(source="en", mode="bilingual"), tmp_path / "config.json", register_hotkeys=False)
     first = Caption(1, 1, "old", "en", False, time.monotonic(), 20)
     newer = Caption(1, 2, "new", "en", True, time.monotonic(), 20)
     window._accept_caption(first, False)
@@ -59,7 +59,7 @@ def test_missing_model_reports_error_and_stops_cleanly(qtapp, tmp_path):
 
 
 def test_demo_can_start_and_stop_without_audio_or_models(qtapp, tmp_path):
-    window = MainWindow(Settings(), tmp_path / "config.json", demo=True, register_hotkeys=False)
+    window = MainWindow(Settings(source="en", mode="bilingual"), tmp_path / "config.json", demo=True, register_hotkeys=False)
     window.start_session()
     deadline = time.monotonic() + 2
     while not window._last_caption and time.monotonic() < deadline:
@@ -78,7 +78,7 @@ def test_demo_can_start_and_stop_without_audio_or_models(qtapp, tmp_path):
 
 
 def test_closing_safety_picker_restores_main_window(qtapp, tmp_path):
-    window = MainWindow(Settings(), tmp_path / "config.json", register_hotkeys=False)
+    window = MainWindow(Settings(source="en", mode="bilingual"), tmp_path / "config.json", register_hotkeys=False)
     window.show()
     window.pick_safety()
     qtapp.processEvents()
@@ -106,7 +106,7 @@ def test_chinese_history_and_subtitles_use_simplified_text(qtapp, tmp_path):
 def test_drag_is_stable_while_live_text_changes(qtapp, tmp_path):
     from PySide6.QtCore import QEvent, QPoint, QPointF, Qt
     from PySide6.QtGui import QMouseEvent
-    window = MainWindow(Settings(), tmp_path / "config.json", register_hotkeys=False)
+    window = MainWindow(Settings(source="en", mode="bilingual"), tmp_path / "config.json", register_hotkeys=False)
     overlay = window.overlay
     overlay.set_text("Old caption", "原字幕")
     qtapp.processEvents()
@@ -139,10 +139,10 @@ def test_drag_is_stable_while_live_text_changes(qtapp, tmp_path):
     window.close()
 
 
-def test_live_window_holds_text_and_stop_clears_queued_sentences(qtapp, tmp_path, monkeypatch):
+def test_live_window_updates_immediately_and_stop_clears_subtitles(qtapp, tmp_path, monkeypatch):
     now = [100.0]
     monkeypatch.setattr("linguacaption.ui.time.monotonic", lambda: now[0])
-    window = MainWindow(Settings(), tmp_path / "config.json", register_hotkeys=False)
+    window = MainWindow(Settings(source="en", mode="bilingual"), tmp_path / "config.json", register_hotkeys=False)
     first = Caption(1, 1, "First sentence", "en", True, 100, 20)
     window._accept_caption(first, False)
     window._accept_caption(replace(first, translation="第一句话"), True)
@@ -150,7 +150,7 @@ def test_live_window_holds_text_and_stop_clears_queued_sentences(qtapp, tmp_path
     second = Caption(2, 1, "Second sentence", "en", True, 101, 20)
     window._accept_caption(second, False)
     window._accept_caption(replace(second, translation="第二句话"), True)
-    assert window.overlay.translation == "第一句话"
+    assert window.overlay.translation == "第二句话"
     now[0] = 104
     window._tick()
     assert window.overlay.translation == "第二句话"
@@ -159,4 +159,15 @@ def test_live_window_holds_text_and_stop_clears_queued_sentences(qtapp, tmp_path
     now[0] = 200
     window._tick()
     assert window.overlay.original == "" and not window.overlay.isVisible()
+    window.close()
+
+
+def test_same_revision_translation_with_wrong_source_text_is_rejected(qtapp, tmp_path):
+    window = MainWindow(Settings(source="en", mode="bilingual"), tmp_path / "config.json", register_hotkeys=False)
+    original = Caption(1, 1, "correct", "en", False, 1, 1)
+    window._accept_caption(original, False)
+    window._accept_caption(replace(original, original="wrong", translation="错配"), True)
+    assert window.overlay.original == "correct" and window.overlay.translation == ""
+    window.mandarin_preset()
+    assert window.settings.use_streaming and not window.settings.needs_translation
     window.close()

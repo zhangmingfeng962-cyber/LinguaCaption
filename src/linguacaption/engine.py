@@ -15,6 +15,7 @@ from .core.mailbox import LatestMailbox
 from .core.segmenter import Segmenter
 from .domain import SAMPLE_RATE, AudioChunk, Caption
 from .inference import LocalTranslator, WhisperRecognizer
+from .streaming import MandarinRecognizer
 
 
 class Engine(QObject):
@@ -23,13 +24,13 @@ class Engine(QObject):
 
     def __init__(self, settings: Settings, demo: bool = False, *,
                  capture_factory=create_capture, recognizer_factory=WhisperRecognizer,
-                 translator_factory=LocalTranslator) -> None:
+                 translator_factory=LocalTranslator, streaming_factory=MandarinRecognizer) -> None:
         super().__init__()
         self.settings = replace(settings)
         self.run_id = uuid.uuid4().hex
         self.demo = demo
         self.stop_event = threading.Event()
-        self._audio: queue.Queue[AudioChunk] = queue.Queue(maxsize=30)
+        self._audio: queue.Queue[AudioChunk] = queue.Queue(maxsize=10 if settings.use_streaming else 30)
         self._recognition = LatestMailbox(3)
         self._translation = LatestMailbox(2)
         self._latest: dict[int, int] = {}
@@ -44,6 +45,7 @@ class Engine(QObject):
         self._capture_factory = capture_factory
         self._recognizer_factory = recognizer_factory
         self._translator_factory = translator_factory
+        self._streaming_factory = streaming_factory
 
     def _emit(self, kind: str, payload: object) -> None:
         if not self.stop_event.is_set() or kind == "stopped":
@@ -78,12 +80,13 @@ class Engine(QObject):
                 self._emit("ready", "演示模式 · 示例文本，无音频采集")
                 self._run_demo()
                 return
-            self._emit("status", "正在加载本地识别模型…")
-            recognizer = self._recognizer_factory(self.settings)
+            self._emit("status", "正在加载本地中文流式模型…" if self.settings.use_streaming else "正在加载本地 Whisper 模型…")
+            recognizer = (self._streaming_factory(self.settings) if self.settings.use_streaming
+                          else self._recognizer_factory(self.settings))
             if self.stop_event.is_set():
                 return
             translator = None
-            if self.settings.mode != "original":
+            if self.settings.needs_translation:
                 self._emit("status", "正在加载本地翻译模型…")
                 translator = self._translator_factory(self.settings)
             if self.stop_event.is_set():
@@ -95,10 +98,13 @@ class Engine(QObject):
                 pcm = (np.clip(frame, -1, 1) * 32767).astype("<i2").tobytes()
                 return vad.is_speech(pcm, SAMPLE_RATE)
 
-            segmenter = Segmenter(self.settings, speech)
             self._capture = self._capture_factory(self.settings.audio_device)
-            self._spawn("segment", lambda: self._segment_loop(segmenter))
-            self._spawn("recognize", lambda: self._recognize_loop(recognizer, translator is not None))
+            if self.settings.use_streaming:
+                self._spawn("streaming", lambda: self._streaming_loop(recognizer, translator is not None))
+            else:
+                segmenter = Segmenter(self.settings, speech)
+                self._spawn("segment", lambda: self._segment_loop(segmenter))
+                self._spawn("recognize", lambda: self._recognize_loop(recognizer, translator is not None))
             if translator:
                 self._spawn("translate", lambda: self._translate_loop(translator))
             self._emit("ready", "模型已就绪，正在打开系统音频…")
@@ -125,6 +131,11 @@ class Engine(QObject):
             try:
                 self._audio.get_nowait()
                 self._audio_dropped += 1
+                if self.settings.use_streaming:
+                    with self._latest_lock:
+                        self._audio_generation += 1
+                        self._latest.clear()
+                    self._emit("clear", None)
             except queue.Empty:
                 pass
             try:
@@ -136,6 +147,52 @@ class Engine(QObject):
             self._last_level = now
             rms = float(np.sqrt(np.mean(np.square(chunk.samples)))) if len(chunk.samples) else 0
             self._emit("level", rms)
+
+    def _send_caption(self, caption: Caption, translate: bool, generation: int | None = None) -> None:
+        if not self.settings.needs_translation and self.settings.mode != "original":
+            caption = replace(caption, translation=caption.original, translation_ms=0)
+        with self._latest_lock:
+            if generation is not None and generation != self._audio_generation:
+                return
+            self._latest[caption.utterance] = caption.revision
+            for old in list(self._latest):
+                if old < caption.utterance - 8:
+                    del self._latest[old]
+            self._emit("caption", caption)
+            if translate:
+                self._translation.put(caption)
+
+    def _streaming_loop(self, recognizer: MandarinRecognizer, translate: bool) -> None:
+        expected = None
+        generation = self._audio_generation
+        warned = 0
+        while not self.stop_event.is_set():
+            try:
+                chunk = self._audio.get(timeout=.1)
+            except queue.Empty:
+                continue
+            if self.stop_event.is_set():
+                return
+            with self._latest_lock:
+                current_generation = self._audio_generation
+            if generation != current_generation or (expected is not None and chunk.start_sample != expected):
+                recognizer.reset()
+                with self._latest_lock:
+                    self._latest.clear()
+                self._emit("clear", None)
+            generation = current_generation
+            expected = chunk.start_sample + len(chunk.samples)
+            captions = recognizer.push_audio(chunk)
+            if self.stop_event.is_set():
+                return
+            with self._latest_lock:
+                fresh = generation == self._audio_generation
+            if fresh:
+                for caption in captions:
+                    self._send_caption(caption, translate, generation)
+            if self._audio_dropped != warned:
+                warned = self._audio_dropped
+                self._emit("warning", f"处理过载，已跳过 {warned} 个音频块并重新同步；请关闭高负载程序")
 
     def _segment_loop(self, segmenter: Segmenter) -> None:
         while not self.stop_event.is_set():
@@ -179,15 +236,7 @@ class Engine(QObject):
             caption = Caption(request.utterance, request.revision, text, language,
                               request.final, request.speech_end_at, (time.monotonic() - begin) * 1000,
                               started_at=request.started_at)
-            with self._latest_lock:
-                self._latest[caption.utterance] = caption.revision
-                # Bound revision bookkeeping for long viewing sessions.
-                for old in list(self._latest):
-                    if old < caption.utterance - 8:
-                        del self._latest[old]
-            self._emit("caption", caption)
-            if translate:
-                self._translation.put(caption)
+            self._send_caption(caption, translate, request.generation)
 
     def _translate_loop(self, translator: LocalTranslator) -> None:
         while not self.stop_event.is_set():
@@ -205,9 +254,9 @@ class Engine(QObject):
                 continue
             with self._latest_lock:
                 fresh = self._latest.get(caption.utterance) == caption.revision
-            if fresh:
-                self._emit("translation", replace(caption, translation=text,
-                                                   translation_ms=(time.monotonic() - begin) * 1000))
+                if fresh:
+                    self._emit("translation", replace(caption, translation=text,
+                                                       translation_ms=(time.monotonic() - begin) * 1000))
 
     def _run_demo(self) -> None:
         # Deliberately no fabricated latency/CPU or ASR claims in demo mode.

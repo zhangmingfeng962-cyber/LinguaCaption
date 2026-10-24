@@ -15,10 +15,13 @@ LANGUAGES = {
 
 @dataclass
 class Settings:
-    schema_version: int = 3
-    source: str = "en"
+    schema_version: int = 4
+    source: str = "zh"
     target: str = "zh"
-    mode: str = "bilingual"
+    mode: str = "original"
+    asr_backend: str = "auto"
+    streaming_model: str = "models/asr-zh"
+    streaming_threads: int = 4
     audio_device: str = "default"
     asr_model: str = "models/asr"
     translation_model: str = "models/translation"
@@ -49,12 +52,20 @@ class Settings:
     screen_name: str = ""
     click_through: bool = False
     safe_regions: dict[str, list[list[float]]] = field(default_factory=dict)
-    subtitle_hold_ms: int = 4000
-    subtitle_timeout_ms: int = 12000
+    subtitle_timeout_ms: int = 4000
+
+    @property
+    def use_streaming(self) -> bool:
+        return self.source == "zh" and self.asr_backend in {"auto", "paraformer"}
+
+    @property
+    def needs_translation(self) -> bool:
+        return self.mode != "original" and self.source != self.target
 
     def validate(self) -> None:
         for name in ("source", "target", "mode", "audio_device", "asr_model", "translation_model", "device",
-                     "compute_type", "font_family", "background", "position", "screen_name"):
+                     "compute_type", "font_family", "background", "position", "screen_name",
+                     "asr_backend", "streaming_model"):
             if not isinstance(getattr(self, name), str):
                 raise ValueError(f"设置 {name} 应为字符串")
         for name in ("shadow", "click_through"):
@@ -63,6 +74,7 @@ class Settings:
         if self.source not in {"auto", *LANGUAGES} or self.target not in LANGUAGES:
             raise ValueError("识别或目标语言不受支持")
         choices = {
+            "asr_backend": {"auto", "whisper", "paraformer"},
             "mode": {"original", "translation", "bilingual"},
             "device": {"cpu", "cuda"}, "compute_type": {"int8", "float32", "float16", "int8_float16"},
             "background": {"none", "dark", "glass"},
@@ -72,13 +84,13 @@ class Settings:
             if getattr(self, name) not in allowed:
                 raise ValueError(f"无效设置：{name}")
         ranges = {
-            "schema_version": (3, 3),
+            "schema_version": (4, 4), "streaming_threads": (1, 16),
             "font_size": (16, 80), "font_weight": (100, 900), "outline_width": (0, 6),
             "background_opacity": (0, 95), "max_chars": (8, 80), "max_lines": (1, 4),
             "asr_threads": (1, 16), "translation_threads": (1, 8), "update_ms": (200, 2000),
             "min_audio_ms": (320, 2000), "endpoint_ms": (200, 1200),
             "max_utterance_ms": (2000, 12000), "vad_aggressiveness": (0, 3),
-            "subtitle_hold_ms": (1000, 10000), "subtitle_timeout_ms": (2000, 30000),
+            "subtitle_timeout_ms": (2000, 30000),
             "custom_x": (0, 1), "custom_y": (0, 1),
         }
         for name, (low, high) in ranges.items():
@@ -121,7 +133,13 @@ def load_settings(path: Path) -> Settings:
         # Apply the requested readability defaults once to existing installations.
         data.update(schema_version=3, original_color="#FFFFFF", translation_color="#FFFFFF",
                     font_family="", font_weight=400, shadow=True, click_through=False,
-                    subtitle_hold_ms=4000, subtitle_timeout_ms=max(12000, data.get("subtitle_timeout_ms", 7000)))
+                    subtitle_timeout_ms=max(12000, data.get("subtitle_timeout_ms", 7000)))
+    if version < 4:
+        data["schema_version"] = 4
+        if data.get("source") == data.get("target") == "zh":
+            data.update(mode="original", asr_backend="auto")
+        data.setdefault("source", "en")
+        data.setdefault("mode", "bilingual")
     allowed = {f.name for f in fields(Settings)}
     settings = Settings(**{k: v for k, v in data.items() if k in allowed})
     settings.validate()

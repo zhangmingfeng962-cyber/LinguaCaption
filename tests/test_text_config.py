@@ -62,11 +62,31 @@ def test_legacy_style_migrates_once_and_new_customizations_survive(tmp_path):
                                 "font_family": "Old font", "click_through": True,
                                 "shadow": False, "subtitle_timeout_ms": 7000, "source": "ja"}), encoding="utf-8")
     settings = load_settings(path)
-    assert settings.schema_version == 3 and settings.source == "ja"
+    assert settings.schema_version == 4 and settings.source == "ja"
     assert settings.translation_color == settings.original_color == "#FFFFFF"
     assert settings.font_family == "" and settings.shadow and not settings.click_through
-    assert settings.subtitle_hold_ms == 4000 and settings.subtitle_timeout_ms == 12000
+    assert settings.subtitle_timeout_ms == 12000
     settings.translation_color = "#FFCC00"
-    settings.subtitle_hold_ms = 6000
+    settings.subtitle_timeout_ms = 6000
     save_settings(path, settings)
     assert load_settings(path) == settings
+
+
+def test_v3_chinese_preset_migration_preserves_custom_style_and_timeout(tmp_path):
+    path = tmp_path / "settings.json"
+    path.write_text(json.dumps({"schema_version": 3, "source": "zh", "target": "zh", "mode": "translation",
+                                "font_size": 40, "position": "custom", "custom_x": .2,
+                                "subtitle_timeout_ms": 12000, "subtitle_hold_ms": 10000}), encoding="utf-8")
+    settings = load_settings(path)
+    assert settings.use_streaming and settings.mode == "original" and not settings.needs_translation
+    assert settings.font_size == 40 and settings.custom_x == .2
+    assert settings.subtitle_timeout_ms == 12000
+    save_settings(path, settings)
+    assert load_settings(path) == settings
+
+
+def test_other_language_settings_still_select_whisper():
+    assert not Settings(source="ja").use_streaming
+    assert not Settings(asr_backend="whisper").use_streaming
+    assert Settings(source="en", mode="bilingual").needs_translation
+    assert not Settings(source="zh", target="zh", mode="translation").needs_translation

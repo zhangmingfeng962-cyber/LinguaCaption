@@ -290,7 +290,7 @@ class MainWindow(QMainWindow):
         copy = QVBoxLayout()
         self.state_label = label("●  准备就绪", "section")
         copy.addWidget(self.state_label)
-        message = ("离线模型已就绪。播放视频后点击「开始捕获」，即可显示双语字幕。"
+        message = ("离线模型已就绪。播放视频后点击「开始捕获」，即可显示实时字幕。"
                    if models_ready(self.settings) else "首次使用请先在「模型与性能」配置本地模型，也可勾选演示模式体验字幕。")
         self.status_message = label(message, "muted", True)
         copy.addWidget(self.status_message)
@@ -337,6 +337,9 @@ class MainWindow(QMainWindow):
         self.mode_combo.setCurrentIndex(self.mode_combo.findData(self.settings.mode))
         self.mode_combo.currentIndexChanged.connect(self._change_mode)
         form.addRow("显示模式", self.mode_combo)
+        preset = QPushButton("中文实时字幕 · 边说边出字")
+        preset.clicked.connect(self.mandarin_preset)
+        form.addRow("快捷设置", preset)
         inputs_layout.addLayout(form)
         inputs_layout.addStretch()
         inputs_layout.addWidget(label("语言或模式变更会重启当前会话。\n自动检测可能需要更长的语音上下文。", "muted", True))
@@ -475,8 +478,7 @@ class MainWindow(QMainWindow):
         form.addRow("背景不透明度", opacity)
         form.addRow("每行最多字数", self._spin("max_chars", 8, 80))
         form.addRow("每种语言最多行数", self._spin("max_lines", 1, 4))
-        for title, field, low, high in (("每句最短停留", "subtitle_hold_ms", 1, 10),
-                                        ("无新内容后隐藏", "subtitle_timeout_ms", 2, 30)):
+        for title, field, low, high in (("停顿后保留", "subtitle_timeout_ms", 2, 30),):
             seconds = QDoubleSpinBox()
             seconds.setRange(low, high)
             seconds.setSingleStep(.5)
@@ -485,7 +487,7 @@ class MainWindow(QMainWindow):
             seconds.valueChanged.connect(lambda value, name=field: self._set_style(name, round(value * 1000)))
             form.addRow(title, seconds)
         content.addLayout(form)
-        content.addWidget(label("默认白色字、系统字体和黑色阴影。中文原文与译文统一为简体。\n最短停留默认 4 秒；增大停留会增加观看滞后。字幕过长时完整内容保留在会话记录中。\n磨砂不可用时自动使用半透明黑底。", "muted", True))
+        content.addWidget(label("默认白色字、系统字体和黑色阴影。中文原文与译文统一为简体。\n新语音及时替换；仅在停顿后保留文字，不排队等待。字幕过长时完整内容保留在会话记录中。\n磨砂不可用时自动使用半透明黑底。", "muted", True))
         layout.addWidget(appearance)
         position, position_layout = card()
         position_layout.addWidget(label("位置与保护区域", "section"))
@@ -533,8 +535,17 @@ class MainWindow(QMainWindow):
         content.addWidget(label("离线模型", "section"))
         content.addWidget(label("运行时仅加载完整的本地模型目录。模型准备命令会访问网络，字幕会话不会自动下载。", "muted", True))
         form = QFormLayout()
+        self.backend_combo = QComboBox()
+        for title, value in (("自动：中文流式 / 其他语言 Whisper", "auto"),
+                             ("Whisper 多语言", "whisper"), ("中文流式 Paraformer", "paraformer")):
+            self.backend_combo.addItem(title, value)
+        self.backend_combo.setCurrentIndex(self.backend_combo.findData(self.settings.asr_backend))
+        self.backend_combo.currentIndexChanged.connect(
+            lambda: self._set_pipeline("asr_backend", self.backend_combo.currentData()))
+        form.addRow("识别引擎", self.backend_combo)
         self.model_paths = {}
-        for title, field in (("Whisper 识别模型", "asr_model"), ("M2M100 翻译模型", "translation_model")):
+        for title, field in (("中文流式模型", "streaming_model"), ("Whisper 识别模型", "asr_model"),
+                             ("M2M100 翻译模型", "translation_model")):
             row = QHBoxLayout()
             control = QLineEdit(getattr(self.settings, field))
             control.editingFinished.connect(lambda name=field, widget=control: self._set_pipeline(name, widget.text().strip()))
@@ -549,7 +560,7 @@ class MainWindow(QMainWindow):
             content.addWidget(label("完整软件内置离线识别和翻译模型，无需安装 Python。可直接开始捕获，也可以在上方选择其他已准备的模型。", "muted", True))
         else:
             content.addWidget(label("准备命令（在项目根目录运行）", "eyebrow"))
-            commands = QPlainTextEdit("python -m pip install -e '.[prepare]'\npython scripts/prepare_models.py asr --size base\npython scripts/prepare_models.py translation")
+            commands = QPlainTextEdit("python -m pip install -e '.[prepare]'\npython scripts/prepare_mandarin.py\npython scripts/prepare_models.py asr --size base\npython scripts/prepare_models.py translation")
             commands.setReadOnly(True)
             commands.setFixedHeight(95)
             content.addWidget(commands)
@@ -561,22 +572,22 @@ class MainWindow(QMainWindow):
         layout.addWidget(models)
         performance, content = card()
         content.addWidget(label("性能与分段", "section"))
-        content.addWidget(label("400 ms 是请求更新间隔，实际字幕延迟还包括上下文、模型推理与翻译。500 ms / 95% 需要在目标设备上验证。", "muted", True))
+        content.addWidget(label("中文流式模型连续接收音频；Whisper 的更新间隔与上下文设置仅用于 Whisper。500 ms / 95% 按实测验收。", "muted", True))
         form = QFormLayout()
         device = QComboBox()
         device.addItem("CPU", "cpu")
         device.addItem("NVIDIA CUDA（需匹配 CUDA/cuDNN）", "cuda")
         device.setCurrentIndex(device.findData(self.settings.device))
         device.currentIndexChanged.connect(lambda: self._set_pipeline("device", device.currentData()))
-        form.addRow("识别计算设备", device)
+        form.addRow("Whisper 计算设备", device)
         compute = QComboBox()
         for value in ("int8", "float32", "float16", "int8_float16"):
             compute.addItem(value, value)
         compute.setCurrentIndex(compute.findData(self.settings.compute_type))
         compute.currentIndexChanged.connect(lambda: self._set_pipeline("compute_type", compute.currentData()))
-        form.addRow("识别精度", compute)
+        form.addRow("Whisper 精度", compute)
         for title, name, low, high, step in (
-            ("识别 CPU 线程", "asr_threads", 1, 16, 1), ("翻译 CPU 线程", "translation_threads", 1, 8, 1),
+            ("中文流式线程", "streaming_threads", 1, 16, 1), ("Whisper CPU 线程", "asr_threads", 1, 16, 1), ("翻译 CPU 线程", "translation_threads", 1, 8, 1),
             ("更新间隔 ms", "update_ms", 200, 2000, 100), ("首次上下文 ms", "min_audio_ms", 320, 2000, 20),
             ("停顿确认 ms", "endpoint_ms", 200, 1200, 20), ("最长语句 ms", "max_utterance_ms", 2000, 12000, 1000),
         ):
@@ -587,7 +598,7 @@ class MainWindow(QMainWindow):
             control.valueChanged.connect(lambda value, field=name: self._set_pipeline(field, value))
             form.addRow(title, control)
         content.addLayout(form)
-        content.addWidget(label("默认 CPU INT8：识别 4 线程，翻译 2 线程。Mac 当前使用 CPU，不会将 MPS 当成 CUDA。\n建议先选定源语言，使用 base/small 模型，结合真实视频调整。设置变更会重启会话。", "muted", True))
+        content.addWidget(label("中文流式使用 CPU INT8，默认 4 线程；仅原文及同语言字幕跳过翻译模型。Mac 当前使用 CPU，不会将 MPS 当成 CUDA。\n建议先选定源语言，使用 base/small 模型，结合真实视频调整。设置变更会重启会话。", "muted", True))
         layout.addWidget(performance)
         layout.addStretch()
         return page
@@ -606,6 +617,25 @@ class MainWindow(QMainWindow):
         if self._engine:
             self._restart = True
             self._stop_session("正在应用新设置…")
+
+    def mandarin_preset(self) -> None:
+        for widget in (self.source_combo, self.target_combo, self.mode_combo, self.backend_combo):
+            widget.blockSignals(True)
+        self.settings.source = self.settings.target = "zh"
+        self.settings.mode = "original"
+        self.settings.asr_backend = "auto"
+        self.source_combo.setCurrentIndex(self.source_combo.findData("zh"))
+        self.target_combo.setCurrentIndex(self.target_combo.findData("zh"))
+        self.mode_combo.setCurrentIndex(self.mode_combo.findData("original"))
+        self.backend_combo.setCurrentIndex(self.backend_combo.findData("auto"))
+        for widget in (self.source_combo, self.target_combo, self.mode_combo, self.backend_combo):
+            widget.blockSignals(False)
+        self._clear_subtitles()
+        self._save_timer.start(350)
+        self.preview.update()
+        if self._engine:
+            self._restart = True
+            self._stop_session("正在切换中文实时字幕…")
 
     def _change_mode(self) -> None:
         self._set_pipeline("mode", self.mode_combo.currentData())
@@ -855,7 +885,8 @@ class MainWindow(QMainWindow):
         if old and old.revision > caption.revision:
             return
         # Ignore translations that do not match the original's current revision.
-        if translation and (not old or old.revision != caption.revision):
+        if translation and (not old or old.revision != caption.revision
+                            or old.original != caption.original or old.language != caption.language):
             return
         self._history[caption.utterance] = caption
         while len(self._history) > 60:
@@ -917,7 +948,8 @@ class MainWindow(QMainWindow):
 
     def diagnose(self) -> None:
         lines = [f"平台：{platform.system()} {platform.release()} / Python {platform.python_version()}"]
-        for field, names in (("asr_model", ("model.bin", "config.json", "tokenizer.json", "preprocessor_config.json")),
+        for field, names in (("streaming_model", ("encoder.int8.onnx", "decoder.int8.onnx", "tokens.txt", "linguacaption.json")),
+                             ("asr_model", ("model.bin", "config.json", "tokenizer.json", "preprocessor_config.json")),
                              ("translation_model", ("model.bin", "config.json", "sentencepiece.bpe.model", "linguacaption.json"))):
             path = Path(getattr(self.settings, field)).expanduser().resolve()
             missing = [name for name in names if not (path / name).is_file()]

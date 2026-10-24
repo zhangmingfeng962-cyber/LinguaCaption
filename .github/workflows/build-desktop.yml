@@ -8,7 +8,7 @@ on:
         type: string
       release_tag:
         description: Existing draft release containing the offline model pack
-        default: v0.3.0
+        default: v0.4.0
         required: true
         type: string
       model_sha256:
@@ -49,13 +49,17 @@ jobs:
         run: |
           gh release download "$MODEL_RELEASE_TAG" --pattern LinguaCaption-models-v1.zip --dir build/input
           python scripts/models_archive.py extract build/input/LinguaCaption-models-v1.zip build/models --sha256 "$MODEL_SHA256"
+      - name: Prepare pinned Chinese streaming model
+        run: |
+          python scripts/prepare_mandarin.py --output build/models/asr-zh
+          python -c "import urllib.request; urllib.request.urlretrieve('https://huggingface.co/csukuangfj/sherpa-onnx-streaming-paraformer-bilingual-zh-en/resolve/8e40c43232a1c5c66c82111efc5820d3accca11b/test_wavs/0.wav', 'build/zh-test.wav')"
       - name: Build standalone application
-        run: python scripts/package.py --asr-model build/models/asr --translation-model build/models/translation
+        run: python scripts/package.py --asr-model build/models/asr --streaming-model build/models/asr-zh --translation-model build/models/translation
       - name: Test frozen application with real models
         env:
           QT_QPA_PLATFORM: offscreen
         run: |
-          dist/LinguaCaption.app/Contents/MacOS/LinguaCaption --self-test --self-test-report build/packaged-smoke.json --config build/smoke-settings.json
+          dist/LinguaCaption.app/Contents/MacOS/LinguaCaption --self-test --self-test-report build/packaged-smoke.json --config build/smoke-settings.json --self-test-audio build/zh-test.wav
           cat build/packaged-smoke.json
       - name: Make disk image
         run: python scripts/distribute.py --dist-dir dist --output build/downloads

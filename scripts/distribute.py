@@ -6,6 +6,7 @@ import json
 import platform
 import shutil
 import subprocess
+import time
 import zipfile
 from pathlib import Path
 
@@ -54,8 +55,14 @@ def main() -> None:
             applications_link.symlink_to("/Applications", target_is_directory=True)
         architecture = "arm64" if platform.machine() == "arm64" else "x64"
         archive = output / f"LinguaCaption-{version}-macos-{architecture}.dmg"
-        subprocess.run(["hdiutil", "create", "-ov", "-volname", "LinguaCaption", "-srcfolder", str(stage),
-                        "-format", "UDZO", str(archive)], check=True)
+        for attempt in range(3):
+            result = subprocess.run(["hdiutil", "create", "-ov", "-volname", "LinguaCaption", "-srcfolder", str(stage),
+                                     "-format", "UDZO", str(archive)])
+            if result.returncode == 0:
+                break
+            if attempt == 2:
+                result.check_returncode()
+            time.sleep(5)
     checksums = {}
     for path in output.iterdir():
         if path.is_file() and path.suffix in {".exe", ".zip", ".dmg"}:

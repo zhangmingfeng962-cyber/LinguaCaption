@@ -28,15 +28,20 @@ def default_config_path() -> Path:
 
 def configure_model_paths(settings: Settings, root: Path | None = None) -> Settings:
     root = root or resource_root()
-    for field, relative in (("asr_model", "models/asr"), ("translation_model", "models/translation")):
+    for field, relative, marker in (("asr_model", "models/asr", "model.bin"),
+                                     ("streaming_model", "models/asr-zh", "encoder.int8.onnx"),
+                                     ("translation_model", "models/translation", "model.bin")):
         if getattr(settings, field) == relative:
             candidate = root / relative
-            if (candidate / "model.bin").is_file():
+            if (candidate / marker).is_file():
                 setattr(settings, field, str(candidate.resolve()))
     return settings
 
 
 def models_ready(settings: Settings) -> bool:
-    required = ((settings.asr_model, ("model.bin", "tokenizer.json", "preprocessor_config.json")),
-                (settings.translation_model, ("model.bin", "sentencepiece.bpe.model", "linguacaption.json")))
+    from .streaming import STREAMING_FILES
+    required = [(settings.streaming_model, STREAMING_FILES)] if settings.use_streaming else [
+        (settings.asr_model, ("model.bin", "tokenizer.json", "preprocessor_config.json"))]
+    if settings.needs_translation:
+        required.append((settings.translation_model, ("model.bin", "sentencepiece.bpe.model", "linguacaption.json")))
     return all((Path(directory) / filename).is_file() for directory, names in required for filename in names)

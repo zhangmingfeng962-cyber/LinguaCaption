@@ -19,6 +19,7 @@ def main() -> None:
     root = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser()
     parser.add_argument("--asr-model", type=Path, default=root / "models/asr")
+    parser.add_argument("--streaming-model", type=Path, default=root / "models/asr-zh")
     parser.add_argument("--translation-model", type=Path, default=root / "models/translation")
     parser.add_argument("--dist-dir", type=Path, default=root / "dist")
     parser.add_argument("--work-dir", type=Path, default=root / "build/pyinstaller")
@@ -29,7 +30,8 @@ def main() -> None:
     work = args.work_dir.resolve()
     work.mkdir(parents=True, exist_ok=True)
     if not args.without_models:
-        required = ((args.asr_model, ("model.bin", "tokenizer.json", "preprocessor_config.json")),
+        required = ((args.streaming_model, ("encoder.int8.onnx", "decoder.int8.onnx", "tokens.txt", "linguacaption.json", "LICENSE.txt")),
+                    (args.asr_model, ("model.bin", "tokenizer.json", "preprocessor_config.json")),
                     (args.translation_model, ("model.bin", "sentencepiece.bpe.model", "linguacaption.json")))
         for directory, names in required:
             if not all((directory / name).is_file() for name in names):
@@ -46,12 +48,13 @@ def main() -> None:
                "--icon", str(icon), "--add-data", f"{assets}:linguacaption/assets",
                "--add-data", f"{notices}:third-party-licenses",
                "--additional-hooks-dir", str(root / "scripts/hooks")]
-    for name in ("faster_whisper", "ctranslate2", "tokenizers", "av", "onnxruntime", "sentencepiece", "opencc"):
+    for name in ("faster_whisper", "ctranslate2", "tokenizers", "av", "onnxruntime", "sentencepiece", "opencc", "sherpa_onnx", "sherpa_onnx_core"):
         command += ["--collect-all", name]
     for name in ("torch", "transformers", "pytest", "IPython", "matplotlib", "scipy", "tkinter"):
         command += ["--exclude-module", name]
     if not args.without_models:
-        command += ["--add-data", f"{args.asr_model.resolve()}:models/asr",
+        command += ["--add-data", f"{args.streaming_model.resolve()}:models/asr-zh",
+                    "--add-data", f"{args.asr_model.resolve()}:models/asr",
                     "--add-data", f"{args.translation_model.resolve()}:models/translation"]
     if platform.system() == "Windows":
         command += ["--collect-all", "soundcard"]
@@ -74,7 +77,7 @@ def main() -> None:
         bundle = dist / "LinguaCaption.app"
         info = bundle / "Contents/Info.plist"
         data = plistlib.loads(info.read_bytes())
-        data.update({"CFBundleShortVersionString": __version__, "CFBundleVersion": "3",
+        data.update({"CFBundleShortVersionString": __version__, "CFBundleVersion": "4",
                      "LSMinimumSystemVersion": "14.0",
                      "NSScreenCaptureUsageDescription": "Capture system audio for local subtitles.",
                      "NSAudioCaptureUsageDescription": "Transcribe system audio locally without a microphone."})

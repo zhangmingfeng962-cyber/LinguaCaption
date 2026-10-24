@@ -82,7 +82,7 @@ def main() -> int:
     args = parser.parse_args()
     samples = decode_audio(str(args.audio), sampling_rate=SAMPLE_RATE)
     fixture = FixtureCapture(samples)
-    settings = Settings(asr_model=args.asr_model, source=args.language, target=args.target,
+    settings = Settings(asr_backend="whisper", asr_model=args.asr_model, source=args.language, target=args.target,
                         translation_model=args.translation_model or "models/translation",
                         mode="bilingual" if args.translation_model else "original")
     app = QCoreApplication([])

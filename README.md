@@ -4,26 +4,28 @@
 
 Windows / macOS 桌面双语字幕软件。系统声音 → 本地识别 → 本地翻译 → 独立置顶字幕窗。
 
-[English](README.en.md) · [下载安装包](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases/tag/v0.3.0) · [问题反馈](https://github.com/zhangmingfeng962-cyber/LinguaCaption/issues)
+[English](README.en.md) · [下载安装包](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases/tag/v0.4.0) · [问题反馈](https://github.com/zhangmingfeng962-cyber/LinguaCaption/issues)
 
-![工作台](docs/images/desktop-v0.3.0-windows.png)
+![工作台](docs/images/desktop-v0.4.0-windows.png)
 
-v0.3.0 提供独立桌面程序，内置多语言 Whisper tiny 和 M2M100 418M INT8 离线模型，无需安装 Python 或单独下载模型。源码、构建脚本和模型来源也公开。**500 ms 延迟、95% 识别准确率尚未完成验收，不能作为本版承诺。** 当前使用窗口式 Whisper 增量推理，并非原生流式 ASR。
+v0.4.0 内置中文 Paraformer 流式 INT8、多语言 Whisper tiny 和 M2M100 418M INT8 离线模型，无需安装 Python。默认普通话实时字幕，边说边出字；其他语言继续使用 Whisper。音频留在本机，不需要 API Key 或云端费用。
 
-**v0.3.0 阅读体验更新：** 默认白色字、系统字体和黑色阴影，中文统一为简体。字幕默认至少停留 4 秒，12 秒无新内容后隐藏，可在「样式与位置」调整。修复捕获期间拖拽被字幕更新打断的问题，并自动迁移旧版设置。[修改详情与升级说明](docs/READABILITY.md)。
+**取消固定 4 秒显示等待与字幕排队。** 新语音及时更新，停顿后保留字幕；新安装默认保留 4 秒，升级保留已有隐藏时长。中文→中文的旧配置迁移为中文原文模式，跳过翻译模型。系统字体、白字阴影、简体与运行中拖拽保持可用。
+
+**500 ms 延迟、95% 准确率尚未达到验收目标。** 查看 [中文流式更新与验证记录](docs/MANDARIN.md)，其中区分离线语料、实时重放和目标设备实测。
 
 ## 下载安装使用
 
-在 [v0.3.0 下载页](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases/tag/v0.3.0) 选择对应系统：
+在 [v0.4.0 下载页](https://github.com/zhangmingfeng962-cyber/LinguaCaption/releases/tag/v0.4.0) 选择对应系统：
 
 | 系统 | 下载文件 | 使用方法 |
 |---|---|---|
-| Windows 10/11，64 位 Intel / AMD | `LinguaCaption-0.3.0-windows-x64-setup.exe` | 双击安装，在开始菜单打开；无需管理员权限 |
-| Windows 免安装 | `LinguaCaption-0.3.0-windows-x64-portable.zip` | 完整解压后打开文件夹内的 `LinguaCaption.exe`，保留 `_internal` 文件夹 |
-| macOS 14+，Apple 芯片 | `LinguaCaption-0.3.0-macos-arm64.dmg` | 打开磁盘映像，把程序拖入「应用程序」 |
-| macOS 14+，Intel 芯片 | `LinguaCaption-0.3.0-macos-x64.dmg` | 打开磁盘映像，把程序拖入「应用程序」 |
+| Windows 10/11，64 位 Intel / AMD | `LinguaCaption-0.4.0-windows-x64-setup.exe` | 双击安装，在开始菜单打开；无需管理员权限 |
+| Windows 免安装 | `LinguaCaption-0.4.0-windows-x64-portable.zip` | 完整解压后打开文件夹内的 `LinguaCaption.exe`，保留 `_internal` 文件夹 |
+| macOS 14+，Apple 芯片 | `LinguaCaption-0.4.0-macos-arm64.dmg` | 打开磁盘映像，把程序拖入「应用程序」 |
+| macOS 14+，Intel 芯片 | `LinguaCaption-0.4.0-macos-x64.dmg` | 打开磁盘映像，把程序拖入「应用程序」 |
 
-打开软件 → 在播放器或浏览器播放视频 → 选择识别语言和目标语言 → 点击「开始捕获」。默认英语识别、中文翻译。可先用「演示」调整样式，实际使用时关闭演示。拖拽字幕到合适位置，或在「样式与位置」设置保护区。
+打开软件 → 在播放器或浏览器播放视频 → 选择识别语言和目标语言 → 点击「开始捕获」。默认中文原文。也可以点击「中文实时字幕 · 边说边出字」一键设置。可先用「演示」调整样式，实际使用时关闭演示。拖拽字幕到合适位置，或在「样式与位置」设置保护区。
 
 软件包包含模型，下载体积较大；首次启动识别需要加载模型，运行期可断网。Mac 首次捕获需在系统设置允许屏幕与系统音频录制，快捷键另需辅助功能 / 输入监控权限。Mac 捕获与全屏覆盖仍需在真实设备验收。
 
@@ -65,12 +67,13 @@ bash scripts/build_macos.sh
 
 ```bash
 python -m pip install -e '.[prepare]'
+python scripts/prepare_mandarin.py
 python scripts/prepare_models.py asr --size base
 python scripts/prepare_models.py translation
 python -m linguacaption
 ```
 
-这里的 `python` 指虚拟环境中的解释器；Windows 可用 `.venv\Scripts\python`，Mac 用 `.venv/bin/python`。在「模型与性能」选择 `models/asr` 和 `models/translation` 的完整目录，再点「开始捕获」。选择「仅原文」时可以不准备翻译模型。
+这里的 `python` 指虚拟环境中的解释器；Windows 可用 `.venv\Scripts\python`，Mac 用 `.venv/bin/python`。中文仅需运行 `python scripts/prepare_mandarin.py`，在「模型与性能」选择 `models/asr-zh`。其他语言和翻译使用 `models/asr` 和 `models/translation` 的完整目录，再点「开始捕获」。选择「仅原文」时可以不准备翻译模型。
 
 识别可选 `tiny / base / small / medium / large-v3` 多语言模型，`.en` 英语专用模型会被拒绝。翻译使用 M2M100 418M，经 CTranslate2 INT8 转换；工程界面开放 **中文、英语、日语、韩语、西班牙语、法语、德语、俄语、葡萄牙语、意大利语、阿拉伯语、印地语** 12 种语言及互译。支持范围不等于各语言质量均已达标。
 
@@ -86,7 +89,7 @@ python -m linguacaption
 | 背景 | 无背景、半透明黑底、系统磨砂；每行宽度独立跟随文字 |
 | 文字 | 默认白色字、系统字体和柔和黑色阴影；中文统一简体；字号、字重、颜色与描边可调 |
 | 双语模式 | 仅原文 / 仅译文 / 双语；翻译异步返回，旧版本译文不会覆盖新原文 |
-| 阅读 | 默认每句最短停留 4 秒，无新内容 12 秒后隐藏；按字素簇和像素宽度换行，完整文字保留在最近 60 条会话中 |
+| 阅读 | 默认每句停顿后保留 4 秒，无新内容 12 秒后隐藏；按字素簇和像素宽度换行，完整文字保留在最近 60 条会话中 |
 | 避让 | 对每个屏幕框选最多 8 个保护区；字幕整体选择最近的可用位置，放不下则隐藏 |
 | 观看控制 | 鼠标悬停才显示工具条；锁定后鼠标穿透，可用快捷键或主窗解锁 |
 | 性能 | WebRTC VAD、INT8、线程数限制、有界队列、静音不触发识别；显示实测处理耗时与估算滞后 |

@@ -46,6 +46,7 @@ def collect_licenses(output: Path) -> None:
         "https://download.qt.io/official_releases/qt/\n"
         "Select the version recorded in packages.json (the initial package uses Qt 6.12.0).\n\n"
         "Whisper model: https://github.com/openai/whisper (MIT).\n"
+        "Paraformer streaming model: https://huggingface.co/csukuangfj/sherpa-onnx-streaming-paraformer-bilingual-zh-en (Apache-2.0).\n"
         "M2M100 model: https://huggingface.co/facebook/m2m100_418M (MIT).\n"
         "Model provenance and file hashes accompany the bundled model directories.\n",
         encoding="utf-8")

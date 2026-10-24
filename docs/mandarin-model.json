@@ -1,0 +1,14 @@
+{
+  "format": "paraformer-online-int8-v1",
+  "repo": "csukuangfj/sherpa-onnx-streaming-paraformer-bilingual-zh-en",
+  "revision": "8e40c43232a1c5c66c82111efc5820d3accca11b",
+  "license": "Apache-2.0",
+  "sample_rate": 16000,
+  "sha256": {
+    "encoder.int8.onnx": "81a70226a8934e6ed92aa1d4fc486b428b5398e2f2619ed4897b7294cab90e9a",
+    "decoder.int8.onnx": "f3cca9f77bb9d93c8fcbfb63ae617b6b1ee96818df3aa3b151c40658fe38594f",
+    "tokens.txt": "59aba8873a2ed1e122c25fee421e25f283b63290efbde85c1f01a853d83cb6e6",
+    "README.md": "16b56210f03531d00f5580b060ff6843461e618e5642c070a58df6f0a5c98875",
+    "LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  }
+}

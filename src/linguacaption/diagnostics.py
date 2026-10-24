@@ -15,9 +15,10 @@ from . import __version__
 from .config import Settings
 from .core.chinese import simplified
 from .core.presentation import CaptionPresenter
-from .domain import Caption
+from .domain import AudioChunk, Caption
 from .inference import LocalTranslator, WhisperRecognizer
 from .runtime import is_bundled, models_ready
+from .streaming import MandarinRecognizer
 from .ui import MainWindow
 
 
@@ -60,6 +61,10 @@ def run_packaged_test(app, settings: Settings, config_path: Path, report_path: P
             samples = AudioResampler().convert(np.zeros(4800, dtype=np.float32))
             if not len(samples):
                 raise RuntimeError("Audio resampling failed")
+            streaming = MandarinRecognizer(settings)
+            result["streaming_loaded"] = True
+            result["streaming_silence_captions"] = len(streaming.push_audio(
+                AudioChunk(np.zeros(16000, np.float32), 0, 0)))
             recognizer = WhisperRecognizer(settings)
             translator = LocalTranslator(settings)
             result["asr_loaded"] = True
@@ -72,18 +77,29 @@ def run_packaged_test(app, settings: Settings, config_path: Path, report_path: P
                 result["transcript"], result["language"] = text, language
                 if not text:
                     raise RuntimeError("ASR returned no text for the supplied fixture")
+                streaming.reset()
+                parts = {}
+                samples = decode_audio(str(audio))
+                for pos in range(0, len(samples), 800):
+                    for caption in streaming.push_audio(AudioChunk(samples[pos:pos + 800], pos, pos / 16000)):
+                        parts[caption.utterance] = caption.original
+                for caption in streaming.finish():
+                    parts[caption.utterance] = caption.original
+                result["streaming_transcript"] = "".join(parts.values())
+                if not result["streaming_transcript"]:
+                    raise RuntimeError("Streaming ASR returned no text for the supplied fixture")
             chinese = simplified("這是繁體字幕，臺灣與世界。", "zh")
             if chinese != "这是繁体字幕，台湾与世界。":
                 raise RuntimeError("Bundled Chinese conversion data is missing or incorrect")
             reader = CaptionPresenter(Settings())
             first = Caption(1, 1, "First sentence", "en", True, 0, 0, "第一句字幕")
             following = Caption(2, 1, "Second sentence", "en", True, 0, 0, "第二句字幕")
-            if reader.push(first, 0) != first or reader.push(following, 1) is not None:
-                raise RuntimeError("Reading buffer replaced a caption too soon")
-            if reader.advance(3.99) is not None or reader.advance(4) != following:
-                raise RuntimeError("Minimum subtitle reading time is incorrect")
+            if reader.push(first, 0) != first or reader.push(following, 1) != following:
+                raise RuntimeError("Current speech was delayed by the display layer")
+            if reader.advance(4) is not None or not reader.expired(5):
+                raise RuntimeError("Silence retention or reset is incorrect")
             overlay = window.overlay
-            overlay.set_text("Hello world!", chinese)
+            overlay.set_text(chinese, "Hello world!")
             app.processEvents()
             if not overlay.rows or any(row.path.isEmpty() for row in overlay.rows):
                 raise RuntimeError("Subtitle glyph paths are empty")
@@ -104,7 +120,7 @@ def run_packaged_test(app, settings: Settings, config_path: Path, report_path: P
             if settings.position != "custom" or overlay._drag_offset is not None:
                 raise RuntimeError("Subtitle drag position was not committed")
             result["subtitle_rows"] = len(overlay.rows)
-            result["readability"] = {"simplified_chinese": chinese, "minimum_hold_ms": 4000,
+            result["readability"] = {"simplified_chinese": chinese, "display_queue": False,
                                       "live_drag": True, "colors": [row.color.name() for row in overlay.rows],
                                       "system_font": QFontDatabase.systemFont(QFontDatabase.SystemFont.GeneralFont).family(),
                                       "shadow": settings.shadow}
