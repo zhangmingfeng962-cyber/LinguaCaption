@@ -37,7 +37,9 @@ class MandarinRecognizer:
         self.model = sherpa_onnx.OnlineRecognizer.from_paraformer(
             tokens=str(path / "tokens.txt"), encoder=str(path / "encoder.int8.onnx"),
             decoder=str(path / "decoder.int8.onnx"), num_threads=settings.streaming_threads,
-            sample_rate=SAMPLE_RATE, provider="cpu", enable_endpoint_detection=True,
+            sample_rate=SAMPLE_RATE,
+            provider="cpu:" + str(Path(__file__).parent / "assets/onnx-cpu.conf"),
+            enable_endpoint_detection=True,
             rule1_min_trailing_silence=2.4, rule2_min_trailing_silence=max(.6, settings.endpoint_ms / 1000),
             rule3_min_utterance_length=max(20, settings.max_utterance_ms / 1000),
         )
