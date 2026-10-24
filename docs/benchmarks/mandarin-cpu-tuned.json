@@ -1,0 +1,3072 @@
+{
+  "audio_seconds": 362.156,
+  "speech_fixture_seconds": 300.156,
+  "elapsed_seconds": 369.5,
+  "clips": 31,
+  "errors": [],
+  "warnings": [],
+  "dropped_audio_blocks": 0,
+  "peak_rss_mb": 445.8,
+  "cpu_percent_total_capacity": 2.2057890730717187,
+  "original_lag_estimate": {
+    "p50_ms": 132.0,
+    "p95_ms": 387.6,
+    "n": 343
+  },
+  "first_caption_estimate": {
+    "p50_ms": 1328.0,
+    "p95_ms": 2747.6,
+    "n": 33
+  },
+  "final_lag_estimate": {
+    "p50_ms": 834.0,
+    "p95_ms": 1216.6,
+    "n": 33
+  },
+  "measurement_note": "Realtime fixture into production Engine/UI on offscreen Qt; audio/VAD timestamps are estimates, not word alignment or external screen timing; 31 clips / 300.156 seconds speech plus pauses, after CPU wait tuning",
+  "events": [
+    {
+      "utterance": 1,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 134.99999999930878,
+      "text": "西",
+      "first_caption_ms": 475.0000000003638
+    },
+    {
+      "utterance": 1,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 112.99999999937427,
+      "text": "西班牙人"
+    },
+    {
+      "utterance": 1,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 122.99999999959255,
+      "text": "西班牙人开始了强"
+    },
+    {
+      "utterance": 1,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 116.99999999927968,
+      "text": "西班牙人开始了强达三个"
+    },
+    {
+      "utterance": 1,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 109.99999999876309,
+      "text": "西班牙人开始了强达三个世纪的殖"
+    },
+    {
+      "utterance": 1,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 159.9999999980355,
+      "text": "西班牙人开始了强达三个世纪的殖民时期"
+    },
+    {
+      "utterance": 1,
+      "revision": 7,
+      "final": true,
+      "asr_ms": 77.99999999951979,
+      "lag_ms": 737.9999999975553,
+      "text": "西班牙人开始了强达三个世纪的殖民时期"
+    },
+    {
+      "utterance": 3,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 99.99999999763531,
+      "text": "西班牙人",
+      "first_caption_ms": 1899.9999999996362
+    },
+    {
+      "utterance": 3,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 109.99999999876309,
+      "text": "西班牙人开始了长达"
+    },
+    {
+      "utterance": 3,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 102.9999999982465,
+      "text": "西班牙人开始了长达三个世纪"
+    },
+    {
+      "utterance": 3,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 96.99999999793363,
+      "text": "西班牙人开始了长达三个世纪的殖民"
+    },
+    {
+      "utterance": 3,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 186.99999999989814,
+      "text": "西班牙人开始了长达三个世纪的殖民时"
+    },
+    {
+      "utterance": 3,
+      "revision": 6,
+      "final": true,
+      "asr_ms": 61.99999999989814,
+      "lag_ms": 765.0000000003274,
+      "text": "西班牙人开始了长达三个世纪的殖民时"
+    },
+    {
+      "utterance": 5,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 96.99999999793363,
+      "text": "西",
+      "first_caption_ms": 1356.999999999971
+    },
+    {
+      "utterance": 5,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 106.9999999981519,
+      "text": "西班牙人开"
+    },
+    {
+      "utterance": 5,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 99.99999999763531,
+      "text": "西班牙人开始了长达"
+    },
+    {
+      "utterance": 5,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 77.99999999951979,
+      "lag_ms": 93.99999999823194,
+      "text": "西班牙人开始了长达三个世"
+    },
+    {
+      "utterance": 5,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 118.99999999786814,
+      "text": "西班牙人开始了长达三个世纪的殖民"
+    },
+    {
+      "utterance": 5,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 436.99999999898864,
+      "text": "西班牙人开始了长达三个世纪的殖民时期"
+    },
+    {
+      "utterance": 5,
+      "revision": 7,
+      "final": true,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 1030.9999999990396,
+      "text": "西班牙人开始了长达三个世纪的殖民时期"
+    },
+    {
+      "utterance": 6,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 106.9999999981519,
+      "text": "我姐",
+      "first_caption_ms": 1246.9999999984793
+    },
+    {
+      "utterance": 6,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 99.99999999763531,
+      "text": "我姐姐和她的朋"
+    },
+    {
+      "utterance": 6,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 109.99999999876309,
+      "text": "我姐姐和她的朋友不见了"
+    },
+    {
+      "utterance": 6,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 102.9999999982465,
+      "text": "我姐姐和她的朋友不见了路上有两"
+    },
+    {
+      "utterance": 6,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 96.99999999793363,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐"
+    },
+    {
+      "utterance": 6,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 106.9999999981519,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅"
+    },
+    {
+      "utterance": 6,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 99.99999999763531,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去"
+    },
+    {
+      "utterance": 6,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 176.99999999877036,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮"
+    },
+    {
+      "utterance": 6,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 102.9999999982465,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅二"
+    },
+    {
+      "utterance": 6,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 96.99999999793363,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅二盲犯死者"
+    },
+    {
+      "utterance": 6,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 521.9999999981155,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅二盲犯死者说道"
+    },
+    {
+      "utterance": 6,
+      "revision": 12,
+      "final": true,
+      "asr_ms": 61.99999999989814,
+      "lag_ms": 1162.9999999977372,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅二盲犯死者说道"
+    },
+    {
+      "utterance": 7,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 99.99999999763531,
+      "text": "我姐姐",
+      "first_caption_ms": 1579.9999999999272
+    },
+    {
+      "utterance": 7,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 93.99999999823194,
+      "text": "我姐姐和她的朋"
+    },
+    {
+      "utterance": 7,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 102.9999999982465,
+      "text": "我姐姐和她的朋友不见了"
+    },
+    {
+      "utterance": 7,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 78.99999999972351,
+      "lag_ms": 81.99999999760621,
+      "text": "我姐姐和她的朋友不见了路上有"
+    },
+    {
+      "utterance": 7,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 90.99999999853026,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾"
+    },
+    {
+      "utterance": 7,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 99.99999999763531,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮"
+    },
+    {
+      "utterance": 7,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 124.99999999818101,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有"
+    },
+    {
+      "utterance": 7,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 102.9999999982465,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过"
+    },
+    {
+      "utterance": 7,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 96.99999999793363,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们"
+    },
+    {
+      "utterance": 7,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 137.99999999810098,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅"
+    },
+    {
+      "utterance": 7,
+      "revision": 11,
+      "final": true,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 99.99999999763531,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅"
+    },
+    {
+      "utterance": 8,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 77.99999999951979,
+      "lag_ms": 93.99999999823194,
+      "text": "arm",
+      "first_caption_ms": 694.0000000004147
+    },
+    {
+      "utterance": 8,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 77.99999999951979,
+      "lag_ms": 87.99999999791908,
+      "text": "arm 范思哲"
+    },
+    {
+      "utterance": 8,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 512.999999998101,
+      "text": "arm 范思哲说道"
+    },
+    {
+      "utterance": 8,
+      "revision": 4,
+      "final": true,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 1090.9999999985303,
+      "text": "arm 范思哲说道"
+    },
+    {
+      "utterance": 10,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 124.99999999818101,
+      "text": "我姐姐和她",
+      "first_caption_ms": 1144.9999999986176
+    },
+    {
+      "utterance": 10,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 102.9999999982465,
+      "text": "我姐姐和她的朋友不"
+    },
+    {
+      "utterance": 10,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 96.99999999793363,
+      "text": "我姐姐和她的朋友不见了"
+    },
+    {
+      "utterance": 10,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 106.9999999981519,
+      "text": "我姐姐和她的朋友不见了路上有两"
+    },
+    {
+      "utterance": 10,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 99.99999999763531,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾"
+    },
+    {
+      "utterance": 10,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 109.99999999876309,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮"
+    },
+    {
+      "utterance": 10,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 77.99999999951979,
+      "lag_ms": 102.9999999982465,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅"
+    },
+    {
+      "utterance": 10,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 78.99999999972351,
+      "lag_ms": 96.99999999793363,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过"
+    },
+    {
+      "utterance": 10,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 152.9999999984284,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们"
+    },
+    {
+      "utterance": 10,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 319.99999999789,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅"
+    },
+    {
+      "utterance": 10,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 156.9999999983338,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅哈"
+    },
+    {
+      "utterance": 10,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 102.9999999982465,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅哈尔蒙"
+    },
+    {
+      "utterance": 10,
+      "revision": 13,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 96.99999999793363,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅哈尔蒙范"
+    },
+    {
+      "utterance": 10,
+      "revision": 14,
+      "final": false,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 106.9999999981519,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅哈尔蒙范范思"
+    },
+    {
+      "utterance": 10,
+      "revision": 15,
+      "final": false,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 477.9999999982465,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅哈尔蒙范范思哲说"
+    },
+    {
+      "utterance": 10,
+      "revision": 16,
+      "final": true,
+      "asr_ms": 77.99999999951979,
+      "lag_ms": 1087.999999997919,
+      "text": "我姐姐和她的朋友不见了路上有两个残疾人坐着轮椅有人跳过去帮他们推轮椅哈尔蒙范范思哲说"
+    },
+    {
+      "utterance": 13,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 99.99999999763531,
+      "text": "学",
+      "first_caption_ms": 2500.0
+    },
+    {
+      "utterance": 13,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 93.99999999823194,
+      "text": "学生往往是"
+    },
+    {
+      "utterance": 13,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 77.99999999951979,
+      "lag_ms": 87.99999999791908,
+      "text": "学生往往是最挑剔"
+    },
+    {
+      "utterance": 13,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 96.99999999793363,
+      "text": "学生往往是最挑剔的读者"
+    },
+    {
+      "utterance": 13,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 137.99999999810098,
+      "text": "学生往往是最挑剔的读者所以博客"
+    },
+    {
+      "utterance": 13,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 99.99999999763531,
+      "text": "学生往往是最挑剔的读者所以博客作者"
+    },
+    {
+      "utterance": 13,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 93.99999999823194,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努"
+    },
+    {
+      "utterance": 13,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 102.9999999982465,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写"
+    },
+    {
+      "utterance": 13,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 78.99999999972351,
+      "lag_ms": 236.99999999917054,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平"
+    },
+    {
+      "utterance": 13,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 106.9999999981519,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避"
+    },
+    {
+      "utterance": 13,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 99.99999999763531,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避免"
+    },
+    {
+      "utterance": 13,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 109.99999999876309,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避免受到"
+    },
+    {
+      "utterance": 13,
+      "revision": 13,
+      "final": false,
+      "asr_ms": 77.99999999951979,
+      "lag_ms": 227.999999999156,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避免受到批判"
+    },
+    {
+      "utterance": 13,
+      "revision": 14,
+      "final": true,
+      "asr_ms": 78.99999999972351,
+      "lag_ms": 821.9999999992069,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避免受到批判"
+    },
+    {
+      "utterance": 16,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 99.99999999763531,
+      "text": "学生往",
+      "first_caption_ms": 1300.000000000182
+    },
+    {
+      "utterance": 16,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 124.99999999818101,
+      "text": "学生往往是最挑"
+    },
+    {
+      "utterance": 16,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 162.99999999955617,
+      "text": "学生往往是最挑剔的读"
+    },
+    {
+      "utterance": 16,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 96.99999999793363,
+      "text": "学生往往是最挑剔的读者所"
+    },
+    {
+      "utterance": 16,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 106.9999999981519,
+      "text": "学生往往是最挑剔的读者所以博客"
+    },
+    {
+      "utterance": 16,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 99.99999999763531,
+      "text": "学生往往是最挑剔的读者所以博客作者"
+    },
+    {
+      "utterance": 16,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 156.9999999983338,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力"
+    },
+    {
+      "utterance": 16,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写"
+    },
+    {
+      "utterance": 16,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 78.99999999972351,
+      "lag_ms": 236.99999999917054,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平"
+    },
+    {
+      "utterance": 16,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 106.9999999981519,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避免"
+    },
+    {
+      "utterance": 16,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 119.99999999807187,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避免受到批判"
+    },
+    {
+      "utterance": 16,
+      "revision": 12,
+      "final": true,
+      "asr_ms": 77.99999999951979,
+      "lag_ms": 713.9999999981228,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避免受到批判"
+    },
+    {
+      "utterance": 18,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 99.99999999763531,
+      "text": "学生往往",
+      "first_caption_ms": 919.9999999982538
+    },
+    {
+      "utterance": 18,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 93.99999999823194,
+      "text": "学生往往是最挑剔"
+    },
+    {
+      "utterance": 18,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 134.9999999983993,
+      "text": "学生往往是最挑剔的读者"
+    },
+    {
+      "utterance": 18,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "学生往往是最挑剔的读者所以博客"
+    },
+    {
+      "utterance": 18,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "学生往往是最挑剔的读者所以博客作者开始"
+    },
+    {
+      "utterance": 18,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 115.99999999816646,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高"
+    },
+    {
+      "utterance": 18,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 156.9999999983338,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水"
+    },
+    {
+      "utterance": 18,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 165.99999999834836,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避免受"
+    },
+    {
+      "utterance": 18,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 383.99999999910506,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避免受到批判"
+    },
+    {
+      "utterance": 18,
+      "revision": 10,
+      "final": true,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 961.9999999995343,
+      "text": "学生往往是最挑剔的读者所以博客作者开始努力提高写作水平避免受到批判"
+    },
+    {
+      "utterance": 20,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 139.99999999941792,
+      "lag_ms": 149.9999999978172,
+      "text": "摩尔多",
+      "first_caption_ms": 1709.9999999991269
+    },
+    {
+      "utterance": 20,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 171.99999999957072,
+      "lag_ms": 174.99999999745341,
+      "text": "摩尔多瓦的主要"
+    },
+    {
+      "utterance": 20,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 140.00000000032742,
+      "lag_ms": 152.9999999984284,
+      "text": "摩尔多瓦的主要宗教是"
+    },
+    {
+      "utterance": 20,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "摩尔多瓦的主要宗教是东正角"
+    },
+    {
+      "utterance": 20,
+      "revision": 5,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 93.99999999823194,
+      "text": "摩尔多瓦的主要宗教是东正角"
+    },
+    {
+      "utterance": 22,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 139.99999999941792,
+      "lag_ms": 149.9999999978172,
+      "text": "摩尔",
+      "first_caption_ms": 750.0
+    },
+    {
+      "utterance": 22,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "摩尔多瓦的主"
+    },
+    {
+      "utterance": 22,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 152.9999999984284,
+      "text": "摩尔多瓦的主要中"
+    },
+    {
+      "utterance": 22,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 146.99999999811553,
+      "text": "摩尔多瓦的主要中要是"
+    },
+    {
+      "utterance": 22,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 329.99999999901775,
+      "text": "摩尔多瓦的主要中要是东正角"
+    },
+    {
+      "utterance": 22,
+      "revision": 6,
+      "final": true,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 142.9999999991196,
+      "text": "摩尔多瓦的主要中要是东正角"
+    },
+    {
+      "utterance": 24,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "摩尔多",
+      "first_caption_ms": 881.9999999996071
+    },
+    {
+      "utterance": 24,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 140.00000000032742,
+      "lag_ms": 146.99999999811553,
+      "text": "摩尔多瓦的主要"
+    },
+    {
+      "utterance": 24,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 124.99999999818101,
+      "text": "摩尔多瓦的主要宗教是"
+    },
+    {
+      "utterance": 24,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 315.0000000005093,
+      "text": "摩尔多瓦的主要宗教是东正角"
+    },
+    {
+      "utterance": 24,
+      "revision": 5,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 877.0000000004075,
+      "text": "摩尔多瓦的主要宗教是东正角"
+    },
+    {
+      "utterance": 26,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "按照原计",
+      "first_caption_ms": 2098.9999999992506
+    },
+    {
+      "utterance": 26,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "按照原计划他"
+    },
+    {
+      "utterance": 26,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 137.99999999810098,
+      "text": "按照原计划他将在周"
+    },
+    {
+      "utterance": 26,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 211.99999999953434,
+      "text": "按照原计划他将在周二被砍"
+    },
+    {
+      "utterance": 26,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 109.99999999876309,
+      "text": "按照原计划他将在周二被砍到但"
+    },
+    {
+      "utterance": 26,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 134.9999999983993,
+      "text": "按照原计划他将在周二被砍到但在法"
+    },
+    {
+      "utterance": 26,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "按照原计划他将在周二被砍到但在法庭紧急"
+    },
+    {
+      "utterance": 26,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 137.99999999810098,
+      "text": "按照原计划他将在周二被砍到但在法庭紧急裁决后"
+    },
+    {
+      "utterance": 26,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 131.9999999977881,
+      "text": "按照原计划他将在周二被砍到但在法庭紧急裁决后幸免遇"
+    },
+    {
+      "utterance": 26,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 640.9999999987122,
+      "text": "按照原计划他将在周二被砍到但在法庭紧急裁决后幸免遇难"
+    },
+    {
+      "utterance": 26,
+      "revision": 11,
+      "final": true,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 1218.999999998232,
+      "text": "按照原计划他将在周二被砍到但在法庭紧急裁决后幸免遇难"
+    },
+    {
+      "utterance": 28,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "按照",
+      "first_caption_ms": 3118.999999999687
+    },
+    {
+      "utterance": 28,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "按照原计划"
+    },
+    {
+      "utterance": 28,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 137.99999999810098,
+      "text": "按照原计划他将在周二"
+    },
+    {
+      "utterance": 28,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 171.99999999866122,
+      "text": "按照原计划他将在周二被砍"
+    },
+    {
+      "utterance": 28,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 109.99999999876309,
+      "text": "按照原计划他将在周二被砍到"
+    },
+    {
+      "utterance": 28,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 149.9999999978172,
+      "text": "按照原计划他将在周二被砍到但在法庭"
+    },
+    {
+      "utterance": 28,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 112.99999999755528,
+      "text": "按照原计划他将在周二被砍到但在法庭紧急采"
+    },
+    {
+      "utterance": 28,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "按照原计划他将在周二被砍到但在法庭紧急采决后幸"
+    },
+    {
+      "utterance": 28,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 351.99999999804277,
+      "text": "按照原计划他将在周二被砍到但在法庭紧急采决后幸免遇难"
+    },
+    {
+      "utterance": 28,
+      "revision": 10,
+      "final": true,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 897.9999999983193,
+      "text": "按照原计划他将在周二被砍到但在法庭紧急采决后幸免遇难"
+    },
+    {
+      "utterance": 31,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 112.99999999755528,
+      "text": "按照原计",
+      "first_caption_ms": 1313.0000000001019
+    },
+    {
+      "utterance": 31,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 106.9999999981519,
+      "text": "按照原计划他"
+    },
+    {
+      "utterance": 31,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 115.99999999816646,
+      "text": "按照原计划他将在周二"
+    },
+    {
+      "utterance": 31,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 340.99999999853026,
+      "text": "按照原计划他将在周二被砍倒"
+    },
+    {
+      "utterance": 31,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "按照原计划他将在周二被砍倒但"
+    },
+    {
+      "utterance": 31,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 127.9999999978827,
+      "text": "按照原计划他将在周二被砍倒但在法"
+    },
+    {
+      "utterance": 31,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "按照原计划他将在周二被砍倒但在法庭紧急"
+    },
+    {
+      "utterance": 31,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 115.99999999816646,
+      "text": "按照原计划他将在周二被砍倒但在法庭紧急采取后"
+    },
+    {
+      "utterance": 31,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 129.99999999919964,
+      "text": "按照原计划他将在周二被砍倒但在法庭紧急采取后幸免遇"
+    },
+    {
+      "utterance": 31,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 738.9999999986685,
+      "text": "按照原计划他将在周二被砍倒但在法庭紧急采取后幸免遇难"
+    },
+    {
+      "utterance": 31,
+      "revision": 11,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 1316.9999999990978,
+      "text": "按照原计划他将在周二被砍倒但在法庭紧急采取后幸免遇难"
+    },
+    {
+      "utterance": 33,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 124.99999999818101,
+      "text": "此前",
+      "first_caption_ms": 1725.0000000003638
+    },
+    {
+      "utterance": 33,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 134.9999999983993,
+      "text": "此前林深公"
+    },
+    {
+      "utterance": 33,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 112.99999999755528,
+      "text": "此前林深公司 ce"
+    },
+    {
+      "utterance": 33,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 137.99999999810098,
+      "text": "此前林深公司 ceo 揭"
+    },
+    {
+      "utterance": 33,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 115.99999999816646,
+      "text": "此前林深公司 ceo 揭米西米"
+    },
+    {
+      "utterance": 33,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 124.99999999818101,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾"
+    },
+    {
+      "utterance": 33,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾表示"
+    },
+    {
+      "utterance": 33,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 112.99999999755528,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾表示公司"
+    },
+    {
+      "utterance": 33,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 241.99999999837019,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾表示公司成立之"
+    },
+    {
+      "utterance": 33,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 115.99999999816646,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾表示公司成立之初他在"
+    },
+    {
+      "utterance": 33,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 124.99999999818101,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾表示公司成立之初他在位于车库"
+    },
+    {
+      "utterance": 33,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾表示公司成立之初他在位于车库的工作室"
+    },
+    {
+      "utterance": 33,
+      "revision": 13,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾表示公司成立之初他在位于车库的工作室里是听不"
+    },
+    {
+      "utterance": 33,
+      "revision": 14,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 137.99999999810098,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾表示公司成立之初他在位于车库的工作室里是听不到门铃响"
+    },
+    {
+      "utterance": 33,
+      "revision": 15,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 591.9999999996435,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾表示公司成立之初他在位于车库的工作室里是听不到门铃响声的"
+    },
+    {
+      "utterance": 33,
+      "revision": 16,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 1153.9999999995416,
+      "text": "此前林深公司 ceo 揭米西米诺夫曾表示公司成立之初他在位于车库的工作室里是听不到门铃响声的"
+    },
+    {
+      "utterance": 35,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "此",
+      "first_caption_ms": 641.9999999989159
+    },
+    {
+      "utterance": 35,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 115.99999999816646,
+      "text": "此前林"
+    },
+    {
+      "utterance": 35,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 124.99999999818101,
+      "text": "此前林深 r"
+    },
+    {
+      "utterance": 35,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 118.99999999786814,
+      "text": "此前林深 ring 公"
+    },
+    {
+      "utterance": 35,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "此前林深 ring 公司 c"
+    },
+    {
+      "utterance": 35,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 137.99999999810098,
+      "text": "此前林深 ring 公司 c 由杰"
+    },
+    {
+      "utterance": 35,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 131.9999999977881,
+      "text": "此前林深 ring 公司 c 由杰里西米"
+    },
+    {
+      "utterance": 35,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 109.99999999876309,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾"
+    },
+    {
+      "utterance": 35,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾表示"
+    },
+    {
+      "utterance": 35,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾表示公司"
+    },
+    {
+      "utterance": 35,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 177.9999999989741,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾表示公司成立之"
+    },
+    {
+      "utterance": 35,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 115.99999999816646,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾表示公司成立之初他在"
+    },
+    {
+      "utterance": 35,
+      "revision": 13,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 109.99999999876309,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾表示公司成立之初他在位于车库"
+    },
+    {
+      "utterance": 35,
+      "revision": 14,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 118.99999999786814,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾表示公司成立之初他在位于车库的工作"
+    },
+    {
+      "utterance": 35,
+      "revision": 15,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 112.99999999755528,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾表示公司成立之初他在位于车库的工作室里是听"
+    },
+    {
+      "utterance": 35,
+      "revision": 16,
+      "final": false,
+      "asr_ms": 140.00000000032742,
+      "lag_ms": 168.99999999805004,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾表示公司成立之初他在位于车库的工作室里是听不到门铃"
+    },
+    {
+      "utterance": 35,
+      "revision": 17,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 286.99999999935244,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾表示公司成立之初他在位于车库的工作室里是听不到门铃响声的"
+    },
+    {
+      "utterance": 35,
+      "revision": 18,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 833.9999999989232,
+      "text": "此前林深 ring 公司 c 由杰里西米诺夫曾表示公司成立之初他在位于车库的工作室里是听不到门铃响声的"
+    },
+    {
+      "utterance": 37,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "其",
+      "first_caption_ms": 1328.0000000004293
+    },
+    {
+      "utterance": 37,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 137.99999999810098,
+      "text": "其次一些马"
+    },
+    {
+      "utterance": 37,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "其次一些马鞍尤其"
+    },
+    {
+      "utterance": 37,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 141.00000000053114,
+      "lag_ms": 140.99999999871216,
+      "text": "其次一些马鞍尤其是英氏满"
+    },
+    {
+      "utterance": 37,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 139.99999999941792,
+      "lag_ms": 149.9999999978172,
+      "text": "其次一些马鞍尤其是英氏满配有安"
+    },
+    {
+      "utterance": 37,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣"
+    },
+    {
+      "utterance": 37,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 152.9999999984284,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑"
+    },
+    {
+      "utterance": 37,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 211.99999999953434,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑码的"
+    },
+    {
+      "utterance": 37,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 140.99999999871216,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑码的落马"
+    },
+    {
+      "utterance": 37,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 139.99999999941792,
+      "lag_ms": 149.9999999978172,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑码的落马的骑手向"
+    },
+    {
+      "utterance": 37,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 188.00000000010186,
+      "lag_ms": 350.99999999965803,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑码的落马的骑手向后拉"
+    },
+    {
+      "utterance": 37,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 172.0000000004802,
+      "lag_ms": 184.9999999985812,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑码的落马的骑手向后拉麻将"
+    },
+    {
+      "utterance": 37,
+      "revision": 13,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑码的落马的骑手向后拉麻将皮带带"
+    },
+    {
+      "utterance": 37,
+      "revision": 14,
+      "final": false,
+      "asr_ms": 141.00000000053114,
+      "lag_ms": 140.99999999871216,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑码的落马的骑手向后拉麻将皮带带会从"
+    },
+    {
+      "utterance": 37,
+      "revision": 15,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 149.9999999978172,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑码的落马的骑手向后拉麻将皮带带会从马马鞍上"
+    },
+    {
+      "utterance": 37,
+      "revision": 16,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 463.9999999981228,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑码的落马的骑手向后拉麻将皮带带会从马马鞍上下下"
+    },
+    {
+      "utterance": 37,
+      "revision": 17,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 186.99999999989814,
+      "text": "其次一些马鞍尤其是英氏满配有安全扣如果骑码的落马的骑手向后拉麻将皮带带会从马马鞍上下下"
+    },
+    {
+      "utterance": 38,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 137.99999999810098,
+      "text": "其",
+      "first_caption_ms": 1157.9999999985375
+    },
+    {
+      "utterance": 38,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 146.99999999811553,
+      "text": "其次一些马"
+    },
+    {
+      "utterance": 38,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 124.99999999818101,
+      "text": "其次一些马鞍尤"
+    },
+    {
+      "utterance": 38,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 174.9999999992724,
+      "text": "其次一些马鞍尤其是英氏"
+    },
+    {
+      "utterance": 38,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 127.9999999978827,
+      "text": "其次一些马鞍尤其是英氏蛮配有安"
+    },
+    {
+      "utterance": 38,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 137.99999999810098,
+      "text": "其次一些马鞍尤其是英氏蛮配有安全"
+    },
+    {
+      "utterance": 38,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 146.99999999811553,
+      "text": "其次一些马鞍尤其是英氏蛮配有安全扣如果落"
+    },
+    {
+      "utterance": 38,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 141.00000000053114,
+      "lag_ms": 140.99999999871216,
+      "text": "其次一些马鞍尤其是英氏蛮配有安全扣如果落马了骑手向"
+    },
+    {
+      "utterance": 38,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 134.9999999983993,
+      "text": "其次一些马鞍尤其是英氏蛮配有安全扣如果落马了骑手向后拉马"
+    },
+    {
+      "utterance": 38,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 143.99999999750435,
+      "text": "其次一些马鞍尤其是英氏蛮配有安全扣如果落马了骑手向后拉马登皮带"
+    },
+    {
+      "utterance": 38,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 137.99999999810098,
+      "text": "其次一些马鞍尤其是英氏蛮配有安全扣如果落马了骑手向后拉马登皮带就会从马鞍"
+    },
+    {
+      "utterance": 38,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 327.00000000022555,
+      "text": "其次一些马鞍尤其是英氏蛮配有安全扣如果落马了骑手向后拉马登皮带就会从马鞍上掉下来"
+    },
+    {
+      "utterance": 38,
+      "revision": 13,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 890.0000000003274,
+      "text": "其次一些马鞍尤其是英氏蛮配有安全扣如果落马了骑手向后拉马登皮带就会从马鞍上掉下来"
+    },
+    {
+      "utterance": 40,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 137.99999999810098,
+      "text": "伤",
+      "first_caption_ms": 1177.999999998974
+    },
+    {
+      "utterance": 40,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "伤员被送自"
+    },
+    {
+      "utterance": 40,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 124.99999999818101,
+      "text": "伤员被送自家医院"
+    },
+    {
+      "utterance": 40,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 134.9999999983993,
+      "text": "伤员被送自家医院院后打"
+    },
+    {
+      "utterance": 40,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 143.99999999750435,
+      "text": "伤员被送自家医院院后打斗平息下"
+    },
+    {
+      "utterance": 40,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 137.99999999810098,
+      "text": "伤员被送自家医院院后打斗平息下来剩下"
+    },
+    {
+      "utterance": 40,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "伤员被送自家医院院后打斗平息下来剩下的约四十"
+    },
+    {
+      "utterance": 40,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 140.99999999871216,
+      "text": "伤员被送自家医院院后打斗平息下来剩下的约四十名囚犯留"
+    },
+    {
+      "utterance": 40,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 149.9999999978172,
+      "text": "伤员被送自家医院院后打斗平息下来剩下的约四十名囚犯留在院子"
+    },
+    {
+      "utterance": 40,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "伤员被送自家医院院后打斗平息下来剩下的约四十名囚犯留在院子里拒绝回"
+    },
+    {
+      "utterance": 40,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 417.9999999996653,
+      "text": "伤员被送自家医院院后打斗平息下来剩下的约四十名囚犯留在院子里拒绝回牢"
+    },
+    {
+      "utterance": 40,
+      "revision": 12,
+      "final": true,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 355.9999999988577,
+      "text": "伤员被送自家医院院后打斗平息下来剩下的约四十名囚犯留在院子里拒绝回牢"
+    },
+    {
+      "utterance": 41,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "伤员",
+      "first_caption_ms": 1511.9999999997162
+    },
+    {
+      "utterance": 41,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 124.99999999818101,
+      "text": "伤员被送往医"
+    },
+    {
+      "utterance": 41,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 134.9999999983993,
+      "text": "伤员被送往医院后打"
+    },
+    {
+      "utterance": 41,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 143.99999999750435,
+      "text": "伤员被送往医院后打到平息下"
+    },
+    {
+      "utterance": 41,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 137.99999999810098,
+      "text": "伤员被送往医院后打到平息下来剩下"
+    },
+    {
+      "utterance": 41,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 146.99999999811553,
+      "text": "伤员被送往医院后打到平息下来剩下的约四"
+    },
+    {
+      "utterance": 41,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 124.99999999818101,
+      "text": "伤员被送往医院后打到平息下来剩下的约四十名囚犯"
+    },
+    {
+      "utterance": 41,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 139.99999999941792,
+      "lag_ms": 149.9999999978172,
+      "text": "伤员被送往医院后打到平息下来剩下的约四十名囚犯留在院子"
+    },
+    {
+      "utterance": 41,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "伤员被送往医院后打到平息下来剩下的约四十名囚犯留在院子里拒绝"
+    },
+    {
+      "utterance": 41,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 428.9999999991778,
+      "text": "伤员被送往医院后打到平息下来剩下的约四十名囚犯留在院子里拒绝回牢房"
+    },
+    {
+      "utterance": 41,
+      "revision": 11,
+      "final": true,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 115.99999999816646,
+      "text": "伤员被送往医院后打到平息下来剩下的约四十名囚犯留在院子里拒绝回牢房"
+    },
+    {
+      "utterance": 42,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "向",
+      "first_caption_ms": 1251.9999999985885
+    },
+    {
+      "utterance": 42,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 140.99999999871216,
+      "text": "向员被送"
+    },
+    {
+      "utterance": 42,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 134.9999999983993,
+      "text": "向员被送进医院"
+    },
+    {
+      "utterance": 42,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 127.9999999978827,
+      "text": "向员被送进医院后打"
+    },
+    {
+      "utterance": 42,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 152.9999999984284,
+      "text": "向员被送进医院后打斗平息下"
+    },
+    {
+      "utterance": 42,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "向员被送进医院后打斗平息下来剩"
+    },
+    {
+      "utterance": 42,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 141.00000000053114,
+      "lag_ms": 140.99999999871216,
+      "text": "向员被送进医院后打斗平息下来剩下的约"
+    },
+    {
+      "utterance": 42,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 181.99999999797,
+      "text": "向员被送进医院后打斗平息下来剩下的约四十名"
+    },
+    {
+      "utterance": 42,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 143.99999999750435,
+      "text": "向员被送进医院后打斗平息下来剩下的约四十名囚犯人"
+    },
+    {
+      "utterance": 42,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 140.00000000032742,
+      "lag_ms": 152.9999999984284,
+      "text": "向员被送进医院后打斗平息下来剩下的约四十名囚犯人留在院"
+    },
+    {
+      "utterance": 42,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "向员被送进医院后打斗平息下来剩下的约四十名囚犯人留在院子里拒"
+    },
+    {
+      "utterance": 42,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 201.00000000002183,
+      "text": "向员被送进医院后打斗平息下来剩下的约四十名囚犯人留在院子里拒绝回牢房"
+    },
+    {
+      "utterance": 42,
+      "revision": 13,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 778.9999999995416,
+      "text": "向员被送进医院后打斗平息下来剩下的约四十名囚犯人留在院子里拒绝回牢房"
+    },
+    {
+      "utterance": 44,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 137.99999999810098,
+      "text": "这些条",
+      "first_caption_ms": 1337.999999999738
+    },
+    {
+      "utterance": 44,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 140.00000000032742,
+      "lag_ms": 146.99999999811553,
+      "text": "这些条款必须得"
+    },
+    {
+      "utterance": 44,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 124.99999999818101,
+      "text": "这些条款必须得到所有州"
+    },
+    {
+      "utterance": 44,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 134.9999999983993,
+      "text": "这些条款必须得到所有州的一致同"
+    },
+    {
+      "utterance": 44,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 143.99999999750435,
+      "text": "这些条款必须得到所有州的一致同意才能进行"
+    },
+    {
+      "utterance": 44,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 137.99999999810098,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改"
+    },
+    {
+      "utterance": 44,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改而各州"
+    },
+    {
+      "utterance": 44,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 140.99999999871216,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改而各州对待中央"
+    },
+    {
+      "utterance": 44,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 149.9999999978172,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改而各州对待中央政府的态"
+    },
+    {
+      "utterance": 44,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 127.9999999978827,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改而各州对待中央政府的态度十分轻"
+    },
+    {
+      "utterance": 44,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 231.9999999981519,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改而各州对待中央政府的态度十分轻慢"
+    },
+    {
+      "utterance": 44,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 146.99999999811553,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改而各州对待中央政府的态度十分轻慢以至于其"
+    },
+    {
+      "utterance": 44,
+      "revision": 13,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 144.99999999861757,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改而各州对待中央政府的态度十分轻慢以至于其州立代表"
+    },
+    {
+      "utterance": 44,
+      "revision": 14,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 149.9999999978172,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改而各州对待中央政府的态度十分轻慢以至于其州立代表经常"
+    },
+    {
+      "utterance": 44,
+      "revision": 15,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 387.99999999991996,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改而各州对待中央政府的态度十分轻慢以至于其州立代表经常缺席"
+    },
+    {
+      "utterance": 44,
+      "revision": 16,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 966.9999999996435,
+      "text": "这些条款必须得到所有州的一致同意才能进行修改而各州对待中央政府的态度十分轻慢以至于其州立代表经常缺席"
+    },
+    {
+      "utterance": 46,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 168.99999999805004,
+      "text": "这些条款",
+      "first_caption_ms": 3168.999999999869
+    },
+    {
+      "utterance": 46,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 140.00000000032742,
+      "lag_ms": 177.9999999980646,
+      "text": "这些条款必须得到"
+    },
+    {
+      "utterance": 46,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 187.99999999828287,
+      "text": "这些条款必须得到所有州的"
+    },
+    {
+      "utterance": 46,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 165.99999999834836,
+      "text": "这些条款必须得到所有州的一致同意"
+    },
+    {
+      "utterance": 46,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 159.9999999980355,
+      "text": "这些条款必须得到所有州的一致同意才能进"
+    },
+    {
+      "utterance": 46,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 168.99999999805004,
+      "text": "这些条款必须得到所有州的一致同意才能进行修"
+    },
+    {
+      "utterance": 46,
+      "revision": 7,
+      "final": true,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "这些条款必须得到所有州的一致同意才能进行修"
+    },
+    {
+      "utterance": 47,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 171.99999999866122,
+      "text": "而各州",
+      "first_caption_ms": 772.000000000844
+    },
+    {
+      "utterance": 47,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 165.99999999834836,
+      "text": "而各州对待中央"
+    },
+    {
+      "utterance": 47,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 143.99999999750435,
+      "text": "而各州对待中央政府的态"
+    },
+    {
+      "utterance": 47,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 199.9999999979991,
+      "text": "而各州对待中央政府的态度十分"
+    },
+    {
+      "utterance": 47,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 140.00000000032742,
+      "lag_ms": 586.9999999995343,
+      "text": "而各州对待中央政府的态度十分敬"
+    },
+    {
+      "utterance": 47,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 156.9999999983338,
+      "text": "而各州对待中央政府的态度十分敬慢以至"
+    },
+    {
+      "utterance": 47,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 139.99999999941792,
+      "lag_ms": 165.99999999834836,
+      "text": "而各州对待中央政府的态度十分敬慢以至于"
+    },
+    {
+      "utterance": 47,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 159.9999999980355,
+      "text": "而各州对待中央政府的态度十分敬慢以至于其州立"
+    },
+    {
+      "utterance": 47,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 168.99999999805004,
+      "text": "而各州对待中央政府的态度十分敬慢以至于其州立代表经"
+    },
+    {
+      "utterance": 47,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 396.999999999025,
+      "text": "而各州对待中央政府的态度十分敬慢以至于其州立代表经常缺席"
+    },
+    {
+      "utterance": 47,
+      "revision": 11,
+      "final": true,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 849.9999999994543,
+      "text": "而各州对待中央政府的态度十分敬慢以至于其州立代表经常缺席"
+    },
+    {
+      "utterance": 50,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 171.99999999957072,
+      "lag_ms": 181.99999999797,
+      "text": "这些条",
+      "first_caption_ms": 782.0000000001528
+    },
+    {
+      "utterance": 50,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 188.00000000010186,
+      "lag_ms": 190.99999999798456,
+      "text": "这些条款必须得"
+    },
+    {
+      "utterance": 50,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 186.99999999989814,
+      "lag_ms": 231.9999999981519,
+      "text": "这些条款必须得到所有州"
+    },
+    {
+      "utterance": 50,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 171.0000000002765,
+      "lag_ms": 240.99999999816646,
+      "text": "这些条款必须得到所有州得致同意才"
+    },
+    {
+      "utterance": 50,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 156.9999999983338,
+      "text": "这些条款必须得到所有州得致同意才能进行修"
+    },
+    {
+      "utterance": 50,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 171.99999999957072,
+      "lag_ms": 181.99999999797,
+      "text": "这些条款必须得到所有州得致同意才能进行修改"
+    },
+    {
+      "utterance": 50,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 159.9999999980355,
+      "text": "这些条款必须得到所有州得致同意才能进行修改而各州"
+    },
+    {
+      "utterance": 50,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 184.9999999985812,
+      "text": "这些条款必须得到所有州得致同意才能进行修改而各州对待中央"
+    },
+    {
+      "utterance": 50,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 162.99999999773718,
+      "text": "这些条款必须得到所有州得致同意才能进行修改而各州对待中央政府的态度"
+    },
+    {
+      "utterance": 50,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 156.9999999983338,
+      "text": "这些条款必须得到所有州得致同意才能进行修改而各州对待中央政府的态度十分轻"
+    },
+    {
+      "utterance": 50,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 139.99999999941792,
+      "lag_ms": 274.9999999978172,
+      "text": "这些条款必须得到所有州得致同意才能进行修改而各州对待中央政府的态度十分轻慢"
+    },
+    {
+      "utterance": 50,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 159.9999999980355,
+      "text": "这些条款必须得到所有州得致同意才能进行修改而各州对待中央政府的态度十分轻慢以至于"
+    },
+    {
+      "utterance": 50,
+      "revision": 13,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 231.9999999981519,
+      "text": "这些条款必须得到所有州得致同意才能进行修改而各州对待中央政府的态度十分轻慢以至于其州立"
+    },
+    {
+      "utterance": 50,
+      "revision": 14,
+      "final": false,
+      "asr_ms": 140.00000000032742,
+      "lag_ms": 146.99999999811553,
+      "text": "这些条款必须得到所有州得致同意才能进行修改而各州对待中央政府的态度十分轻慢以至于其州立代表经"
+    },
+    {
+      "utterance": 50,
+      "revision": 15,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 476.99999999804277,
+      "text": "这些条款必须得到所有州得致同意才能进行修改而各州对待中央政府的态度十分轻慢以至于其州立代表经常缺席"
+    },
+    {
+      "utterance": 50,
+      "revision": 16,
+      "final": true,
+      "asr_ms": 125.0,
+      "lag_ms": 249.999999998181,
+      "text": "这些条款必须得到所有州得致同意才能进行修改而各州对待中央政府的态度十分轻慢以至于其州立代表经常缺席"
+    },
+    {
+      "utterance": 53,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 168.99999999805004,
+      "text": "亚马",
+      "first_caption_ms": 1368.9999999996871
+    },
+    {
+      "utterance": 53,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 171.0000000002765,
+      "lag_ms": 177.9999999980646,
+      "text": "亚马逊河也是"
+    },
+    {
+      "utterance": 53,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 171.99999999866122,
+      "text": "亚马逊河也是地球上最"
+    },
+    {
+      "utterance": 53,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 139.99999999941792,
+      "lag_ms": 165.99999999834836,
+      "text": "亚马逊河也是地球上最宽的河"
+    },
+    {
+      "utterance": 53,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 190.99999999798456,
+      "text": "亚马逊河也是地球上最宽的河流"
+    },
+    {
+      "utterance": 53,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 168.99999999805004,
+      "text": "亚马逊河也是地球上最宽的河流有些河段"
+    },
+    {
+      "utterance": 53,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 209.9999999982174,
+      "text": "亚马逊河也是地球上最宽的河流有些河段的宽度可"
+    },
+    {
+      "utterance": 53,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 156.9999999983338,
+      "text": "亚马逊河也是地球上最宽的河流有些河段的宽度可达有"
+    },
+    {
+      "utterance": 53,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 365.99999999816646,
+      "text": "亚马逊河也是地球上最宽的河流有些河段的宽度可达有六英里"
+    },
+    {
+      "utterance": 53,
+      "revision": 10,
+      "final": true,
+      "asr_ms": 125.0,
+      "lag_ms": 927.9999999980646,
+      "text": "亚马逊河也是地球上最宽的河流有些河段的宽度可达有六英里"
+    },
+    {
+      "utterance": 55,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 159.9999999980355,
+      "text": "亚马",
+      "first_caption_ms": 1960.0000000009459
+    },
+    {
+      "utterance": 55,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 172.0000000004802,
+      "lag_ms": 199.9999999979991,
+      "text": "亚马逊河也是"
+    },
+    {
+      "utterance": 55,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 177.9999999980646,
+      "text": "亚马逊河也是地球上"
+    },
+    {
+      "utterance": 55,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 171.99999999866122,
+      "text": "亚马逊河也是地球上最宽的河"
+    },
+    {
+      "utterance": 55,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 196.99999999829743,
+      "text": "亚马逊河也是地球上最宽的河流"
+    },
+    {
+      "utterance": 55,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 159.9999999980355,
+      "text": "亚马逊河也是地球上最宽的河流有些河道的"
+    },
+    {
+      "utterance": 55,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 140.00000000032742,
+      "lag_ms": 168.99999999805004,
+      "text": "亚马逊河也是地球上最宽的河流有些河道的宽度可"
+    },
+    {
+      "utterance": 55,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 240.99999999816646,
+      "text": "亚马逊河也是地球上最宽的河流有些河道的宽度可达六"
+    },
+    {
+      "utterance": 55,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 140.99999999962165,
+      "lag_ms": 636.9999999997162,
+      "text": "亚马逊河也是地球上最宽的河流有些河道的宽度可达六英里"
+    },
+    {
+      "utterance": 55,
+      "revision": 10,
+      "final": true,
+      "asr_ms": 125.0,
+      "lag_ms": 1215.0000000001455,
+      "text": "亚马逊河也是地球上最宽的河流有些河道的宽度可达六英里"
+    },
+    {
+      "utterance": 57,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 171.99999999957072,
+      "lag_ms": 174.99999999745341,
+      "text": "亚马逊",
+      "first_caption_ms": 774.9999999996362
+    },
+    {
+      "utterance": 57,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 140.00000000032742,
+      "lag_ms": 168.99999999805004,
+      "text": "亚马逊河也是"
+    },
+    {
+      "utterance": 57,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 162.99999999773718,
+      "text": "亚马逊河也是世界上最"
+    },
+    {
+      "utterance": 57,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 171.99999999957072,
+      "lag_ms": 187.99999999828287,
+      "text": "亚马逊河也是世界上最宽的河流"
+    },
+    {
+      "utterance": 57,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 155.99999999994907,
+      "lag_ms": 181.99999999797,
+      "text": "亚马逊河也是世界上最宽的河流有些河段"
+    },
+    {
+      "utterance": 57,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 157.0000000001528,
+      "lag_ms": 159.9999999980355,
+      "text": "亚马逊河也是世界上最宽的河流有些河段的宽度"
+    },
+    {
+      "utterance": 57,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 168.99999999805004,
+      "text": "亚马逊河也是世界上最宽的河流有些河段的宽度可达六英"
+    },
+    {
+      "utterance": 57,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 651.9999999982247,
+      "text": "亚马逊河也是世界上最宽的河流有些河段的宽度可达六英里"
+    },
+    {
+      "utterance": 57,
+      "revision": 9,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 329.99999999901775,
+      "text": "亚马逊河也是世界上最宽的河流有些河段的宽度可达六英里"
+    },
+    {
+      "utterance": 59,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "不实政府发",
+      "first_caption_ms": 1922.0000000004802
+    },
+    {
+      "utterance": 59,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 115.99999999816646,
+      "text": "不实政府发言人戈"
+    },
+    {
+      "utterance": 59,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 93.99999999823194,
+      "text": "不实政府发言人戈登"
+    },
+    {
+      "utterance": 59,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "不实政府发言人戈登耶海德罗"
+    },
+    {
+      "utterance": 59,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 127.9999999978827,
+      "text": "不实政府发言人戈登耶海德罗称"
+    },
+    {
+      "utterance": 59,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 137.99999999810098,
+      "text": "不实政府发言人戈登耶海德罗称朝"
+    },
+    {
+      "utterance": 59,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 131.9999999977881,
+      "text": "不实政府发言人戈登耶海德罗称朝鲜的承诺"
+    },
+    {
+      "utterance": 59,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 124.99999999818101,
+      "text": "不实政府发言人戈登耶海德罗称朝鲜的承诺是朝着实"
+    },
+    {
+      "utterance": 59,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "不实政府发言人戈登耶海德罗称朝鲜的承诺是朝着实现朝鲜"
+    },
+    {
+      "utterance": 59,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 127.9999999978827,
+      "text": "不实政府发言人戈登耶海德罗称朝鲜的承诺是朝着实现朝鲜半岛可"
+    },
+    {
+      "utterance": 59,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "不实政府发言人戈登耶海德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的"
+    },
+    {
+      "utterance": 59,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 131.9999999977881,
+      "text": "不实政府发言人戈登耶海德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的无核化目"
+    },
+    {
+      "utterance": 59,
+      "revision": 13,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 109.99999999876309,
+      "text": "不实政府发言人戈登耶海德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的无核化目标迈"
+    },
+    {
+      "utterance": 59,
+      "revision": 14,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "不实政府发言人戈登耶海德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的无核化目标迈出的重"
+    },
+    {
+      "utterance": 59,
+      "revision": 15,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 393.0000000000291,
+      "text": "不实政府发言人戈登耶海德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的无核化目标迈出的重要一步"
+    },
+    {
+      "utterance": 59,
+      "revision": 16,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 426.99999999877036,
+      "text": "不实政府发言人戈登耶海德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的无核化目标迈出的重要一步"
+    },
+    {
+      "utterance": 62,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 125.0,
+      "lag_ms": 134.9999999983993,
+      "text": "不时政府",
+      "first_caption_ms": 1935.0000000004002
+    },
+    {
+      "utterance": 62,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 112.99999999755528,
+      "text": "不时政府发言人"
+    },
+    {
+      "utterance": 62,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "不时政府发言人戈登"
+    },
+    {
+      "utterance": 62,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 131.9999999977881,
+      "text": "不时政府发言人戈登约翰德"
+    },
+    {
+      "utterance": 62,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 109.99999999876309,
+      "text": "不时政府发言人戈登约翰德罗"
+    },
+    {
+      "utterance": 62,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "不时政府发言人戈登约翰德罗啊正"
+    },
+    {
+      "utterance": 62,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 127.9999999978827,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承"
+    },
+    {
+      "utterance": 62,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 137.99999999810098,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是"
+    },
+    {
+      "utterance": 62,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 115.99999999816646,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是朝着"
+    },
+    {
+      "utterance": 62,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 109.99999999876309,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是朝着直线朝"
+    },
+    {
+      "utterance": 62,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 134.9999999983993,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是朝着直线朝鲜半"
+    },
+    {
+      "utterance": 62,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 112.99999999755528,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是朝着直线朝鲜半岛可核"
+    },
+    {
+      "utterance": 62,
+      "revision": 13,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是朝着直线朝鲜半岛可核查的"
+    },
+    {
+      "utterance": 62,
+      "revision": 14,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 131.9999999977881,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是朝着直线朝鲜半岛可核查的无何化"
+    },
+    {
+      "utterance": 62,
+      "revision": 15,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 140.99999999871216,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是朝着直线朝鲜半岛可核查的无何化目标迈"
+    },
+    {
+      "utterance": 62,
+      "revision": 16,
+      "final": false,
+      "asr_ms": 108.99999999946886,
+      "lag_ms": 118.99999999786814,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是朝着直线朝鲜半岛可核查的无何化目标迈出的重"
+    },
+    {
+      "utterance": 62,
+      "revision": 17,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 432.99999999817373,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是朝着直线朝鲜半岛可核查的无何化目标迈出的重要一"
+    },
+    {
+      "utterance": 62,
+      "revision": 18,
+      "final": true,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 1026.9999999982247,
+      "text": "不时政府发言人戈登约翰德罗啊正朝鲜的承诺是朝着直线朝鲜半岛可核查的无何化目标迈出的重要一"
+    },
+    {
+      "utterance": 64,
+      "revision": 1,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "不是政",
+      "first_caption_ms": 1702.0000000002256
+    },
+    {
+      "utterance": 64,
+      "revision": 2,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 131.9999999977881,
+      "text": "不是政府的发"
+    },
+    {
+      "utterance": 64,
+      "revision": 3,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 124.99999999818101,
+      "text": "不是政府的发言人葛"
+    },
+    {
+      "utterance": 64,
+      "revision": 4,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 118.99999999786814,
+      "text": "不是政府的发言人葛登约"
+    },
+    {
+      "utterance": 64,
+      "revision": 5,
+      "final": false,
+      "asr_ms": 109.99999999967258,
+      "lag_ms": 112.99999999755528,
+      "text": "不是政府的发言人葛登约翰德罗"
+    },
+    {
+      "utterance": 64,
+      "revision": 6,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 121.99999999847932,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜"
+    },
+    {
+      "utterance": 64,
+      "revision": 7,
+      "final": false,
+      "asr_ms": 109.00000000037835,
+      "lag_ms": 115.99999999816646,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜的承诺是"
+    },
+    {
+      "utterance": 64,
+      "revision": 8,
+      "final": false,
+      "asr_ms": 110.00000000058208,
+      "lag_ms": 124.99999999818101,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜的承诺是朝着"
+    },
+    {
+      "utterance": 64,
+      "revision": 9,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 118.99999999786814,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜的承诺是朝着实现"
+    },
+    {
+      "utterance": 64,
+      "revision": 10,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 96.99999999793363,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜的承诺是朝着实现朝鲜半岛"
+    },
+    {
+      "utterance": 64,
+      "revision": 11,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 106.9999999981519,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜的承诺是朝着实现朝鲜半岛可核"
+    },
+    {
+      "utterance": 64,
+      "revision": 12,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 115.99999999816646,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的无核"
+    },
+    {
+      "utterance": 64,
+      "revision": 13,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 109.99999999876309,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的无核化目标"
+    },
+    {
+      "utterance": 64,
+      "revision": 14,
+      "final": false,
+      "asr_ms": 92.9999999998472,
+      "lag_ms": 102.9999999982465,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的无核化目标迈出的"
+    },
+    {
+      "utterance": 64,
+      "revision": 15,
+      "final": false,
+      "asr_ms": 94.00000000005093,
+      "lag_ms": 232.99999999835563,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的无核化目标迈出的重要一步"
+    },
+    {
+      "utterance": 64,
+      "revision": 16,
+      "final": true,
+      "asr_ms": 78.00000000042928,
+      "lag_ms": 810.9999999987849,
+      "text": "不是政府的发言人葛登约翰德罗称朝鲜的承诺是朝着实现朝鲜半岛可核查的无核化目标迈出的重要一步"
+    }
+  ],
+  "provider_wait_policy": "sleep",
+  "runtime_source_commit": "afc00fea4d2ae2801ace6bdde888ae745eedc01c"
+}

@@ -1,0 +1,277 @@
+{
+  "version": "0.4.0",
+  "runtime_source_commit": "afc00fea4d2ae2801ace6bdde888ae745eedc01c",
+  "packaging_source_commit": "405affc07cdbac714b2ad89e126c3f8011f5f5e9",
+  "unit_tests": {
+    "passed": 51,
+    "ruff": "passed",
+    "ci": "https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/runs/40083016743"
+  },
+  "mac_builds": {
+    "run": "https://github.com/zhangmingfeng962-cyber/LinguaCaption/actions/runs/40083025813",
+    "conclusion": "success"
+  },
+  "frozen_reports": {
+    "work-v040-passive-frozen": {
+      "version": "0.4.0",
+      "platform": "Windows-11-10.0.28000-SP0",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "soundcard_imported": true,
+      "streaming_loaded": true,
+      "streaming_silence_captions": 0,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "transcript": "西班牙人開始了長達3個世紀的殖民時期",
+      "language": "zh",
+      "streaming_transcript": "西班牙人开始了强达三个世纪的殖民时期",
+      "subtitle_rows": 1,
+      "readability": {
+        "simplified_chinese": "这是繁体字幕，台湾与世界。",
+        "display_queue": false,
+        "live_drag": true,
+        "colors": [
+          "#ffffff"
+        ],
+        "system_font": "Sans Serif",
+        "shadow": true
+      }
+    },
+    "work-v040-passive-native": {
+      "version": "0.4.0",
+      "platform": "Windows-11-10.0.28000-SP0",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "soundcard_imported": true,
+      "streaming_loaded": true,
+      "streaming_silence_captions": 0,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "transcript": "西班牙人開始了長達三個世紀的殖民時期",
+      "language": "zh",
+      "streaming_transcript": "西班牙人开始了强达三个世纪的殖民时期",
+      "subtitle_rows": 1,
+      "readability": {
+        "simplified_chinese": "这是繁体字幕，台湾与世界。",
+        "display_queue": false,
+        "live_drag": true,
+        "colors": [
+          "#ffffff"
+        ],
+        "system_font": "Microsoft YaHei UI",
+        "shadow": true
+      }
+    },
+    "work-v040-passive-upgrade": {
+      "version": "0.4.0",
+      "platform": "Windows-11-10.0.28000-SP0",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "soundcard_imported": true,
+      "streaming_loaded": true,
+      "streaming_silence_captions": 0,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "transcript": "西班牙人開始了長達三個世紀的殖民時期",
+      "language": "zh",
+      "streaming_transcript": "西班牙人开始了强达三个世纪的殖民时期",
+      "subtitle_rows": 1,
+      "readability": {
+        "simplified_chinese": "这是繁体字幕，台湾与世界。",
+        "display_queue": false,
+        "live_drag": true,
+        "colors": [
+          "#ffffff"
+        ],
+        "system_font": "Sans Serif",
+        "shadow": true
+      }
+    },
+    "packaged-smoke-macos-14-packaged-smoke": {
+      "version": "0.4.0",
+      "platform": "macOS-14.8.9-arm64-arm-64bit",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "system_audio_helper_present": true,
+      "streaming_loaded": true,
+      "streaming_silence_captions": 0,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "transcript": "昨天是 MondayTeday is LiBahahZeday after tomorrow是星期三",
+      "language": "zh",
+      "streaming_transcript": "昨天是 mondaytoday is零八二 the day day tomororrow 是期",
+      "subtitle_rows": 1,
+      "readability": {
+        "simplified_chinese": "这是繁体字幕，台湾与世界。",
+        "display_queue": false,
+        "live_drag": true,
+        "colors": [
+          "#ffffff"
+        ],
+        "system_font": "Sans Serif",
+        "shadow": true
+      }
+    },
+    "packaged-smoke-macos-15-intel-packaged-smoke": {
+      "version": "0.4.0",
+      "platform": "macOS-15.7.9-x86_64-i386-64bit",
+      "bundled": true,
+      "models_present": true,
+      "audio_capture": false,
+      "ok": true,
+      "modules": {
+        "av": "17.1.0",
+        "ctranslate2": "4.8.3",
+        "sentencepiece": "0.2.2",
+        "vad_silence": false
+      },
+      "system_audio_helper_present": true,
+      "streaming_loaded": true,
+      "streaming_silence_captions": 0,
+      "asr_loaded": true,
+      "translation": "世界好!",
+      "transcript": "昨天是 MondayTeday is LiBahahZeday after tomorrow是星期三",
+      "language": "zh",
+      "streaming_transcript": "昨天是 mondaytoday is零八二 the day today tomororrow 星期",
+      "subtitle_rows": 1,
+      "readability": {
+        "simplified_chinese": "这是繁体字幕，台湾与世界。",
+        "display_queue": false,
+        "live_drag": true,
+        "colors": [
+          "#ffffff"
+        ],
+        "system_font": "Sans Serif",
+        "shadow": true
+      }
+    }
+  },
+  "windows_integrity": {
+    "zip_crc": "passed",
+    "model_file_hashes": "passed",
+    "license_notices_present": true,
+    "checksums": {
+      "LinguaCaption-0.4.0-windows-x64-portable.zip": "b304e46d47caad0aa361532649e34ef58659a0a137e0810b8815e5a7be5803db",
+      "LinguaCaption-0.4.0-windows-x64-setup.exe": "872a3f2b17ebb8571333d7b1f106c891a2842637904be900f0143621bb54e21f"
+    },
+    "portable_files": 1155,
+    "downloads": {
+      "LinguaCaption-0.4.0-windows-x64-portable.zip": 915957694,
+      "LinguaCaption-0.4.0-windows-x64-setup.exe": 886718412
+    }
+  },
+  "frozen_source_integrity": {
+    "modules_match": [
+      "engine",
+      "streaming",
+      "ui",
+      "config",
+      "core.presentation"
+    ],
+    "runtime_source_commit": "afc00fea4d2ae2801ace6bdde888ae745eedc01c",
+    "packaging_source_commit": "405affc07cdbac714b2ad89e126c3f8011f5f5e9",
+    "cpu_wait_configuration_present": true
+  },
+  "application_sha256": {
+    "LinguaCaption-0.4.0-macos-arm64.dmg": "d19300e216617d35229c1f38cc86ffe78e3c8fa73ef2787e84366a318efb47b8",
+    "LinguaCaption-0.4.0-macos-x64.dmg": "f03bab8102938684be1195a963cb4bc73f870775d373a52488d46ba739491b1e",
+    "LinguaCaption-0.4.0-windows-x64-portable.zip": "b304e46d47caad0aa361532649e34ef58659a0a137e0810b8815e5a7be5803db",
+    "LinguaCaption-0.4.0-windows-x64-setup.exe": "872a3f2b17ebb8571333d7b1f106c891a2842637904be900f0143621bb54e21f"
+  },
+  "capture_or_physical_screen_validation": false,
+  "flow_replay_before_wait_tuning": {
+    "audio_seconds": 2149.368,
+    "speech_fixture_seconds": 1811.368,
+    "elapsed_seconds": 2155.672,
+    "clips": 169,
+    "errors": [],
+    "warnings": [],
+    "dropped_audio_blocks": 0,
+    "peak_rss_mb": 760.3,
+    "cpu_percent_total_capacity": 23.261987372731102,
+    "original_lag_estimate": {
+      "p50_ms": 47.0,
+      "p95_ms": 308.2,
+      "n": 2013
+    },
+    "first_caption_estimate": {
+      "p50_ms": 1235.0,
+      "p95_ms": 2455.0,
+      "n": 211
+    },
+    "final_lag_estimate": {
+      "p50_ms": 624.0,
+      "p95_ms": 1132.5,
+      "n": 211
+    },
+    "measurement_note": "Realtime fixture into production Engine/UI on offscreen Qt; audio/VAD timestamps are estimates, not word alignment or external screen timing",
+    "continuous_transcript_cer": 0.14962962962962964,
+    "validation_note": "35-minute flow stress test before CPU waiting-policy tuning (runtime6cca7d1). Final runtime adds ORT sleep configuration. Post-tuning real-time and 169-clip output-parity tests are separate records.",
+    "provider_wait_policy": "default-spin-before-tuning"
+  },
+  "final_cpu_wait_policy_replay": {
+    "audio_seconds": 362.156,
+    "speech_fixture_seconds": 300.156,
+    "elapsed_seconds": 369.5,
+    "clips": 31,
+    "errors": [],
+    "warnings": [],
+    "dropped_audio_blocks": 0,
+    "peak_rss_mb": 445.8,
+    "cpu_percent_total_capacity": 2.2057890730717187,
+    "original_lag_estimate": {
+      "p50_ms": 132.0,
+      "p95_ms": 387.6,
+      "n": 343
+    },
+    "first_caption_estimate": {
+      "p50_ms": 1328.0,
+      "p95_ms": 2747.6,
+      "n": 33
+    },
+    "final_lag_estimate": {
+      "p50_ms": 834.0,
+      "p95_ms": 1216.6,
+      "n": 33
+    },
+    "measurement_note": "Realtime fixture into production Engine/UI on offscreen Qt; audio/VAD timestamps are estimates, not word alignment or external screen timing"
+  },
+  "cpu_wait_policy_transcript_parity": {
+    "clips": 169,
+    "audio_seconds": 1811.368,
+    "different_outputs": [],
+    "elapsed_seconds": 315.9369999999999
+  }
+}

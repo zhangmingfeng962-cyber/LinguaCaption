@@ -1,10 +1,10 @@
 # 桌面发行与构建
 
-当前版本为 v0.4.0，阅读时间、白色系统字体、简体中文、拖拽修复及升级方式见 [本次更新](READABILITY.md)。以下 v0.2.0 记录保留作初始桌面包验证依据；构建脚本会自动使用当前代码版本号。v0.4.0 复用同一份离线模型。
+当前版本为 v0.4.0，中文流式识别、同步、迁移与最新测试见 [本次更新](MANDARIN.md)。v0.3 的样式与拖拽更新记录见 [阅读体验更新](READABILITY.md)。以下 v0.2.0 记录保留作初始桌面包验证依据。v0.4 复用旧 Whisper/翻译模型，并额外内置固定版本的中文流式模型。
 
 v0.2.0 是功能预览版。Windows 提供每用户安装程序和完整免安装包；Mac 提供 Apple 芯片与 Intel 两种磁盘映像，最低 macOS 14。所有完整软件包自带 Python 运行时、Qt、语音识别模型和翻译模型，使用者无需配置开发环境。
 
-## 本版验证结果
+## v0.2 初始打包验证结果
 
 详细机器可读记录见 [desktop-verification.json](desktop-verification.json)。程序代码构建自 commit `bb67bda90e48a5f8f3dee5766b307d4b7c636e6a`，后续提交补充发行验证文档与截图。
 
@@ -33,11 +33,11 @@ Windows 安装在当前用户的本地程序目录，可通过「设置 → 应�
 
 ## 模型与许可证
 
-完整包内置多语言 Whisper tiny（不是 tiny.en）以及 M2M100 418M，经 CTranslate2 INT8 转换。Tiny 优先控制 CPU 与软件体积；可在模型页切换更大的完整多语言识别模型目录。
+v0.4 完整包额外内置 Paraformer 中文流式 INT8（Apache-2.0），并保留多语言 Whisper tiny（不是 tiny.en）以及 M2M100 418M，经 CTranslate2 INT8 转换。Tiny 优先控制 CPU 与软件体积；可在模型页切换更大的完整多语言识别模型目录。
 
 模型目录内的 `linguacaption.json` 记录上游仓库、源 commit、转换格式及文件 SHA-256；本次模型来源亦见 [provenance.json](benchmarks/provenance.json)。独立模型包 `LinguaCaption-models-v1.zip` 提供相同文件，供复现构建使用，普通使用者不必下载它。
 
-软件内的 `third-party-licenses` 保存模型 MIT 许可、Qt/PySide 的 LGPL/GPL 文本以及各依赖自带的许可与版本清单。Qt 动态库保持独立，可替换为兼容的修改版本；未对逆向调试此类修改施加额外限制。依赖和模型保留上游许可，项目自身源码使用 MIT。
+软件内的 `third-party-licenses` 保存 Whisper/M2M100 的 MIT 许可、Paraformer 的 Apache-2.0 许可、Qt/PySide 的 LGPL/GPL 文本以及各依赖自带的许可与版本清单。Qt 动态库保持独立，可替换为兼容的修改版本；未对逆向调试此类修改施加额外限制。依赖和模型保留上游许可，项目自身源码使用 MIT。
 
 ## 复现构建
 
@@ -46,10 +46,11 @@ Windows 安装在当前用户的本地程序目录，可通过「设置 → 应�
 ```bash
 python -m pip install -e '.[build]'
 python scripts/models_archive.py extract LinguaCaption-models-v1.zip models --sha256 0f6e8825f51ee400a8f7bf7940cdc3fba01cd7a3f46734b1eaa6ad177ab3e714
+python scripts/prepare_mandarin.py
 python scripts/package.py
 ```
 
-可以用 `--asr-model`、`--translation-model`、`--dist-dir`、`--work-dir` 指定其他目录。`--without-models` 仅供开发，生成的软件没有完整包的即装即用体验。打包时包含 VAD wheel 专用 hook，Windows 构建还隔离无关工具的 DLL 搜索路径。
+可以用 `--asr-model`、`--streaming-model`、`--translation-model`、`--dist-dir`、`--work-dir` 指定其他目录。`--without-models` 仅供开发，生成的软件没有完整包的即装即用体验。打包时包含 VAD wheel 专用 hook，Windows 构建还隔离无关工具的 DLL 搜索路径。
 
 Windows 安装 [Inno Setup 6](https://jrsoftware.org/isinfo.php)，再运行：
 
