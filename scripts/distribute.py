@@ -65,7 +65,7 @@ def main() -> None:
             time.sleep(5)
     checksums = {}
     for path in output.iterdir():
-        if path.is_file() and path.suffix in {".exe", ".zip", ".dmg"}:
+        if path.is_file() and path.suffix in ({".exe", ".zip"} if platform.system() == "Windows" else {".dmg"}):
             with path.open("rb") as handle:
                 checksums[path.name] = hashlib.file_digest(handle, "sha256").hexdigest()
     (output / f"SHA256-{platform.system().lower()}-{platform.machine()}.json").write_text(
