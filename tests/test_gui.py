@@ -171,3 +171,24 @@ def test_same_revision_translation_with_wrong_source_text_is_rejected(qtapp, tmp
     window.mandarin_preset()
     assert window.settings.use_streaming and not window.settings.needs_translation
     window.close()
+
+
+def test_late_translation_cannot_revive_captions_after_idle_hiding(qtapp, tmp_path, monkeypatch):
+    now = [10.0]
+    monkeypatch.setattr("linguacaption.ui.time.monotonic", lambda: now[0])
+    window = MainWindow(Settings(source="en", mode="bilingual"), tmp_path / "config.json", register_hotkeys=False)
+    first = Caption(1, 1, "old", "en", False, 10, 1)
+    current = Caption(2, 1, "current", "en", True, 11, 1)
+    window._accept_caption(first, False)
+    now[0] = 11
+    window._accept_caption(current, False)
+    now[0] = 16
+    window._tick()
+    assert not window.overlay.original
+    window._accept_caption(replace(first, translation="旧句迟到译文"), True)
+    window._accept_caption(replace(current, translation="当前句迟到译文"), True)
+    assert not window.overlay.original and not window.overlay.translation
+    assert "当前句迟到译文" in window.history_view.toPlainText()
+    window._accept_caption(Caption(3, 1, "next", "en", False, 16, 1), False)
+    assert window.overlay.original == "next"
+    window.close()

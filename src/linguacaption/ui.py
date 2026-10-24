@@ -891,9 +891,14 @@ class MainWindow(QMainWindow):
         self._history[caption.utterance] = caption
         while len(self._history) > 60:
             self._history.popitem(last=False)
+        display = self._last_caption is None or caption.key >= self._last_caption.key
+        # Idle hiding clears the presenter, but not the session's high-water
+        # mark. A late translation may update history without reviving old text.
+        if translation and self._last_caption is not None and self._presenter.current is None:
+            display = False
         if self._last_caption is None or caption.key >= self._last_caption.key:
             self._last_caption = caption
-        shown = self._presenter.push(caption, time.monotonic())
+        shown = self._presenter.push(caption, time.monotonic()) if display else None
         if shown:
             self._present_caption(shown)
         self._render_history()
